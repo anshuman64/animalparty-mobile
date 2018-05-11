@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "1019897075494-d7f7hbns76cap5v8e5ba8mt3bhp59lbj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.animalparty.android",
+            "certificate_hash": "25cab230d00cb08ae3266e0a73aed2c1966ccb2f"
+          }
+        },
+        {
+          "client_id": "1019897075494-709ahcacerp3rucja1vo9jh7rfgllb3q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.animalparty.android",
+            "certificate_hash": "1b0b36b13a2f1bb1e91d64734da342c5c0d5ed4b"
+          }
+        },
+        {
           "client_id": "1019897075494-a48vr1n82vt9179j5g6gpdudqrn0ftkt.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +45,20 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019897075494-jduott4lgi59q2jcv67mpk8cbj2dflhe.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.animalparty.apple"
+              }
+            },
+            {
+              "client_id": "1019897075494-a48vr1n82vt9179j5g6gpdudqrn0ftkt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
