@@ -1,0 +1,23 @@
+PODS:
+  - Amplitude-iOS (3.14.1)
+  - react-native-amplitude-analytics (0.1.12):
+    - Amplitude-iOS (~> 3.14.1)
+
+DEPENDENCIES:
+  - react-native-amplitude-analytics (from `../node_modules/react-native-amplitude-analytics`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Amplitude-iOS
+
+EXTERNAL SOURCES:
+  react-native-amplitude-analytics:
+    :path: "../node_modules/react-native-amplitude-analytics"
+
+SPEC CHECKSUMS:
+  Amplitude-iOS: 4a3c8807b2ea5369dc11e87e23825bff01e5a922
+  react-native-amplitude-analytics: 4f561e432316bb86f1a11d46ee234a3ef2e9eb38
+
+PODFILE CHECKSUM: 022e2af894727f8b4e5087f1698edf2a38967a74
+
+COCOAPODS: 1.5.0

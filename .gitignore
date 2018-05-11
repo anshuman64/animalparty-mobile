@@ -22,6 +22,8 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
+ios/Pods
+
 # Android/IntelliJ
 #
 build/
@@ -40,6 +42,8 @@ yarn-error.log
 buck-out/
 \.buckd/
 *.keystore
+*.pem
+*.jks
 
 # fastlane
 #
@@ -51,6 +55,10 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+
+# Internal Tools
+tools/
+process-palette.json
 
 # Bundle artifact
 *.jsbundle
