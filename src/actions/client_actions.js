@@ -47,15 +47,15 @@ export const receiveClient = (data) => {
 
 // Uses Firebase authToken to refresh AWS credentials
 let configureAWS = (authToken) => {
-    AWS.config.region = 'us-east-1';
-    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-      IdentityPoolId: 'us-east-1:6df1340e-29c5-49f6-9692-7d2933d2e815',
-      Logins: {
-        'securetoken.google.com/insiya-mobile': authToken
-      }
-    });
-
-    return AWS.config.credentials.refreshPromise();
+    // AWS.config.region = 'us-east-1';
+    // AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    //   IdentityPoolId: 'us-east-1:6df1340e-29c5-49f6-9692-7d2933d2e815',
+    //   Logins: {
+    //     'securetoken.google.com/insiya-mobile': authToken
+    //   }
+    // });
+    //
+    // return AWS.config.credentials.refreshPromise();
 }
 
 //--------------------------------------------------------------------//
@@ -117,7 +117,7 @@ export const loginClient = (firebaseUserObj) => (dispatch) => {
     amplitude.setUserProperties({ full_name: client.full_name, username: client.username, database_id: client.id, phone_number: client.phone_number, email: client.email, firebase_uid: client.firebase_uid, last_login: client.last_login, created_at: client.created_at });
     amplitude.logEvent('Onboarding - Log In', { is_successful: true, is_new_user: isNew });
 
-    OneSignal.sendTag('user_id', String(client.id));
+    // OneSignal.sendTag('user_id', String(client.id));
     dispatch(setPusherClient(authToken, client.id));
     dispatch(receiveClient({ client: client }));
   }
@@ -167,15 +167,15 @@ let isRefreshing = false;
 // Refreshes Firebase authToken and AWS credentials (if expired)
 export const refreshAuthToken = (firebaseUserObj) => (dispatch) => {
   // If token doesn't need refreshing, return the current token
-  if (AWS.config.credentials && !AWS.config.credentials.needsRefresh()) {
-    return firebaseUserObj.getIdToken(false)
-      .then((newAuthToken) => {
-        return newAuthToken;
-      })
-      .catch((error) => {
-        throw setErrorDescription(error, 'Firebase getIdToken failed');
-      });
-  }
+  // if (AWS.config.credentials && !AWS.config.credentials.needsRefresh()) {
+  //   return firebaseUserObj.getIdToken(false)
+  //     .then((newAuthToken) => {
+  //       return newAuthToken;
+  //     })
+  //     .catch((error) => {
+  //       throw setErrorDescription(error, 'Firebase getIdToken failed');
+  //     });
+  // }
 
   // If currently refreshing, return a rejected Promise after 1 second with an error
   if (isRefreshing) {
@@ -188,16 +188,16 @@ export const refreshAuthToken = (firebaseUserObj) => (dispatch) => {
     .then((newAuthToken) => {
       dispatch(receiveAuthToken({ authToken: newAuthToken }));
 
-      return configureAWS(newAuthToken)
-        .then(() => {
-          isRefreshing = false; // NOTE: don't put this in a .finally, it breaks returning the authToken
-          setS3Client();
-          return newAuthToken;
-        })
-        .catch((error) => {
-          isRefreshing = false;
-          throw setErrorDescription(error, 'Configure AWS failed');
-        });
+      // return configureAWS(newAuthToken)
+      //   .then(() => {
+      //     isRefreshing = false; // NOTE: don't put this in a .finally, it breaks returning the authToken
+      //     setS3Client();
+      //     return newAuthToken;
+      //   })
+      //   .catch((error) => {
+      //     isRefreshing = false;
+      //     throw setErrorDescription(error, 'Configure AWS failed');
+      //   });
     })
     .catch((error) => {
       isRefreshing = false;
