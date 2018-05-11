@@ -55,6 +55,25 @@ class Header extends React.PureComponent {
     this.props.navigateTo('MenuScreen');
   }
 
+  _onPressAdd = () => {
+    if (this.isButtonPressed) {
+      return;
+    }
+
+    this.isButtonPressed = true;
+
+    this.setState({ isLoading: true } , () => {
+      this.props.requestConnection(this.props.client.authToken, this.props.client.firebaseUserObj)
+        .catch((error) => {
+          defaultErrorAlert(error);
+        })
+        .finally(() => {
+          this.isButtonPressed = false;
+          this.setState({ isLoading: false });
+        });
+    });
+  }
+
   //--------------------------------------------------------------------//
   // Render Methods
   //--------------------------------------------------------------------//
@@ -128,6 +147,22 @@ class Header extends React.PureComponent {
     }
   }
 
+  _renderCustomIcon() {
+    if (this.props.customIcon) {
+      return (
+        <RN.TouchableWithoutFeedback
+          onPressIn={() => this.customIcon.setNativeProps({style: UTILITY_STYLES.textHighlighted})}
+          onPressOut={() => this.customIcon.setNativeProps({style: styles.customIcon})}
+          onPress={this._onPressAdd}
+          >
+          <RN.View style={styles.button}>
+            <Icon ref={(ref) => this.customIcon = ref} name='plus' style={styles.settingsIcon} />
+          </RN.View>
+        </RN.TouchableWithoutFeedback>
+      )
+    }
+  }
+
   _renderLoadingModal() {
     return (
       <LoadingModal isLoading={this.state.isLoading}/>
@@ -139,8 +174,9 @@ class Header extends React.PureComponent {
       <RN.View style={[styles.header, !this.props.noBorder && styles.border]}>
         {this._renderBlank()}
         {(this.props.backTitle && !this.props.backIcon) ? this._renderBackTitle() : this._renderBackIcon()}
-        {this._renderLogo()}
         {this._renderSettingsIcon()}
+        {this._renderLogo()}
+        {this._renderCustomIcon()}
         {this._renderLoadingModal()}
       </RN.View>
     )
