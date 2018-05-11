@@ -6,8 +6,8 @@ import Firebase  from 'react-native-firebase';
 // Local Imports
 import { amplitude }                                  from '../utilities/analytics_utility';
 import * as APIUtility                                from '../utilities/api_utility';
-import { setS3Client, uploadFile }                    from '../utilities/file_utility';
-import { setPusherClient }                            from '../utilities/push_utility';
+// import { setS3Client, uploadFile }                    from '../utilities/file_utility';
+// import { setPusherClient }                            from '../utilities/push_utility';
 import { setErrorDescription, refreshCredsAndResume } from '../utilities/error_utility';
 
 //--------------------------------------------------------------------//
@@ -203,83 +203,4 @@ export const refreshAuthToken = (firebaseUserObj) => (dispatch) => {
       isRefreshing = false;
       throw setErrorDescription(error, 'Firebase getIdToken failed');
     });
-}
-
-// PUT request to API to edit client full_name from DisplayNameScreen
-export const editFullName = (authToken, firebaseUserObj, fullName) => (dispatch) => {
-  return APIUtility.put(authToken, '/users', { full_name: fullName })
-  .then((editedUser) => {
-    amplitude.logEvent('Onboarding - Edit Full Name', { is_successful: true, full_name: fullName });
-    dispatch(receiveClient({ client: editedUser }));
-  })
-  .catch((error) => {
-    if (error.message === "Invalid access token. 'Expiration time' (exp) must be in the future.") {
-      return dispatch(refreshCredsAndResume(firebaseUserObj, editFullName, fullName));
-    }
-
-    error = setErrorDescription(error, 'PUT user for full name failed');
-    amplitude.logEvent('Onboarding - Edit Full Name', { is_successful: false, full_name: fullName, error_description: error.description, error_message: error.message });
-    throw error;
-  });
-}
-
-// PUT request to API to edit client username from UsernameScreen
-export const editUsername = (authToken, firebaseUserObj, username) => (dispatch) => {
-  return APIUtility.put(authToken, '/users', { username: username })
-  .then((editedUser) => {
-    amplitude.logEvent('Onboarding - Edit Username', { is_successful: true, username: username });
-    dispatch(receiveClient({ client: editedUser }));
-  })
-  .catch((error) => {
-    if (error.message === "Invalid access token. 'Expiration time' (exp) must be in the future.") {
-      return dispatch(refreshCredsAndResume(firebaseUserObj, editUsername, username));
-    }
-
-    if (!error.description) {
-      if (error.message === 'Username has already been taken') {
-        error = setErrorDescription(error, 'Username taken');
-      } else {
-        error = setErrorDescription(error, 'PUT user for username failed');
-      }
-    }
-
-    amplitude.logEvent('Onboarding - Edit Username', { is_successful: false, username: username, error_description: error.description, error_message: error.message });
-    throw error;
-  });
-}
-
-// PUT request to API to edit user avatar_medium_id from AvatarScreen
-export const editAvatar = (authToken, firebaseUserObj, userId, medium) => (dispatch) => {
-  let putUser = (updatedMedium) => {
-    return APIUtility.put(authToken, '/users/avatar', { medium: updatedMedium })
-      .then((editedUser) => {
-        amplitude.logEvent('Onboarding - Edit Avatar', { is_successful: true });
-        dispatch(receiveClient({ client: editedUser }));
-      })
-      .catch((error) => {
-        if (error.message === "Invalid access token. 'Expiration time' (exp) must be in the future.") {
-          return dispatch(refreshCredsAndResume(firebaseUserObj, editAvatar, userId, medium));
-        }
-
-        putUserError(error);
-      });
-  }
-
-  let putUserError = (error) => {
-    error = setErrorDescription(error, 'PUT user for avatar failed');
-    amplitude.logEvent('Onboarding - Edit Avatar', { is_successful: false, error_description: error.description, error_message: error.message });
-    throw error;
-  }
-
-  if (medium) {
-    return dispatch(uploadFile(authToken, firebaseUserObj, userId, 'profile_pictures/', medium))
-      .then((updatedMedium) => {
-        return putUser(updatedMedium);
-      })
-      .catch((error) => {
-        putUserError(error);
-      });
-  } else {
-    return putUser(null);
-  }
 }

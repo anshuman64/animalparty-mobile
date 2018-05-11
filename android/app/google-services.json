@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1019897075494",
+    "firebase_url": "https://animalparty-mobile.firebaseio.com",
+    "project_id": "animalparty-mobile",
+    "storage_bucket": "animalparty-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019897075494:android:5041be53fee55685",
+        "android_client_info": {
+          "package_name": "com.animalparty.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019897075494-a48vr1n82vt9179j5g6gpdudqrn0ftkt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBql81C-efAp_oxNHrMUrScDICTqMuJH40"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

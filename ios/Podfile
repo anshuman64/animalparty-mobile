@@ -7,7 +7,7 @@ target 'animalparty' do
 
   # Pods for animalparty
 
-  # pod 'Firebase/Core'
+  pod 'Firebase/Core'
   # pod 'Firebase/Auth'
 
   pod 'react-native-amplitude-analytics', :path => '../node_modules/react-native-amplitude-analytics'

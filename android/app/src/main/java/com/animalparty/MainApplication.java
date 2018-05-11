@@ -3,6 +3,10 @@ package com.animalparty;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.oblador.vectoricons.VectorIconsPackage;
+import io.invertase.firebase.RNFirebasePackage;
+import com.sudoplz.reactnativeamplitudeanalytics.RNAmplitudeSDKPackage;
+import io.invertase.firebase.RNFirebasePackage;
 import com.sudoplz.reactnativeamplitudeanalytics.RNAmplitudeSDKPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -25,6 +29,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new VectorIconsPackage(),
+            new RNFirebasePackage(),
+            new RNAmplitudeSDKPackage(),
+            new RNFirebasePackage(),
             new RNAmplitudeSDKPackage(MainApplication.this),
             new VectorIconsPackage()
       );
