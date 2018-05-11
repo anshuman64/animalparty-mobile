@@ -8,12 +8,10 @@ import { navigateTo }                             from '../../actions/navigation
 
 //--------------------------------------------------------------------//
 
-// const mapStateToProps = ({ client, usersCache, contactsCache, navigation }, ownProps) => ({
-//   client:        client,
-//   usersCache:    usersCache,
-//   contactsCache: contactsCache,
-//   currentScreen: navigation.currentScreen
-// });
+const mapStateToProps = ({ client, navigation }, ownProps) => ({
+  client:        client,
+  currentScreen: navigation.currentScreen
+});
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   navigateTo:              (screen, props)                                                                  => dispatch(navigateTo(screen, props)),

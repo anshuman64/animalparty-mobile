@@ -118,7 +118,7 @@ export const loginClient = (firebaseUserObj) => (dispatch) => {
     amplitude.logEvent('Onboarding - Log In', { is_successful: true, is_new_user: isNew });
 
     // OneSignal.sendTag('user_id', String(client.id));
-    dispatch(setPusherClient(authToken, client.id));
+    // dispatch(setPusherClient(authToken, client.id));
     dispatch(receiveClient({ client: client }));
   }
 
@@ -192,7 +192,7 @@ export const refreshAuthToken = (firebaseUserObj) => (dispatch) => {
       //   .then(() => {
       //     isRefreshing = false; // NOTE: don't put this in a .finally, it breaks returning the authToken
       //     setS3Client();
-      //     return newAuthToken;
+          return newAuthToken;
       //   })
       //   .catch((error) => {
       //     isRefreshing = false;

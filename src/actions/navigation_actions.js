@@ -22,7 +22,9 @@ let dismissKeyBoard = () => {
 // Navigates to particular screen and sends props. Dismisses keyboard before navigating.
 export const navigateTo = (screen, props) => (dispatch) => {
   let navigateScreens = () => {
-    if (screen === 'LoginScreen') {
+    if (screen === 'LoadingScreen') {
+      Actions.LoadingScreen(props)
+    } else if (screen === 'LoginScreen') {
       Actions.LoginScreen(props)
     } else if (screen === 'WelcomeScreen') {
       Actions.WelcomeScreen(props)
