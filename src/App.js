@@ -15,6 +15,9 @@ import WelcomeScreenContainer      from './screens/welcome_screen/welcome_screen
 import LoginScreenContainer        from './screens/login_screen/login_screen_container';
 import ConfirmCodeScreenContainer  from './screens/confirm_code_screen/confirm_code_screen_container';
 import ChoosePartyScreenContainer  from './screens/choose_party_screen/choose_party_screen_container';
+import HomeScreenContainer         from './screens/home_screen/home_screen_container';
+
+import HeaderContainer             from './components/header/header_container';
 
 //--------------------------------------------------------------------//
 
@@ -94,8 +97,9 @@ class App extends React.Component {
             <Scene key='LoadingScreen'         component={LoadingScreenContainer}      panHandlers={null} hideNavBar={true} initial={true}/>
             <Scene key='WelcomeScreen'         component={WelcomeScreenContainer}      panHandlers={null} hideNavBar={true} />
             <Scene key='LoginScreen'           component={LoginScreenContainer}        panHandlers={null} hideNavBar={true} />
-            <Scene key='ConfirmCodeScreen'      component={ConfirmCodeScreenContainer} panHandlers={null} hideNavBar={true}  />
+            <Scene key='ConfirmCodeScreen'      component={ConfirmCodeScreenContainer} panHandlers={null} navBar={() => <HeaderContainer backTitle={'Confirm Code'} backIcon={true} />}  />
             <Scene key='ChoosePartyScreen'      component={ChoosePartyScreenContainer} panHandlers={null} hideNavBar={true}  />
+            <Scene key='HomeScreen'     component={HomeScreenContainer}   panHandlers={null} navBar={() => <HeaderContainer logo={true} />} />
           </Scene>
         </RouterContainer>
       </Provider>
