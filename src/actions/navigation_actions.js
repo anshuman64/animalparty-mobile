@@ -24,6 +24,10 @@ export const navigateTo = (screen, props) => (dispatch) => {
   let navigateScreens = () => {
     if (screen === 'LoginScreen') {
       Actions.LoginScreen(props)
+    } else if (screen === 'WelcomeScreen') {
+      Actions.WelcomeScreen(props)
+    } else if (screen === 'ConfirmCodeScreen') {
+      Actions.ConfirmCodeScreen(props)
     } else {
       return;
     }
@@ -37,7 +41,8 @@ export const navigateTo = (screen, props) => (dispatch) => {
     }
   }
 
-  if (Actions.currentScene === 'LoginScreen') {
+  if (Actions.currentScene === 'LoginScreen'
+      || Actions.currentScene === 'ConfirmCodeScreen') {
     dismissKeyBoard()
       .then(() => {
         checkRefresh();

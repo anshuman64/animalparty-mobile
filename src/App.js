@@ -10,6 +10,7 @@ import configureStore              from './store';
 import RouterContainer             from './router/router_container';
 
 import LoadingScreenContainer      from './screens/loading_screen/loading_screen_container';
+import WelcomeScreenContainer      from './screens/welcome_screen/welcome_screen_container';
 import LoginScreenContainer        from './screens/login_screen/login_screen_container';
 import ConfirmCodeScreenContainer  from './screens/confirm_code_screen/confirm_code_screen_container';
 
@@ -88,6 +89,7 @@ class App extends React.Component {
         <RouterContainer>
           <Scene key='root' headerMode={'screen'} >
             <Scene key='LoadingScreen'         component={LoadingScreenContainer}      panHandlers={null} hideNavBar={true} initial={true}/>
+            <Scene key='WelcomeScreen'         component={WelcomeScreenContainer}      panHandlers={null} hideNavBar={true} />
             <Scene key='LoginScreen'           component={LoginScreenContainer}        panHandlers={null} hideNavBar={true} />
             <Scene key='ConfirmCodeScreen'      component={ConfirmCodeScreenContainer} panHandlers={null} hideNavBar={true}  />
           </Scene>
