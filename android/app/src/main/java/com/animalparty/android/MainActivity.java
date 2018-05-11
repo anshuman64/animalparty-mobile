@@ -1,4 +1,4 @@
-package com.animalparty;
+package com.animalparty.android;
 
 import com.facebook.react.ReactActivity;
 

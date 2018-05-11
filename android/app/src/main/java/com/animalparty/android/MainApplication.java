@@ -1,4 +1,4 @@
-package com.animalparty;
+package com.animalparty.android;
 
 import android.app.Application;
 
@@ -6,9 +6,7 @@ import com.facebook.react.ReactApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import com.sudoplz.reactnativeamplitudeanalytics.RNAmplitudeSDKPackage;
-import io.invertase.firebase.RNFirebasePackage;
-import com.sudoplz.reactnativeamplitudeanalytics.RNAmplitudeSDKPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -31,10 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new VectorIconsPackage(),
             new RNFirebasePackage(),
-            new RNAmplitudeSDKPackage(),
-            new RNFirebasePackage(),
             new RNAmplitudeSDKPackage(MainApplication.this),
-            new VectorIconsPackage()
+            new RNFirebaseAuthPackage()
       );
     }
 

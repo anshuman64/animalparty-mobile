@@ -1,5 +1,8 @@
 PODS:
   - Amplitude-iOS (3.14.1)
+  - Firebase/Auth (4.13.0):
+    - Firebase/Core
+    - FirebaseAuth (= 4.6.1)
   - Firebase/Core (4.13.0):
     - FirebaseAnalytics (= 4.2.0)
     - FirebaseCore (= 4.0.20)
@@ -8,13 +11,25 @@ PODS:
     - FirebaseInstanceID (~> 2.0)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
+  - FirebaseAuth (4.6.1):
+    - FirebaseAnalytics (~> 4.2)
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (4.0.20):
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
   - FirebaseInstanceID (2.0.10):
     - FirebaseCore (~> 4.0)
+  - GoogleToolboxForMac/DebugUtils (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
   - GoogleToolboxForMac/Defines (2.1.3)
   - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
     - GoogleToolboxForMac/Defines (= 2.1.3)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.1.3)":
+    - GoogleToolboxForMac/DebugUtils (= 2.1.3)
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.1.3)"
+  - GTMSessionFetcher/Core (1.1.15)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -24,6 +39,7 @@ PODS:
     - Amplitude-iOS (~> 3.14.1)
 
 DEPENDENCIES:
+  - Firebase/Auth
   - Firebase/Core
   - react-native-amplitude-analytics (from `../node_modules/react-native-amplitude-analytics`)
 
@@ -32,9 +48,11 @@ SPEC REPOS:
     - Amplitude-iOS
     - Firebase
     - FirebaseAnalytics
+    - FirebaseAuth
     - FirebaseCore
     - FirebaseInstanceID
     - GoogleToolboxForMac
+    - GTMSessionFetcher
     - nanopb
 
 EXTERNAL SOURCES:
@@ -45,12 +63,14 @@ SPEC CHECKSUMS:
   Amplitude-iOS: 4a3c8807b2ea5369dc11e87e23825bff01e5a922
   Firebase: 5ec5e863d269d82d66b4bf56856726f8fb8f0fb3
   FirebaseAnalytics: 7ef69e76a5142f643aeb47c780e1cdce4e23632e
+  FirebaseAuth: bf22cacf22c60ab454bf2636f556d8892b10b53f
   FirebaseCore: 90cb1c53d69b556f112a1bf72b5fcfaad7650790
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   react-native-amplitude-analytics: 4f561e432316bb86f1a11d46ee234a3ef2e9eb38
 
-PODFILE CHECKSUM: 52eff6cc5de7302505e1e46d62aa5abe4a91e621
+PODFILE CHECKSUM: 4152714c2eb46fd10009363c084ac16fa3210792
 
 COCOAPODS: 1.5.0
