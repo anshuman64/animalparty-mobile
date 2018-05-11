@@ -30,6 +30,8 @@ export const navigateTo = (screen, props) => (dispatch) => {
       Actions.WelcomeScreen(props)
     } else if (screen === 'ConfirmCodeScreen') {
       Actions.ConfirmCodeScreen(props)
+    } else if (screen === 'ChoosePartyScreen') {
+      Actions.ChoosePartyScreen(props)
     } else {
       return;
     }

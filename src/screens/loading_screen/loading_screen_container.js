@@ -8,8 +8,9 @@ import { navigateTo }                             from '../../actions/navigation
 
 //--------------------------------------------------------------------//
 
-const mapStateToProps = ({ client, navigation }, ownProps) => ({
+const mapStateToProps = ({ client, usersCache, navigation }, ownProps) => ({
   client:        client,
+  usersCache:    usersCache,
   currentScreen: navigation.currentScreen
 });
 
@@ -19,6 +20,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(LoadingScreen);

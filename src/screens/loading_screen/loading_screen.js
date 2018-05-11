@@ -52,21 +52,20 @@ class LoadingScreen extends React.PureComponent {
         // console.log('Firebase cookie found'); // Debug Test
         this.props.loginClient(firebaseUserObj)
           .then(() => {
-            // client = this.props.usersCache[this.props.client.id];
-            // // console.log('Logged in'); // Debug Test
-            // if (client.is_banned) {
-            //   RN.Alert.alert('', 'This account has been disabled. Email support@insiya.io for more info.', [{text: 'OK', style: 'cancel'}]);
-            // } else {
-            //   this._loadContacts();
-            //   this._loadData()
-            //     .then(() => {
-            //       // console.log('Data loaded'); // Debug Test
-            //       this._onLogin();
-            //     })
-            //     .catch((error) => {
-            //       defaultErrorAlert(error);
-            //     });
-            // }
+            client = this.props.usersCache[this.props.client.id];
+            // console.log('Logged in'); // Debug Test
+            if (client.is_banned) {
+              RN.Alert.alert('', 'This account has been disabled. Email support@insiya.io for more info.', [{text: 'OK', style: 'cancel'}]);
+            } else {
+              // this._loadData()
+              //   .then(() => {
+                  // console.log('Data loaded'); // Debug Test
+                  this._onLogin();
+                // })
+                // .catch((error) => {
+                //   defaultErrorAlert(error);
+                // });
+            }
           })
           .catch((error) => {
             defaultErrorAlert(error);
@@ -124,15 +123,12 @@ class LoadingScreen extends React.PureComponent {
 
         this.navigateToNotification = null;
         this.navigateToMessages     = null;
-      } else if (client && client.full_name && client.username) {
+      } else if (client && client.political_party) {
         // If opening the app normally, go to HomeScreen.
         this.props.navigateTo('HomeScreen'); // Debug Test: should be HomeScreen
-      } else if (client && client.full_name && !client.username) {
-        // If opening the app normally and haven't created username, go to create username
-        this.props.navigateTo('UsernameScreenLogin', { screen: 'UsernameScreenLogin' });
-      } else if (client && !client.full_name) {
-        // If opening the app normally and haven't created username, go to create username
-        this.props.navigateTo('DisplayNameScreenLogin', { screen: 'DisplayNameScreenLogin' });
+      } else if (client && !client.political_party) {
+        // If opening the app normally and haven't selected party, go to ChoosePartyScreen
+        this.props.navigateTo('ChoosePartyScreen');
       } else {
         // If haven't logged in and somehow on LoadingScreen, go to WelcomeScreen
         this.props.navigateTo('WelcomeScreen');
