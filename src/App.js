@@ -5,7 +5,7 @@ import { Provider }             from 'react-redux';
 import { Scene, Tabs, Actions } from 'react-native-router-flux';
 
 // Local Imports
-// import { amplitude }               from './utilities/analytics_utility';
+import { amplitude }               from './utilities/analytics_utility';
 import configureStore              from './store';
 import RouterContainer             from './router/router_container';
 
@@ -19,7 +19,7 @@ class App extends React.Component {
   constructor() {
     super();
 
-    // amplitude.logEvent('App - Open App');
+    amplitude.logEvent('App - Open App');
     currentAppState = 'active';
   }
 
@@ -46,9 +46,9 @@ class App extends React.Component {
   // When AppState changes, log event
   _handleAppStateChange = (nextAppState) => {
     if (currentAppState.match(/inactive|background/) && nextAppState === 'active') {
-      // amplitude.logEvent('App - Focus App');
+      amplitude.logEvent('App - Focus App');
     } else if (nextAppState.match(/inactive|background/) && currentAppState === 'active') {
-      // amplitude.logEvent('App - Minimize App');
+      amplitude.logEvent('App - Minimize App');
     }
 
     currentAppState = nextAppState;
