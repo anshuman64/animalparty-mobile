@@ -267,7 +267,6 @@ class LoginScreen extends React.PureComponent {
             {this._renderNextButton()}
             {this._renderSMSNoticeText()}
             <RN.View style={{flex: 1.5}} />
-            // {this._renderListModal()}
             {this._renderLoadingModal()}
           </RN.View>
         </RN.TouchableWithoutFeedback>
