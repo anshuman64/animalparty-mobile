@@ -2,9 +2,9 @@
 import AWS                                    from 'aws-sdk/dist/aws-sdk-react-native';
 import RNFetchBlob                            from 'react-native-fetch-blob';
 import _                                      from 'lodash';
-// import { Buffer }                             from 'buffer';
-// import uuid                                   from 'react-native-uuid';
-// import mime                                   from 'mime-types';
+import { Buffer }                             from 'buffer';
+import uuid                                   from 'react-native-uuid';
+import mime                                   from 'mime-types';
 import { PhoneNumberUtil, PhoneNumberFormat } from 'google-libphonenumber';
 
 // Local Imports
