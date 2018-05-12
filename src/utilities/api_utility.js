@@ -68,11 +68,11 @@ let callApi = (url, requestConfig) => {
 // Chooses right API url based on environment setting
 export const getBaseUrl = () => {
   if (SERVER_ENV_SETTING === ENV_TYPES.PRODUCTION) {
-    return 'https://api.insiya.io/api';
+    return 'https://animalparty.app/api';
   } else if (SERVER_ENV_SETTING === ENV_TYPES.TEST) {
-    return 'http://insiya-production-server-2.us-east-1.elasticbeanstalk.com/api';
+    return 'http://animalparty-production-server-2.us-east-1.elasticbeanstalk.com/api';
   } else {
-    return 'http://192.168.0.14:3000/api';
+    return 'http://192.168.2.27:3000/api';
   }
 };
 

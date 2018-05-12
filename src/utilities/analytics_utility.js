@@ -16,6 +16,8 @@ let setupAmplitude = () => {
 
   if (AMPLITUDE_ENV_SETTING === ENV_TYPES.PRODUCTION) {
     apiKey = '3f58f3311c393ecb46e570c5b7b5aab8'; // key for animalparty-production
+  } else if (AMPLITUDE_ENV_SETTING === ENV_TYPES.TEST) {
+    apiKey = '2e3c391d3c48dda226ff70e2776804fe'; // key for animalparty-test
   } else {
     apiKey = '9f149135edcff158e44da661257c4610'; // key for animalparty-dev
   }

@@ -26,6 +26,8 @@ let getPusherApiKey = () => {
 
   if (PUSHER_ENV_SETTING === ENV_TYPES.PRODUCTION) {
     apiKey = '81adc7d362a42675a58c'; // key for animalparty-production
+  } else if (PUSHER_ENV_SETTING === ENV_TYPES.TEST) {
+    apiKey = '40d65a2bc02d7c20f2ff'; // key for animalparty-production
   } else {
     apiKey = 'a6d1856c0f4314516333'; // key for animalparty-dev
   }
