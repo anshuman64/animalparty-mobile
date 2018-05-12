@@ -2,7 +2,7 @@
 import React       from 'react';
 import RN          from 'react-native';
 import _           from 'lodash';
-// import ImagePicker from 'react-native-image-crop-picker';
+import ImagePicker from 'react-native-image-crop-picker';
 import Icon        from 'react-native-vector-icons/SimpleLineIcons';
 
 // Local Imports
@@ -20,7 +20,7 @@ import { defaultErrorAlert }              from '../../utilities/error_utility';
 
 /*
 Required Screen Props:
-  convoId (id): id of group or user whose conversation it is with
+  userId (id): id of group or user whose conversation it is with
 */
 class MessagesScreen extends React.PureComponent {
 
@@ -55,7 +55,7 @@ class MessagesScreen extends React.PureComponent {
   componentDidMount() {
     RN.AppState.addEventListener('change', this._handleAppStateChange);
 
-    let messages = this.props.messages[this.props.convoId];
+    let messages = this.props.messages[this.props.userId];
 
     if (!messages) {
       this._loadOldMessages();
@@ -76,7 +76,7 @@ class MessagesScreen extends React.PureComponent {
   //--------------------------------------------------------------------//
 
   _loadOldMessages = (queryParams) => {
-    this.props.getMessages(this.props.client.authToken, this.props.client.firebaseUserObj, false, this.props.convoId, queryParams)
+    this.props.getMessages(this.props.client.authToken, this.props.client.firebaseUserObj, false, this.props.userId, queryParams)
       .catch((error) => {
         defaultErrorAlert(error)
       })
@@ -86,7 +86,7 @@ class MessagesScreen extends React.PureComponent {
   }
 
   _loadNewMessages = () => {
-    this.props.getMessages(this.props.client.authToken, this.props.client.firebaseUserObj, true, this.props.convoId, { start_at: this.props.messages[this.props.convoId].data[0].id, is_new: true })
+    this.props.getMessages(this.props.client.authToken, this.props.client.firebaseUserObj, true, this.props.userId, { start_at: this.props.messages[this.props.userId].data[0].id, is_new: true })
       .catch((error) => {
         defaultErrorAlert(error);
       })
@@ -98,7 +98,7 @@ class MessagesScreen extends React.PureComponent {
 
   // When refocusing app, refresh messages
   _handleAppStateChange = (nextAppState) => {
-    let messages = this.props.messages[this.props.convoId];
+    let messages = this.props.messages[this.props.userId];
 
     if (this.currentAppState.match(/inactive|background/) && nextAppState === 'active' && messages && messages.data.length > 0) {
       this._loadNewMessages();
@@ -169,7 +169,7 @@ class MessagesScreen extends React.PureComponent {
     let messageBody = isStringEmpty(this.state.messageText) ? null : this.state.messageText; // sets post body as null if there is no text
 
     this.setState({ isLoading: true }, () => {
-      this.props.createMessage(this.props.client.authToken, this.props.client.firebaseUserObj, this.props.client.id, this.props.convoId, messageBody, this.state.medium || this.state.takePhotoMedium)
+      this.props.createMessage(this.props.client.authToken, this.props.client.firebaseUserObj, this.props.client.id, this.props.userId, messageBody, this.state.medium || this.state.takePhotoMedium)
         .catch((error) => {
           defaultErrorAlert(error);
         })
@@ -184,7 +184,7 @@ class MessagesScreen extends React.PureComponent {
   }
 
   _onEndReached = () => {
-    let messages = this.props.messages[this.props.convoId];
+    let messages = this.props.messages[this.props.userId];
 
     if (this.isLoading
         || this.onEndReachedCalledDuringMomentum
@@ -208,11 +208,11 @@ class MessagesScreen extends React.PureComponent {
   //--------------------------------------------------------------------//
 
   // _setupPusher = () => {
-  //   if (this.props.convoId < 0) {
-  //     this.convoChannelName = 'private-group-' + (-1 * this.props.convoId);
-  //   } else if (this.props.convoId > 0) {
-  //     smallerId = this.props.client.id < this.props.convoId ? this.props.client.id : this.props.convoId;
-  //     biggerId = this.props.client.id > this.props.convoId ? this.props.client.id : this.props.convoId;
+  //   if (this.props.userId < 0) {
+  //     this.convoChannelName = 'private-group-' + (-1 * this.props.userId);
+  //   } else if (this.props.userId > 0) {
+  //     smallerId = this.props.client.id < this.props.userId ? this.props.client.id : this.props.userId;
+  //     biggerId = this.props.client.id > this.props.userId ? this.props.client.id : this.props.userId;
   //     this.convoChannelName = 'private-convo-' + smallerId + '-' + biggerId;
   //   }
   //
@@ -243,14 +243,14 @@ class MessagesScreen extends React.PureComponent {
 
     if (!this.state.isClientTyping) {
       this.setState({ isClientTyping: true });
-      convoChannel.trigger('client-start-typing', { userId: this.props.client.id });
+      // convoChannel.trigger('client-start-typing', { userId: this.props.client.id });
     }
   }
 
   // Updates Resend SMS timer every second
   _tick() {
     this.setState({ isClientTyping: false });
-    convoChannel.trigger('client-stop-typing', { userId: this.props.client.id });
+    // convoChannel.trigger('client-stop-typing', { userId: this.props.client.id });
     clearInterval(this.timer);
   }
 
@@ -293,12 +293,12 @@ class MessagesScreen extends React.PureComponent {
 
   _renderItem = ({item, index}) => {
     return (
-      <MessageListItemContainer convoId={this.props.convoId} index={index} message={item} />
+      <MessageListItemContainer userId={this.props.userId} index={index} message={item} />
     )
   }
 
   _renderFooter = () => {
-    let messages = this.props.messages[this.props.convoId];
+    let messages = this.props.messages[this.props.userId];
 
     if (messages && messages.isEnd) {
       return (
@@ -339,7 +339,7 @@ class MessagesScreen extends React.PureComponent {
   }
 
   _renderMessageList() {
-    let messages = this.props.messages[this.props.convoId];
+    let messages = this.props.messages[this.props.userId];
 
     return (
       <RN.FlatList
@@ -363,7 +363,7 @@ class MessagesScreen extends React.PureComponent {
 
   render() {
     let displayName = 'hello'; //TODO
-    let backTitle = this.props.convoId > 0 ? displayName + "'s Messages" : displayName;
+    let backTitle = this.props.userId > 0 ? displayName + "'s Messages" : displayName;
 
     return (
       <RN.KeyboardAvoidingView behavior={RN.Platform.OS === 'ios' ? 'padding' : null}>
@@ -371,8 +371,8 @@ class MessagesScreen extends React.PureComponent {
           <HeaderContainer
             backIcon={true}
             backTitle={backTitle}
-            settingsIcon={this.props.convoId < 0}
-            convoId={this.props.convoId}
+            settingsIcon={this.props.userId < 0}
+            userId={this.props.userId}
             />
           {this._renderMessageList()}
           {this._renderTextInputRow()}

@@ -79,13 +79,13 @@ const ConnectionsReducer = (state = DEFAULT_STATE, action) => {
     // //--------------------------------------------------------------------//
     //
     // case MESSAGE_ACTION_TYPES.RECEIVE_MESSAGE:
-    //   convoId = action.data.convoId;
+    //   userId = action.data.userId;
     //
     //   _.remove(newState.connections, (ids) => {
-    //     return ids === convoId;
+    //     return ids === userId;
     //   });
     //
-    //   newState.connections.unshift(convoId);
+    //   newState.connections.unshift(userId);
     //
     //   return newState;
     default:

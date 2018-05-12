@@ -37,33 +37,33 @@ const MessagesReducer = (state = DEFAULT_STATE, action) => {
     //--------------------------------------------------------------------//
 
     case MESSAGE_ACTION_TYPES.RECEIVE_MESSAGES:
-      convoId = action.data.convoId;
+      userId = action.data.userId;
 
-      newState[convoId]       = newState[convoId]       || {};
-      newState[convoId].data  = newState[convoId].data  || [];
-      newState[convoId].isEnd = newState[convoId].isEnd || false;
+      newState[userId]       = newState[userId]       || {};
+      newState[userId].data  = newState[userId].data  || [];
+      newState[userId].isEnd = newState[userId].isEnd || false;
 
       if (!action.data.isNew && action.data.messages.length < 20) {
-        newState[convoId].isEnd = true;
+        newState[userId].isEnd = true;
       }
 
       if (action.data.isNew) {
-        newState[convoId].data = action.data.messages.concat(newState[convoId].data);
-        newState[convoId].data = newState[convoId].data.filter((thing, index, self) => index === self.findIndex((t) => t.id === thing.id)); // prevents duplicates
+        newState[userId].data = action.data.messages.concat(newState[userId].data);
+        newState[userId].data = newState[userId].data.filter((thing, index, self) => index === self.findIndex((t) => t.id === thing.id)); // prevents duplicates
       } else {
-        newState[convoId].data = newState[convoId].data.concat(action.data.messages);
+        newState[userId].data = newState[userId].data.concat(action.data.messages);
       }
 
       return newState;
     case MESSAGE_ACTION_TYPES.RECEIVE_MESSAGE:
-      convoId = action.data.convoId;
+      userId = action.data.userId;
 
-      newState[convoId]       = newState[convoId]       || {};
-      newState[convoId].data  = newState[convoId].data  || [];
-      newState[convoId].isEnd = newState[convoId].isEnd || false;
+      newState[userId]       = newState[userId]       || {};
+      newState[userId].data  = newState[userId].data  || [];
+      newState[userId].isEnd = newState[userId].isEnd || false;
 
-      newState[convoId].data.unshift(action.data.message);
-      newState[convoId].data = newState[convoId].data.filter((thing, index, self) => index === self.findIndex((t) => t.id === thing.id));
+      newState[userId].data.unshift(action.data.message);
+      newState[userId].data = newState[userId].data.filter((thing, index, self) => index === self.findIndex((t) => t.id === thing.id));
 
       return newState;
 

@@ -17,7 +17,7 @@ import { setStateCallback }     from '../../utilities/function_utility';
 Required Passed Props:
   index (int): index of message in conversation to get next or last message
   message (object): message object to render
-  convoId (int): userId or groupId of conversation
+  userId (int): userId or groupId of conversation
 Optional Passed Props:
   -
 */
@@ -48,10 +48,10 @@ class MessageListItem extends React.PureComponent {
     // Show date if:
     // 1) the message is the first message in the conversation
     // 2) the last message was sent more than 10 mins ago
-    if (this.props.index === this.props.messages[this.props.convoId].data.length - 1) {
+    if (this.props.index === this.props.messages[this.props.userId].data.length - 1) {
       isHeader = true;
     } else {
-      let lastMessage = this.props.messages[this.props.convoId].data[this.props.index + 1];
+      let lastMessage = this.props.messages[this.props.userId].data[this.props.index + 1];
 
       if (lastMessage) {
         let lastMessageCreatedAt = new Date(lastMessage.created_at);
@@ -88,7 +88,7 @@ class MessageListItem extends React.PureComponent {
       isAvatar = true;
     } else {
       let thisMessage = this.props.message;
-      let nextMessage = this.props.messages[this.props.convoId].data[this.props.index - 1];
+      let nextMessage = this.props.messages[this.props.userId].data[this.props.index - 1];
       let thisMessageCreatedAt = new Date(thisMessage.created_at);
       let nextMessageCreatedAt = new Date(nextMessage.created_at);
 
@@ -163,7 +163,6 @@ class MessageListItem extends React.PureComponent {
           onPress={setStateCallback(this, { isDateShown: !this.state.isDateShown})}
           >
           <RN.View style={[messageStyle, !isBackgroundColor && {backgroundColor: 'transparent'}]}>
-            {this._renderPost(isAuthoredByClient)}
             {this._renderBody(isAuthoredByClient)}
             {this._renderMedium(isAuthoredByClient)}
           </RN.View>

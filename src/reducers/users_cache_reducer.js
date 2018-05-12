@@ -164,19 +164,19 @@ const UsersCacheReducer = (state = DEFAULT_STATE, action) => {
   //
   //     return newState;
   //   case MESSAGE_ACTION_TYPES.RECEIVE_MESSAGE:
-  //     convoId = action.data.convoId;
+  //     userId = action.data.userId;
   //
-  //     if (convoId > 0) {
-  //       newState[convoId].peek_message = action.data.message;
+  //     if (userId > 0) {
+  //       newState[userId].peek_message = action.data.message;
   //     }
   //
   //     return newState;
   //   case MESSAGE_ACTION_TYPES.RECEIVE_MESSAGES:
-  //     convoId = action.data.convoId;
+  //     userId = action.data.userId;
   //     messages = action.data.messages;
   //
-  //     if (action.data.isNew && messages.length != 0 && convoId > 0) {
-  //       newState[convoId].peek_message = messages[0];
+  //     if (action.data.isNew && messages.length != 0 && userId > 0) {
+  //       newState[userId].peek_message = messages[0];
   //     }
   //
   //     return newState;

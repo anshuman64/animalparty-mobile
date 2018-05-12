@@ -106,7 +106,7 @@ class LoadingScreen extends React.PureComponent {
         // If opening app via notification, go to the screen you intended to go to
         if (this.navigateToNotification === 'MessagesScreen') {
           this.props.navigateTo('FriendScreen'); // NOTE: leave this here so that MessageScreen back doesn't go to login screen
-          this.props.navigateTo('MessagesScreen', { convoId: this.navigateToMessages });
+          this.props.navigateTo('MessagesScreen', { userId: this.navigateToMessages });
         } else {
           this.props.navigateTo(this.navigateToNotification);
         }

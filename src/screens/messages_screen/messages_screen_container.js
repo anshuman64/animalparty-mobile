@@ -15,8 +15,8 @@ const mapStateToProps = ({ client, usersCache, messages }, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  getMessages:   (authToken, firebaseUserObj, isNew, convoId, queryParams)                                                => dispatch(getMessages(authToken, firebaseUserObj, isNew, convoId, queryParams)),
-  createMessage: (authToken, firebaseUserObj, clientId, convoId, messageBody, messageMedium, postId) => dispatch(createMessage(authToken, firebaseUserObj, clientId, convoId, messageBody, messageMedium, postId)),
+  getMessages:   (authToken, firebaseUserObj, isNew, userId, queryParams)                                                => dispatch(getMessages(authToken, firebaseUserObj, isNew, userId, queryParams)),
+  createMessage: (authToken, firebaseUserObj, clientId, userId, messageBody, messageMedium) => dispatch(createMessage(authToken, firebaseUserObj, clientId, userId, messageBody, messageMedium)),
   navigateTo:    (screen, props)                                                                                          => dispatch(navigateTo(screen, props)),
 });
 

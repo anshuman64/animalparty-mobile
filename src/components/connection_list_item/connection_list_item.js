@@ -14,7 +14,7 @@ import { UTILITY_STYLES }          from '../../utilities/style_utility';
 
 /*
 Required Passed Props:
-  convoId (int): id of the user or group of the conversation
+  userId (int): id of the user or group of the conversation
 Optional Passed Props:
   -
 */
@@ -25,7 +25,7 @@ class ConnectionListItem extends React.PureComponent {
   //--------------------------------------------------------------------//
 
   // _renderDate() {
-  //   let convo = EntityUtility.getEntity(this.props.convoId, this.props.usersCache, this.props.groupsCache);
+  //   let convo = EntityUtility.getEntity(this.props.userId, this.props.usersCache, this.props.groupsCache);
   //   let createdAtDate = convo && convo.peek_message ? convo.peek_message.created_at : convo.created_at;
   //   let dateText = createdAtDate ? renderConversationDate(createdAtDate) : '';
   //
@@ -37,12 +37,12 @@ class ConnectionListItem extends React.PureComponent {
   // }
   //
   // _renderUsernameView() {
-  //   let convo = EntityUtility.getEntity(this.props.convoId, this.props.usersCache, this.props.groupsCache);
+  //   let convo = EntityUtility.getEntity(this.props.userId, this.props.usersCache, this.props.groupsCache);
   //   let message = convo ? convo.peek_message : null;
   //   let messagePreview = EntityUtility.getMessagePreview(message, this.props.client.id, this.props.usersCache, this.props.postsCache);
   //
   //   return (
-  //     <EntityInfoView entityId={this.props.convoId} messagePreview={messagePreview} disableUsername={true} marginLeft={7} subtractWidth={170} />
+  //     <EntityInfoView entityId={this.props.userId} messagePreview={messagePreview} disableUsername={true} marginLeft={7} subtractWidth={170} />
   //   )
   // }
 
