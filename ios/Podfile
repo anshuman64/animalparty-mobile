@@ -20,6 +20,7 @@ target 'animalparty' do
   # pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
   # pod 'react-native-contacts', :path => '../node_modules/react-native-contacts'
   # pod 'react-native-video', :path => '../node_modules/react-native-video'
+  # pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
 
   target 'animalpartyTests' do
     inherit! :search_paths
