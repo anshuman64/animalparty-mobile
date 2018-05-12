@@ -32,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new ReactVideoPackage(),
             new RNFetchBlobPackage(),
+            new BridgePackage(),
             new PickerPackage(),
             new VectorIconsPackage(),
             new RNFirebasePackage(),
