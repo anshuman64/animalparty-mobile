@@ -9,6 +9,7 @@
   "dependencies": {
     "google-libphonenumber": "^3.1.5",
     "lodash": "^4.17.10",
+    "pusher-js": "^4.2.2",
     "react": "16.3.1",
     "react-native": "0.55.4",
     "react-native-amplitude-analytics": "0.1.12",

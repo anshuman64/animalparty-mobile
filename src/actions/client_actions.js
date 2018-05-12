@@ -7,7 +7,7 @@ import Firebase  from 'react-native-firebase';
 import { amplitude }                                  from '../utilities/analytics_utility';
 import * as APIUtility                                from '../utilities/api_utility';
 // import { setS3Client, uploadFile }                    from '../utilities/file_utility';
-// import { setPusherClient }                            from '../utilities/push_utility';
+import { setPusherClient }                            from '../utilities/push_utility';
 import { setErrorDescription, refreshCredsAndResume } from '../utilities/error_utility';
 
 //--------------------------------------------------------------------//
@@ -118,7 +118,7 @@ export const loginClient = (firebaseUserObj) => (dispatch) => {
     amplitude.logEvent('Onboarding - Log In', { is_successful: true, is_new_user: isNew });
 
     // OneSignal.sendTag('user_id', String(client.id));
-    // dispatch(setPusherClient(authToken, client.id));
+    dispatch(setPusherClient(authToken, client.id));
     dispatch(receiveClient({ client: client }));
   }
 

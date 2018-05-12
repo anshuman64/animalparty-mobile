@@ -10,7 +10,7 @@ import ListFooter                         from '../../components/list_footer/lis
 import HeaderContainer                    from '../../components/header/header_container';
 import MessageListItemContainer           from '../../components/message_list_item/message_list_item_container';
 import { styles }                         from './messages_screen_styles';
-// import { pusher }                         from '../../utilities/push_utility';
+import { pusher }                         from '../../utilities/push_utility';
 import { isStringEmpty, setStateCallback} from '../../utilities/function_utility';
 // import { getEntityDisplayName }           from '../../utilities/entity_utility';
 import * as StyleUtility                  from '../../utilities/style_utility';
@@ -63,12 +63,12 @@ class MessagesScreen extends React.PureComponent {
       this._loadNewMessages();
     }
 
-    // this._setupPusher();
+    this._setupPusher();
   }
 
   componentWillUnmount() {
     RN.AppState.removeEventListener('change', this._handleAppStateChange);
-    // pusher.unsubscribe(this.convoChannelName);
+    pusher.unsubscribe(this.convoChannelName);
   }
 
   //--------------------------------------------------------------------//
@@ -207,31 +207,31 @@ class MessagesScreen extends React.PureComponent {
   // DotDotDotTyping Methods
   //--------------------------------------------------------------------//
 
-  // _setupPusher = () => {
-  //   if (this.props.userId < 0) {
-  //     this.convoChannelName = 'private-group-' + (-1 * this.props.userId);
-  //   } else if (this.props.userId > 0) {
-  //     smallerId = this.props.client.id < this.props.userId ? this.props.client.id : this.props.userId;
-  //     biggerId = this.props.client.id > this.props.userId ? this.props.client.id : this.props.userId;
-  //     this.convoChannelName = 'private-convo-' + smallerId + '-' + biggerId;
-  //   }
-  //
-  //   convoChannel = pusher.subscribe(this.convoChannelName);
-  //
-  //   let arr = this.state.usersTyping.slice();
-  //
-  //   convoChannel.bind('client-start-typing', (data) => {
-  //     this.setState({ usersTyping: arr.concat(data.userId) });
-  //   });
-  //
-  //   convoChannel.bind('client-stop-typing', (data) => {
-  //     _.remove(arr, (id) => {
-  //       return id === data.userId;
-  //     });
-  //
-  //     this.setState({ usersTyping: arr });
-  //   });
-  // }
+  _setupPusher = () => {
+    if (this.props.userId < 0) {
+      this.convoChannelName = 'private-group-' + (-1 * this.props.userId);
+    } else if (this.props.userId > 0) {
+      smallerId = this.props.client.id < this.props.userId ? this.props.client.id : this.props.userId;
+      biggerId = this.props.client.id > this.props.userId ? this.props.client.id : this.props.userId;
+      this.convoChannelName = 'private-convo-' + smallerId + '-' + biggerId;
+    }
+
+    convoChannel = pusher.subscribe(this.convoChannelName);
+
+    let arr = this.state.usersTyping.slice();
+
+    convoChannel.bind('client-start-typing', (data) => {
+      this.setState({ usersTyping: arr.concat(data.userId) });
+    });
+
+    convoChannel.bind('client-stop-typing', (data) => {
+      _.remove(arr, (id) => {
+        return id === data.userId;
+      });
+
+      this.setState({ usersTyping: arr });
+    });
+  }
 
   // Starts Resend SMS timer
   _resetTimer() {
@@ -243,14 +243,14 @@ class MessagesScreen extends React.PureComponent {
 
     if (!this.state.isClientTyping) {
       this.setState({ isClientTyping: true });
-      // convoChannel.trigger('client-start-typing', { userId: this.props.client.id });
+      convoChannel.trigger('client-start-typing', { userId: this.props.client.id });
     }
   }
 
   // Updates Resend SMS timer every second
   _tick() {
     this.setState({ isClientTyping: false });
-    // convoChannel.trigger('client-stop-typing', { userId: this.props.client.id });
+    convoChannel.trigger('client-stop-typing', { userId: this.props.client.id });
     clearInterval(this.timer);
   }
 

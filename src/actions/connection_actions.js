@@ -9,12 +9,10 @@ import { setErrorDescription, refreshCredsAndResume } from '../utilities/error_u
 // Constants
 //--------------------------------------------------------------------//
 
-
 export const CONNECTION_ACTION_TYPES = {
   RECEIVE_CONNECTIONS:        'RECEIVE_CONNECTIONS',
   RECEIVE_CONNECTION:         'RECEIVE_CONNECTION',
   REMOVE_CONNECTION:          'REMOVE_CONNECTION',
-  PUSHER_RECEIVE_CONNECTION:  'PUSHER_RECEIVE_CONNECTION',
 };
 
 //--------------------------------------------------------------------//
@@ -31,10 +29,6 @@ export const receiveConnection = (data) => {
 
 export const removeConnection = (data) => {
   return { type: CONNECTION_ACTION_TYPES.REMOVE_CONNECTION, data: data };
-};
-
-export const pusherRecieveConnection = (data) => {
-  return { type: CONNECTION_ACTION_TYPES.PUSHER_RECEIVE_CONNECTION, data: data };
 };
 
 //--------------------------------------------------------------------//
