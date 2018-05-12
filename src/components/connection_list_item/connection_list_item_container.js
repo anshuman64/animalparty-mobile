@@ -2,22 +2,21 @@
 import { connect } from 'react-redux';
 
 // Local Imports
-import HomeScreen  from './home_screen';
+import ConnectionListItem              from './connection_list_item';
 import { navigateTo } from '../../actions/navigation_actions';
 
 //--------------------------------------------------------------------//
 
-const mapStateToProps = ({ client, connections, usersCache }, ownProps) => ({
+const mapStateToProps = ({ client, usersCache }, ownProps) => ({
   client:      client,
-  connections: connections.connections,
   usersCache:  usersCache,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  navigateTo: (screen, props) => dispatch(navigateTo(screen, props)),
+  navigateTo:         (screen, props) => dispatch(navigateTo(screen, props)),
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(HomeScreen);
+)(ConnectionListItem);

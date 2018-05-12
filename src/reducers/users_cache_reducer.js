@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 // Local Imports
 import { CLIENT_ACTION_TYPES }                   from '../actions/client_actions';
+import { CONNECTION_ACTION_TYPES } from '../actions/connection_actions';
 // import { FRIEND_TYPES, FRIENDSHIP_ACTION_TYPES } from '../actions/friendship_actions';
 // import { MESSAGE_ACTION_TYPES }                  from '../actions/message_actions';
 // import { BLOCK_ACTION_TYPES }                    from '../actions/block_actions';
@@ -42,6 +43,15 @@ const UsersCacheReducer = (state = DEFAULT_STATE, action) => {
 
     case CLIENT_ACTION_TYPES.RECEIVE_CLIENT:
       newState[action.data.client.id] = action.data.client;
+
+      return newState;
+
+    case CONNECTION_ACTION_TYPES.RECEIVE_CONNECTIONS:
+      connections = action.data.connections;
+
+      _.forEach(connections, (connection) => {
+        newState[connection.id] = connection;
+      });
 
       return newState;
 

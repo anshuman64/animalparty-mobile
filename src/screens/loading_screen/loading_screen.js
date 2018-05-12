@@ -57,14 +57,14 @@ class LoadingScreen extends React.PureComponent {
             if (client.is_banned) {
               RN.Alert.alert('', 'This account has been disabled. Email support@insiya.io for more info.', [{text: 'OK', style: 'cancel'}]);
             } else {
-              // this._loadData()
-              //   .then(() => {
+              this._loadData()
+                .then(() => {
                   // console.log('Data loaded'); // Debug Test
                   this._onLogin();
-                // })
-                // .catch((error) => {
-                //   defaultErrorAlert(error);
-                // });
+                })
+                .catch((error) => {
+                  defaultErrorAlert(error);
+                });
             }
           })
           .catch((error) => {
@@ -88,23 +88,13 @@ class LoadingScreen extends React.PureComponent {
 
   // TODO: add try/catch error handling
   async _loadData() {
-    // await this._refreshData();
+    await this._refreshData();
     // await this.props.getCircles(this.props.client.authToken, this.props.client.firebaseUserObj);
     // await this.props.getBlockedUsers(this.props.client.authToken, this.props.client.firebaseUserObj);
   }
 
   async _refreshData() {
-    // await this.props.getConversations(this.props.client.authToken, this.props.client.firebaseUserObj);
-    //
-    // for (let postType in POST_TYPES) {
-    //   await this.props.getPosts(this.props.client.authToken, this.props.client.firebaseUserObj, true, this.props.client.id, POST_TYPES[postType], true);
-    // }
-    //
-    // for (let friendType in FRIEND_TYPES) {
-    //   if (FRIEND_TYPES[friendType] != FRIEND_TYPES.CONTACTS) {
-    //     await this.props.getFriendships(this.props.client.authToken, this.props.client.firebaseUserObj, FRIEND_TYPES[friendType]);
-    //   }
-    // }
+    await this.props.getConnections(this.props.client.authToken, this.props.client.firebaseUserObj);
   }
 
   _navigateFromLoading = () => {

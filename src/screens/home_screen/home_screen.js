@@ -3,6 +3,8 @@ import React from 'react';
 import RN    from 'react-native';
 
 // Local Imports
+import ConnectionListItemContainer       from '../../components/connection_list_item/connection_list_item_container';
+import SectionListHeader               from '../../components/section_list_header/section_list_header';
 import ListHeader               from '../../components/list_header/list_header';
 import { UTILITY_STYLES }       from '../../utilities/style_utility';
 import { isStringEmpty }        from '../../utilities/function_utility';
@@ -60,60 +62,45 @@ class HomeScreen extends React.PureComponent {
   // Render Methods
   //--------------------------------------------------------------------//
 
-  // _renderItem = ({item}) => {
-  //   return (
-  //     <PendingListItemContainer userId={item} />
-  //   )
-  // }
-  //
-  // _renderContactItem = ({item}) => {
-  //   return (
-  //     <PendingListItemContainer phoneNumber={item} />
-  //   )
-  // }
-  //
-  // _renderSectionHeader = ({section}) => {
-  //   return (
-  //     <SectionListHeader title={section.title} contactSearchText={this.state.contactSearchText} setParentState={this.setParentState} />
-  //   )
-  // }
-  //
-  // _renderHeader = () => {
-  //   return (
-  //     <RN.View>
-  //       <ListHeader text={'Add Friend by Username'} iconName={'user-follow'} callback={this._onPressAddFriend} />
-  //       <ListHeader text={'Share Username'} iconName={'share'} callback={this._onPressShare} />
-  //     </RN.View>
-  //   )
-  // }
-  //
-  // // NOTE/WARNING: leave keyExtractor exactly as is, or else fadeOut messes up other items around it!
-  // _renderList() {
-  //   let contacts = this.props.contacts.phoneNumbersWithAccounts.concat(this.props.contacts.phoneNumbersWithoutAccounts);
-  //
-  //   return (
-  //     <RN.SectionList
-  //       sections={[
-  //         {data: this.props.friendships.received, renderItem: this._renderItem.bind(this), title: 'Received Requests'},
-  //         {data: this.props.friendships.sent, renderItem: this._renderItem.bind(this), title: 'Sent Requests'},
-  //         {data: this.props.friendships.contacts, renderItem: this._renderItem.bind(this), title: 'Contacts on Postcard'},
-  //         {data: contacts.filter((x) => isContactSearched(x, this.state.contactSearchText, this.props.contactsCache)).slice(0, 250), renderItem: this._renderContactItem.bind(this), title: 'Other Contacts'},
-  //         {data: this.props.blocks.blockedUsers, renderItem: this._renderItem.bind(this), title: 'Blocked Users'},
-  //       ]}
-  //       keyExtractor={(item) => item}
-  //       renderSectionHeader={this._renderSectionHeader.bind(this)}
-  //       ListHeaderComponent={this._renderHeader()}
-  //       initialNumToRender={20}
-  //       windowSize={5}
-  //       showsVerticalScrollIndicator={true}
-  //       stickySectionHeadersEnabled={false}
-  //     />
-  //   )
-  // }
+  _renderItem = ({item}) => {
+    return (
+      <ConnectionListItemContainer userId={item} />
+    )
+  }
+
+  _renderSectionHeader = ({section}) => {
+    return (
+      <SectionListHeader title={section.title} />
+    )
+  }
+
+  _renderHeader = () => {
+    return (
+      <RN.View>
+        <ListHeader text={'Share App With Friends'} iconName={'share'} callback={this._onPressShare} />
+      </RN.View>
+    )
+  }
+
+  _renderList() {
+    return (
+      <RN.SectionList
+        sections={[{data: this.props.connections, renderItem: this._renderItem.bind(this), title: 'Conversations'}]}
+        keyExtractor={(item, index) => String(index)}
+        renderSectionHeader={this._renderSectionHeader.bind(this)}
+        ListHeaderComponent={this._renderHeader()}
+        initialNumToRender={20}
+        windowSize={20}
+        showsVerticalScrollIndicator={true}
+        stickySectionHeadersEnabled={false}
+      />
+    )
+  }
 
   render() {
     return (
       <RN.View style={UTILITY_STYLES.containerStart}>
+        {this._renderList()}
       </RN.View>
     )
   }
