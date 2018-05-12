@@ -362,7 +362,7 @@ class MessagesScreen extends React.PureComponent {
   }
 
   render() {
-    let displayName = getEntityDisplayName(this.props.convoId, this.props.usersCache, this.props.groupsCache, this.props.contactsCache);
+    let displayName = 'hello'; //TODO
     let backTitle = this.props.convoId > 0 ? displayName + "'s Messages" : displayName;
 
     return (

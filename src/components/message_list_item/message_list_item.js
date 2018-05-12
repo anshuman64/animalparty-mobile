@@ -5,14 +5,11 @@ import * as Animatable from 'react-native-animatable';
 import Hyperlink       from 'react-native-hyperlink';
 
 // Local Imports
-import PostListItem             from '../post_list_item/post_list_item_container';
 import MediumContainer          from '../medium/medium_container';
-import AvatarContainer          from '../avatar/avatar_container';
 import { styles }               from './message_list_item_styles';
 import * as StyleUtility        from '../../utilities/style_utility';
 import { renderMessageDate }    from '../../utilities/date_time_utility';
 import { setStateCallback }     from '../../utilities/function_utility';
-// import { getEntityDisplayName } from '../../utilities/entity_utility';
 
 //--------------------------------------------------------------------//
 
@@ -78,43 +75,6 @@ class MessageListItem extends React.PureComponent {
     }
   }
 
-  _renderUsername() {
-    let isUsername = false;
-
-    // Show username on top of other user's message if:
-    // 1) the message is the newest message
-    // 2) the last message is by someone else
-    // 3) the last message was sent more than 10 mins later
-    // 4) this is a group chat
-    if (this.props.message.author_id === this.props.client.id) {
-      isUsername = false;
-    } else if (this.props.convoId < 0) {
-      if (this.props.index === this.props.messages[this.props.convoId].data.length - 1) {
-        isUsername = true;
-      } else {
-        let thisMessage = this.props.message;
-        let lastMessage = this.props.messages[this.props.convoId].data[this.props.index + 1];
-        let thisMessageCreatedAt = new Date(thisMessage.created_at);
-        let lastMessageCreatedAt = new Date(lastMessage.created_at);
-
-        if (thisMessage.author_id != lastMessage.author_id
-            || thisMessageCreatedAt - lastMessageCreatedAt > 600000) {
-          isUsername = true;
-        }
-      }
-    }
-
-    if (isUsername) {
-      return (
-        <RN.Text allowFontScaling={false} style={styles.date}>
-          {getEntityDisplayName(this.props.message.author_id, this.props.usersCache, this.props.groupsCache, this.props.contactsCache)}
-        </RN.Text>
-      )
-    } else {
-      return null;
-    }
-  }
-
   _renderAvatar() {
     let isAvatar = false;
 
@@ -138,10 +98,8 @@ class MessageListItem extends React.PureComponent {
       }
     }
 
-    if (isAvatar) {
-      return (
-        <AvatarContainer userId={this.props.message.author_id} avatarSize={30} iconSize={12} frameBorderWidth={1.1} />
-      )
+    if (isAvatar) { // TODO
+      return null;
     } else if (this.props.message.author_id != this.props.client.id) {
       return (
         <RN.View style={{width: 30, height: 30}} />
@@ -168,6 +126,7 @@ class MessageListItem extends React.PureComponent {
   }
 
   _renderMedium(isAuthoredByClient) {
+    return null; // TODO
     let medium = this.props.message.medium;
     let width = StyleUtility.getUsableDimensions().width * 0.75;
     let height = StyleUtility.getScaledHeight(medium, width);
@@ -189,27 +148,6 @@ class MessageListItem extends React.PureComponent {
     }
   }
 
-  _renderPost(isAuthoredByClient) {
-    let postId = this.props.message.post_id;
-    let cachedPost = this.props.postsCache[postId];
-
-    if (postId && cachedPost) {
-      return (
-        <PostListItem item={cachedPost} width={StyleUtility.getUsableDimensions().width * 0.75} />
-      )
-    } else if (postId && !cachedPost) {
-      let indicatorStyle = isAuthoredByClient ? styles.messageContainerClient : styles.messageContainerUser;
-
-      return (
-        <RN.View style={indicatorStyle}>
-          <RN.ActivityIndicator size='small' color={StyleUtility.COLORS.grey500} style={{position: 'absolute'}}/>
-        </RN.View>
-      )
-    } else {
-      return null;
-    }
-  }
-
   _renderMessage() {
     let isAuthoredByClient = this.props.message.author_id === this.props.client.id;
     let isBackgroundColor  = this.props.message.body;
@@ -224,7 +162,6 @@ class MessageListItem extends React.PureComponent {
           activeOpacity={0.5}
           onPress={setStateCallback(this, { isDateShown: !this.state.isDateShown})}
           >
-          {this._renderUsername()}
           <RN.View style={[messageStyle, !isBackgroundColor && {backgroundColor: 'transparent'}]}>
             {this._renderPost(isAuthoredByClient)}
             {this._renderBody(isAuthoredByClient)}

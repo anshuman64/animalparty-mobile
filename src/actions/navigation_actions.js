@@ -34,6 +34,10 @@ export const navigateTo = (screen, props) => (dispatch) => {
       Actions.ChoosePartyScreen(props)
     } else if (screen === 'HomeScreen') {
       Actions.HomeScreen(props)
+    } else if (screen === 'MessagesScreen') {
+      Actions.MessagesScreen(props)
+    } else if (screen === 'MenuScreen') {
+      Actions.MenuScreen(props)
     } else {
       return;
     }

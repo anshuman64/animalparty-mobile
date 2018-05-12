@@ -21,18 +21,6 @@ Optional Passed Props:
 class ConnectionListItem extends React.PureComponent {
 
   //--------------------------------------------------------------------//
-  // Callback Methods
-  //--------------------------------------------------------------------//
-
-  _onPressAvatar = () => {
-    if (this.props.convoId < 0) {
-      return;
-    }
-
-    this.props.navigateToProfile({ userId: this.props.convoId });
-  }
-
-  //--------------------------------------------------------------------//
   // Render Methods
   //--------------------------------------------------------------------//
 
@@ -60,7 +48,7 @@ class ConnectionListItem extends React.PureComponent {
 
   render() {
     return (
-      <RN.TouchableOpacity onPress={() => this.props.navigateTo('MessagesScreen', { convoId: this.props.convoId })}>
+      <RN.TouchableOpacity onPress={() => this.props.navigateTo('MessagesScreen', { userId: this.props.userId })}>
         <RN.View style={UTILITY_STYLES.rowView}>
         </RN.View>
       </RN.TouchableOpacity>
