@@ -48,6 +48,10 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This lets you share photos from your camera roll.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This lets you take and share photos from your camera.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>

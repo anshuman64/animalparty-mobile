@@ -35,13 +35,17 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - QBImagePickerController (3.4.0)
   - react-native-amplitude-analytics (0.1.12):
     - Amplitude-iOS (~> 3.14.1)
+  - RSKImageCropper (2.0.1)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
+  - QBImagePickerController
   - react-native-amplitude-analytics (from `../node_modules/react-native-amplitude-analytics`)
+  - RSKImageCropper
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -54,6 +58,8 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GTMSessionFetcher
     - nanopb
+    - QBImagePickerController
+    - RSKImageCropper
 
 EXTERNAL SOURCES:
   react-native-amplitude-analytics:
@@ -69,8 +75,10 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
   react-native-amplitude-analytics: 4f561e432316bb86f1a11d46ee234a3ef2e9eb38
+  RSKImageCropper: 50d5a3e4160f0309b14d75b89d5ae2f496d56e0d
 
-PODFILE CHECKSUM: 4152714c2eb46fd10009363c084ac16fa3210792
+PODFILE CHECKSUM: 4c363ad46e2ba14abfa182c0fc8b8b980d8d0666
 
 COCOAPODS: 1.5.0

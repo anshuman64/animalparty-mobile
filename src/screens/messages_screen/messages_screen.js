@@ -63,12 +63,12 @@ class MessagesScreen extends React.PureComponent {
       this._loadNewMessages();
     }
 
-    this._setupPusher();
+    // this._setupPusher();
   }
 
   componentWillUnmount() {
     RN.AppState.removeEventListener('change', this._handleAppStateChange);
-    pusher.unsubscribe(this.convoChannelName);
+    // pusher.unsubscribe(this.convoChannelName);
   }
 
   //--------------------------------------------------------------------//
@@ -207,31 +207,31 @@ class MessagesScreen extends React.PureComponent {
   // DotDotDotTyping Methods
   //--------------------------------------------------------------------//
 
-  _setupPusher = () => {
-    if (this.props.convoId < 0) {
-      this.convoChannelName = 'private-group-' + (-1 * this.props.convoId);
-    } else if (this.props.convoId > 0) {
-      smallerId = this.props.client.id < this.props.convoId ? this.props.client.id : this.props.convoId;
-      biggerId = this.props.client.id > this.props.convoId ? this.props.client.id : this.props.convoId;
-      this.convoChannelName = 'private-convo-' + smallerId + '-' + biggerId;
-    }
-
-    convoChannel = pusher.subscribe(this.convoChannelName);
-
-    let arr = this.state.usersTyping.slice();
-
-    convoChannel.bind('client-start-typing', (data) => {
-      this.setState({ usersTyping: arr.concat(data.userId) });
-    });
-
-    convoChannel.bind('client-stop-typing', (data) => {
-      _.remove(arr, (id) => {
-        return id === data.userId;
-      });
-
-      this.setState({ usersTyping: arr });
-    });
-  }
+  // _setupPusher = () => {
+  //   if (this.props.convoId < 0) {
+  //     this.convoChannelName = 'private-group-' + (-1 * this.props.convoId);
+  //   } else if (this.props.convoId > 0) {
+  //     smallerId = this.props.client.id < this.props.convoId ? this.props.client.id : this.props.convoId;
+  //     biggerId = this.props.client.id > this.props.convoId ? this.props.client.id : this.props.convoId;
+  //     this.convoChannelName = 'private-convo-' + smallerId + '-' + biggerId;
+  //   }
+  //
+  //   convoChannel = pusher.subscribe(this.convoChannelName);
+  //
+  //   let arr = this.state.usersTyping.slice();
+  //
+  //   convoChannel.bind('client-start-typing', (data) => {
+  //     this.setState({ usersTyping: arr.concat(data.userId) });
+  //   });
+  //
+  //   convoChannel.bind('client-stop-typing', (data) => {
+  //     _.remove(arr, (id) => {
+  //       return id === data.userId;
+  //     });
+  //
+  //     this.setState({ usersTyping: arr });
+  //   });
+  // }
 
   // Starts Resend SMS timer
   _resetTimer() {
