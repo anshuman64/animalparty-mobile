@@ -126,7 +126,6 @@ class MessageListItem extends React.PureComponent {
   }
 
   _renderMedium(isAuthoredByClient) {
-    return null; // TODO
     let medium = this.props.message.medium;
     let width = StyleUtility.getUsableDimensions().width * 0.75;
     let height = StyleUtility.getScaledHeight(medium, width);

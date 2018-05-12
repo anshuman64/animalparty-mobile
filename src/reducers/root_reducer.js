@@ -16,7 +16,7 @@ const RootReducer = combineReducers({
   usersCache:    UsersCacheReducer,
   connections:   ConnectionsReducer,
   messages:      MessagesReducer,
-  media:         MediaCacheReducer,
+  mediaCache:         MediaCacheReducer,
   navigation:    NavigationReducer,
 });
 

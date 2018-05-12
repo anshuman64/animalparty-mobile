@@ -1,8 +1,8 @@
 // Library Imports
 import React       from 'react';
 import RN          from 'react-native';
-// import ImageViewer from 'react-native-image-zoom-viewer';
-// import VideoPlayer from 'react-native-video-player';
+import ImageViewer from 'react-native-image-zoom-viewer';
+import VideoPlayer from 'react-native-video-player';
 
 // Local Imports
 import { COLORS, getUsableDimensions } from '../../utilities/style_utility';
