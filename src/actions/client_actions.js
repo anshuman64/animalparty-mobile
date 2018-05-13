@@ -1,7 +1,7 @@
 // Library Imports
 import Firebase  from 'react-native-firebase';
 import AWS       from 'aws-sdk/dist/aws-sdk-react-native';
-// import OneSignal from 'react-native-onesignal';
+import OneSignal from 'react-native-onesignal';
 
 // Local Imports
 import { amplitude }                                  from '../utilities/analytics_utility';
@@ -117,7 +117,7 @@ export const loginClient = (firebaseUserObj) => (dispatch) => {
     amplitude.setUserProperties({ database_id: client.id, phone_number: client.phone_number, email: client.email, firebase_uid: client.firebase_uid, last_login: client.last_login, created_at: client.created_at });
     amplitude.logEvent('Onboarding - Log In', { is_successful: true, is_new_user: isNew });
 
-    // OneSignal.sendTag('user_id', String(client.id));
+    OneSignal.sendTag('user_id', String(client.id));
     dispatch(setPusherClient(authToken, client.id));
     dispatch(receiveClient({ client: client }));
   }

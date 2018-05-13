@@ -3,7 +3,7 @@ import React           from 'react';
 import RN              from 'react-native';
 import Firebase        from 'react-native-firebase';
 import * as Animatable from 'react-native-animatable';
-// import OneSignal       from 'react-native-onesignal';
+import OneSignal       from 'react-native-onesignal';
 
 // Local Imports
 import { amplitude }           from '../../utilities/analytics_utility';
@@ -42,7 +42,7 @@ class LoadingScreen extends React.PureComponent {
 
   componentWillMount() {
     RN.AppState.addEventListener('change', this._handleAppStateChange);
-    // OneSignal.addEventListener('opened', this._onOpened);
+    OneSignal.addEventListener('opened', this._onOpened);
   }
 
   // Automatically detects login cookie from Firebase and logs in user
@@ -79,7 +79,7 @@ class LoadingScreen extends React.PureComponent {
 
   componentWillUnmount() {
     RN.AppState.removeEventListener('change', this._handleAppStateChange);
-    // OneSignal.removeEventListener('opened', this._onOpened);
+    OneSignal.removeEventListener('opened', this._onOpened);
   }
 
   //--------------------------------------------------------------------//

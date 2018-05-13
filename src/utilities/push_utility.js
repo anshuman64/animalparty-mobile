@@ -1,6 +1,6 @@
 // Library Imports
 import Pusher    from 'pusher-js/react-native';
-// import OneSignal from 'react-native-onesignal';
+import OneSignal from 'react-native-onesignal';
 
 // Local Imports
 import { ENV_TYPES, PUSHER_ENV_SETTING } from '../app_config';
@@ -72,4 +72,4 @@ export const setPusherClient = (authToken, clientId) => (dispatch) => {
 //--------------------------------------------------------------------//
 
 // OneSignal options
-// OneSignal.inFocusDisplaying(0); // Disables notifications in-app
+OneSignal.inFocusDisplaying(0); // Disables notifications in-app
