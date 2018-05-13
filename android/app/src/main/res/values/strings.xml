@@ -1,3 +1,4 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">xvilSQ5yrpfsfgT8yFTBDnzC56NFSJJEezHCz</string>
     <string name="app_name">animalparty</string>
 </resources>
