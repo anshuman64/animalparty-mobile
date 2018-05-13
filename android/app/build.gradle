@@ -104,6 +104,8 @@ android {
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
+        manifestPlaceholders = [onesignal_app_id: "9675a494-214d-4e1d-9d29-cfc61a39fc64",
+                                onesignal_google_project_number: "REMOTE"]
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -142,20 +144,28 @@ dependencies {
     compile project(':react-native-fetch-blob')
     compile project(':react-native-image-crop-picker')
     compile project(':react-native-vector-icons')
-    compile(project(':react-native-firebase')) {
-        transitive = false
-    }
     compile project(':react-native-amplitude-analytics')
+
     implementation(project(':react-native-firebase')) {
         transitive = false
     }
-    implementation project(':react-native-amplitude-analytics')
-    implementation project(':react-native-vector-icons')
+
+    compile (project(':react-native-onesignal')){
+        exclude group: "com.google.android.gms"
+    }
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:23.0.1"
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
-    implementation "com.google.android.gms:play-services-base:15.0.0"
+    implementation ("com.google.android.gms:play-services-base:15.0.0") {
+        force = true;
+    }
+
+    implementation ("com.google.android.gms:play-services-gcm:15.0.0") {
+        force = true;
+    }
+
     implementation "com.google.firebase:firebase-core:15.0.0"
     implementation "com.google.firebase:firebase-auth:15.1.0"
 }

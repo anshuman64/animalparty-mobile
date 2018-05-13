@@ -54,6 +54,7 @@
 		53997C48156843F28410F067 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7CAE7B8F459489D864AF2A1 /* FontAwesome.ttf */; };
 		5B302CD920A75AB300738DEE /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B302CD620A75AA300738DEE /* libRNFetchBlob.a */; };
 		5B302D3720A761F700738DEE /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B302D1E20A761ED00738DEE /* libRCTVideo.a */; };
+		5B302DDC20A7BE6D00738DEE /* libRCTOneSignal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B302DBC20A7BE5B00738DEE /* libRCTOneSignal.a */; };
 		5B720B8620A5F812002F4D3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B720B8520A5F812002F4D3B /* GoogleService-Info.plist */; };
 		5B720B8720A5F823002F4D3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B720B8520A5F812002F4D3B /* GoogleService-Info.plist */; };
 		5B720B8820A5F823002F4D3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B720B8520A5F812002F4D3B /* GoogleService-Info.plist */; };
@@ -360,6 +361,13 @@
 			remoteGlobalIDString = 641E28441F0EEC8500443AF6;
 			remoteInfo = "RCTVideo-tvOS";
 		};
+		5B302DBB20A7BE5B00738DEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B302DAA20A7BE5A00738DEE /* RCTOneSignal.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3245CDED1BFEE35C00EABF68;
+			remoteInfo = RCTOneSignal;
+		};
 		5B720BD020A5F913002F4D3B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F30A3135494D47938A9A9B87 /* RNFirebase.xcodeproj */;
@@ -479,6 +487,7 @@
 		5A45D28B0E2142C38F89B343 /* libRNAmplitudeSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNAmplitudeSDK.a; sourceTree = "<group>"; };
 		5B302CAA20A75AA300738DEE /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFetchBlob.xcodeproj; path = "../node_modules/react-native-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; };
 		5B302D0420A761ED00738DEE /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
+		5B302DAA20A7BE5A00738DEE /* RCTOneSignal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTOneSignal.xcodeproj; path = "../node_modules/react-native-onesignal/ios/RCTOneSignal.xcodeproj"; sourceTree = "<group>"; };
 		5B720B8520A5F812002F4D3B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B720C3620A60B02002F4D3B /* animalparty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = animalparty.entitlements; path = animalparty/animalparty.entitlements; sourceTree = "<group>"; };
 		5B720DAC20A67C14002F4D3B /* imageCropPicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = imageCropPicker.xcodeproj; path = "../../../../Downloads/react-native-image-crop-picker-master 2/ios/imageCropPicker.xcodeproj"; sourceTree = "<group>"; };
@@ -551,6 +560,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B302DDC20A7BE6D00738DEE /* libRCTOneSignal.a in Frameworks */,
 				5B302D3720A761F700738DEE /* libRCTVideo.a in Frameworks */,
 				5B302CD920A75AB300738DEE /* libRNFetchBlob.a in Frameworks */,
 				5B720DEF20A67CD7002F4D3B /* libimageCropPicker.a in Frameworks */,
@@ -791,6 +801,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5B302DAB20A7BE5A00738DEE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B302DBC20A7BE5B00738DEE /* libRCTOneSignal.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5B720BCD20A5F912002F4D3B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,6 +891,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				5B302DAA20A7BE5A00738DEE /* RCTOneSignal.xcodeproj */,
 				5B302D0420A761ED00738DEE /* RCTVideo.xcodeproj */,
 				5B302CAA20A75AA300738DEE /* RNFetchBlob.xcodeproj */,
 				5B720DAC20A67C14002F4D3B /* imageCropPicker.xcodeproj */,
@@ -1116,6 +1135,10 @@
 				{
 					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
 					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+				},
+				{
+					ProductGroup = 5B302DAB20A7BE5A00738DEE /* Products */;
+					ProjectRef = 5B302DAA20A7BE5A00738DEE /* RCTOneSignal.xcodeproj */;
 				},
 				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
@@ -1412,6 +1435,13 @@
 			fileType = archive.ar;
 			path = libRCTVideo.a;
 			remoteRef = 5B302D1D20A761ED00738DEE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5B302DBC20A7BE5B00738DEE /* libRCTOneSignal.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTOneSignal.a;
+			remoteRef = 5B302DBB20A7BE5B00738DEE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5B720BD120A5F913002F4D3B /* libRNFirebase.a */ = {
@@ -1841,6 +1871,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/**",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
 				);
 				INFOPLIST_FILE = animalparty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1874,6 +1905,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/**",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
 				);
 				INFOPLIST_FILE = animalparty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
