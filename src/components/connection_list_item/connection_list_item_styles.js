@@ -15,4 +15,22 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     color: StyleUtility.COLORS.grey700,
   },
+  userView: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  usernameView: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    marginLeft: 7
+  },
+  messageText: {
+    fontFamily: StyleUtility.setAndroidFont('Roboto-Light'),
+    fontSize: StyleUtility.scaleFont(15),
+    fontWeight: '100',
+    textAlign: 'left',
+    color: StyleUtility.COLORS.grey700,
+  },
 });

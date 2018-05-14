@@ -2,7 +2,7 @@
 import React       from 'react';
 import RN          from 'react-native';
 import Firebase    from 'react-native-firebase';
-// import AWS         from 'aws-sdk/dist/aws-sdk-react-native';
+import AWS         from 'aws-sdk/dist/aws-sdk-react-native';
 import { Actions } from 'react-native-router-flux';
 
 // Local Imports
@@ -43,8 +43,8 @@ class MenuScreen extends React.PureComponent {
   render() {
     return (
       <RN.View style={UTILITY_STYLES.containerStart}>
-        <MenuListItem iconName={'envelope'}    text={'Contact'}              callback={() => RN.Linking.openURL('mailto:contact@insiya.io')}/>
-        <MenuListItem iconName={'paper-plane'} text={'Telegram Community'}   callback={() => RN.Linking.openURL('https://t.me/insiyaapp')}/>
+        <MenuListItem iconName={'envelope'}    text={'Contact'}              callback={() => RN.Linking.openURL('mailto:contact@animalparty.app')}/>
+        <MenuListItem iconName={'paper-plane'} text={'Telegram Community'}   callback={() => RN.Linking.openURL('https://t.me/animalpartyapp')}/>
         <MenuListItem iconName={'docs'}        text={'Terms of Use'}         callback={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/terms-of-use-4b1c31695dfe')}/>
         <MenuListItem iconName={'lock'}        text={'Privacy Policy'}       callback={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/privacy-policy-febc9c4cb192')}/>
         <MenuListItem iconName={'people'}      text={'Community Guidelines'} callback={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/community-guidelines-b9ee2fe3daf4')}/>

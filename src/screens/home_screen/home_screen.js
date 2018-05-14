@@ -3,11 +3,12 @@ import React from 'react';
 import RN    from 'react-native';
 
 // Local Imports
-import ConnectionListItemContainer       from '../../components/connection_list_item/connection_list_item_container';
-import SectionListHeader               from '../../components/section_list_header/section_list_header';
-import ListHeader               from '../../components/list_header/list_header';
-import { UTILITY_STYLES }       from '../../utilities/style_utility';
-import { isStringEmpty }        from '../../utilities/function_utility';
+import ConnectionListItemContainer  from '../../components/connection_list_item/connection_list_item_container';
+import SectionListHeader            from '../../components/section_list_header/section_list_header';
+import ListHeader                   from '../../components/list_header/list_header';
+import { UTILITY_STYLES }           from '../../utilities/style_utility';
+import { isStringEmpty }            from '../../utilities/function_utility';
+import { ANIMAL_SOUNDS }            from '../../utilities/animal_utility';
 
 //--------------------------------------------------------------------//
 
@@ -30,20 +31,8 @@ class HomeScreen extends React.PureComponent {
   }
 
   //--------------------------------------------------------------------//
-  // Public Methods
-  //--------------------------------------------------------------------//
-
-  setParentState = (state) => {
-    this.setState(state);
-  }
-
-  //--------------------------------------------------------------------//
   // Callback Methods
   //--------------------------------------------------------------------//
-
-  _onPressAddFriend = () => {
-    this.props.navigateTo('AddFriendScreen', { screen: 'AddFriendScreen' });
-  }
 
   _onPressShare = () => {
     if (this.isSharedPressed) {
@@ -52,7 +41,21 @@ class HomeScreen extends React.PureComponent {
 
     this.isSharedPressed = true;
 
-    RN.Share.share({message: "Add me on Postcard! My username is: \"" + this.props.usersCache[this.props.client.id].username + "\"\n\n-- Download Now --\nhttps://postcard.insiya.io/?utm_source=app&utm_term=share" })
+    let animalSound = ANIMAL_SOUNDS[Math.floor(Math.random() * ANIMAL_SOUNDS.length)];
+    let oppositeParty;
+    let client = this.props.usersCache[this.props.client.id];
+    let clientParty = client ? client.political_party : null;
+
+    if (clientParty === 'DEMOCRAT') {
+      oppositeParty = 'Republicans';
+    } else if (clientParty === 'REPUBLICAN') {
+      oppositeParty = 'Democrats'
+    } else {
+      oppositeParty = 'members of the oppositve political party'
+    }
+
+    // TODO: make sure this fits in Tweet limit
+    RN.Share.share({message: animalSound + "! I'm talking to " + oppositeParty + " on the Animal Party app! \n\n-- Download Now --\nhttps://animalparty.app/?utm_source=app&utm_term=share" })
       .finally(() => {
         this.isSharedPressed = false;
       });
