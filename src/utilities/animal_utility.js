@@ -5,39 +5,37 @@
 
 export const ANIMAL_SOUNDS = ['Roar', 'Buzz', 'Meow', 'Cluck', 'Chirp', 'Moo', 'Woof', 'Quack', 'Ribbit', 'Hiss', 'Squeak', 'Neigh', 'Hoot', 'Oink', 'Coo', 'Baa']
 
-
-// TODO: add silly adjectives
 const ANIMALS = [
   {
-    name: 'AntEater',
+    name: 'AdorableAntEater',
     image: require('../assets/images/animals/ant-eater.png'),
   },
   {
-    name: 'Badger',
+    name: 'BubblyBadger',
     image: require('../assets/images/animals/badger.png'),
   },
   {
-    name: 'Bear',
+    name: 'BabyBear',
     image: require('../assets/images/animals/bear.png'),
   },
   {
-    name: 'Bull',
+    name: 'BrilliantBull',
     image: require('../assets/images/animals/bull.png'),
   },
   {
-    name: 'Camel',
+    name: 'CuddlyCamel',
     image: require('../assets/images/animals/camel.png'),
   },
   {
-    name: 'Cat',
+    name: 'CharmingCat',
     image: require('../assets/images/animals/cat.png'),
   },
   {
-    name: 'Chameleon',
+    name: 'CleverChameleon',
     image: require('../assets/images/animals/chameleon.png'),
   },
   {
-    name: 'Chicken',
+    name: 'CuddlyChicken',
     image: require('../assets/images/animals/cock.png'),
   },
   {
@@ -45,207 +43,207 @@ const ANIMALS = [
     image: require('../assets/images/animals/cow-1.png'),
   },
   {
-    name: 'Cow',
+    name: 'ClassicCow',
     image: require('../assets/images/animals/cow.png'),
   },
   {
-    name: 'Crocodile',
+    name: 'CreativeCrocodile',
     image: require('../assets/images/animals/crocodile.png'),
   },
   {
-    name: 'Deer',
+    name: 'DelightfulDeer',
     image: require('../assets/images/animals/deer.png'),
   },
   {
-    name: 'Dog',
+    name: 'DearestDog',
     image: require('../assets/images/animals/dog.png'),
   },
   {
-    name: 'Dolphin',
+    name: 'DazzlingDolphin',
     image: require('../assets/images/animals/dolphin.png'),
   },
   {
-    name: 'Donkey',
+    name: 'DarlingDonkey',
     image: require('../assets/images/animals/donkey.png'),
   },
   {
-    name: 'Duck',
+    name: 'DiligentDuck',
     image: require('../assets/images/animals/duck.png'),
   },
   {
-    name: 'Elephant',
+    name: 'ElectricElephant',
     image: require('../assets/images/animals/elephant.png'),
   },
   {
-    name: 'Fish',
+    name: 'FabulousFish',
     image: require('../assets/images/animals/fish.png'),
   },
   {
-    name: 'Fox',
+    name: 'FlashyFox',
     image: require('../assets/images/animals/fox.png'),
   },
   {
-    name: 'Giraffe',
+    name: 'GraciousGiraffe',
     image: require('../assets/images/animals/giraffe.png'),
   },
   {
-    name: 'Goat',
+    name: 'GigglyGoat',
     image: require('../assets/images/animals/goat.png'),
   },
   {
-    name: 'Goose',
+    name: 'GorgeousGoose',
     image: require('../assets/images/animals/goose.png'),
   },
   {
-    name: 'Hedgehog',
+    name: 'HumbleHedgehog',
     image: require('../assets/images/animals/hedgehog.png'),
   },
   {
-    name: 'Hippo',
+    name: 'HandsomeHippo',
     image: require('../assets/images/animals/hippopotamus.png'),
   },
   {
-    name: 'Horse',
+    name: 'HelpfulHorse',
     image: require('../assets/images/animals/horse.png'),
   },
   {
-    name: 'Kangaroo',
+    name: 'KindKangaroo',
     image: require('../assets/images/animals/kangaroo.png'),
   },
   {
-    name: 'Koala',
+    name: 'KeenKoala',
     image: require('../assets/images/animals/koala.png'),
   },
   {
-    name: 'Lion',
+    name: 'LuckyLion',
     image: require('../assets/images/animals/lion.png'),
   },
   {
-    name: 'Monkey',
+    name: 'ModestMonkey',
     image: require('../assets/images/animals/monkey.png'),
   },
   {
-    name: 'Moose',
+    name: 'MarvelousMoose',
     image: require('../assets/images/animals/moose.png'),
   },
   {
-    name: 'Mouse',
+    name: 'MatureMouse',
     image: require('../assets/images/animals/mouse.png'),
   },
   {
-    name: 'Panda',
+    name: 'ProductivePanda',
     image: require('../assets/images/animals/panda.png'),
   },
   {
-    name: 'Panther',
+    name: 'PopularPanther',
     image: require('../assets/images/animals/panther.png'),
   },
   {
-    name: 'Penguin',
+    name: 'PerfectPenguin',
     image: require('../assets/images/animals/penguin.png'),
   },
   {
-    name: 'Pig',
+    name: 'PlayfulPig',
     image: require('../assets/images/animals/pig.png'),
   },
   {
-    name: 'Rabbit',
+    name: 'RosyRabbit',
     image: require('../assets/images/animals/rabbit.png'),
   },
   {
-    name: 'Raccoon',
+    name: 'RadiantRaccoon',
     image: require('../assets/images/animals/racoon.png'),
   },
   {
-    name: 'Raven',
+    name: 'ReliableRaven',
     image: require('../assets/images/animals/raven.png'),
   },
   {
-    name: 'Rhino',
+    name: 'RealisticRhino',
     image: require('../assets/images/animals/rhinoceros.png'),
   },
   {
-    name: 'Seal',
+    name: 'SwiftSeal',
     image: require('../assets/images/animals/seal.png'),
   },
   {
-    name: 'Sheep',
+    name: 'StrongSheep',
     image: require('../assets/images/animals/sheep.png'),
   },
   {
-    name: 'Snail',
+    name: 'StrikingSnail',
     image: require('../assets/images/animals/snail.png'),
   },
   {
-    name: 'Snake',
+    name: 'ShimmeringSnake',
     image: require('../assets/images/animals/snake.png'),
   },
   {
-    name: 'Squirrel',
+    name: 'StylishSquirrel',
     image: require('../assets/images/animals/squirrel.png'),
   },
   {
-    name: 'Tiger',
+    name: 'ThoughtfulTiger',
     image: require('../assets/images/animals/tiger.png'),
   },
   {
-    name: 'Turtle',
+    name: 'TruthfulTurtle',
     image: require('../assets/images/animals/turtle.png'),
   },
   {
-    name: 'Unicorn',
+    name: 'UniqueUnicorn',
     image: require('../assets/images/animals/unicorn.png'),
   },
   {
-    name: 'Vulture',
+    name: 'VibrantVulture',
     image: require('../assets/images/animals/vulture.png'),
   },
   {
-    name: 'Wolf',
+    name: 'WorldlyWolf',
     image: require('../assets/images/animals/wolf.png'),
   },
   {
-    name: 'Zebra',
+    name: 'ZestyZebra',
     image: require('../assets/images/animals/zebra.png'),
   },
   {
-    name: 'Bear',
+    name: 'BelovedBear',
     image: require('../assets/images/animals/bear.png'),
   },
   {
-    name: 'Cat',
+    name: 'CheerfulCat',
     image: require('../assets/images/animals/cat.png'),
   },
   {
-    name: 'Dog',
+    name: 'DaringDog',
     image: require('../assets/images/animals/dog.png'),
   },
   {
-    name: 'Fish',
+    name: 'FunnyFish',
     image: require('../assets/images/animals/fish.png'),
   },
   {
-    name: 'Giraffe',
+    name: 'GloriousGiraffe',
     image: require('../assets/images/animals/giraffe.png'),
   },
   {
-    name: 'Penguin',
+    name: 'PrettyPenguin',
     image: require('../assets/images/animals/penguin.png'),
   },
   {
-    name: 'Pig',
+    name: 'PristinePig',
     image: require('../assets/images/animals/pig.png'),
   },
   {
-    name: 'Hippo',
+    name: 'HandyHippo',
     image: require('../assets/images/animals/hippopotamus.png'),
   },
   {
-    name: 'Horse',
+    name: 'HappyHorse',
     image: require('../assets/images/animals/horse.png'),
   },
   {
-    name: 'Zebra',
+    name: 'ZanyZebra',
     image: require('../assets/images/animals/zebra.png'),
   }
 ]

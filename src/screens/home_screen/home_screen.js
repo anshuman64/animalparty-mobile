@@ -48,7 +48,7 @@ class HomeScreen extends React.PureComponent {
 
     this.isSharedPressed = true;
 
-    let animalSound = ANIMAL_SOUNDS[Math.floor(Math.random() * ANIMAL_SOUNDS.length)];
+    let animalSound = AnimalUtility.ANIMAL_SOUNDS[Math.floor(Math.random() * AnimalUtility.ANIMAL_SOUNDS.length)];
     let client = this.props.usersCache[this.props.client.id];
     let oppositeParty = AnimalUtility.getOppositeParty(client);
 
