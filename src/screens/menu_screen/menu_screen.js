@@ -37,6 +37,10 @@ class MenuScreen extends React.PureComponent {
       });
   }
 
+  _changeParty = () => {
+    this.props.navigateTo('ChoosePartyScreen');
+  }
+
   //--------------------------------------------------------------------//
   // Render Methods
   //--------------------------------------------------------------------//
@@ -45,6 +49,7 @@ class MenuScreen extends React.PureComponent {
     return (
       <RN.View style={styles.container}>
         <RN.View>
+          <MenuListItemContainer iconName={'refresh'} text={'Change Party'}         callback={this._changeParty}/>
           <MenuListItemContainer iconName={'envelope'}    text={'Contact'}              callback={() => RN.Linking.openURL('mailto:contact@animalparty.app')}/>
           <MenuListItemContainer iconName={'paper-plane'} text={'Telegram Community'}   callback={() => RN.Linking.openURL('https://t.me/animalpartyapp')}/>
           <MenuListItemContainer iconName={'docs'}        text={'Terms of Use'}         callback={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/terms-of-use-4b1c31695dfe')}/>

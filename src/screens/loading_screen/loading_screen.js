@@ -118,7 +118,7 @@ class LoadingScreen extends React.PureComponent {
         this.props.navigateTo('HomeScreen'); // Debug Test: should be HomeScreen
       } else if (client && !client.political_party) {
         // If opening the app normally and haven't selected party, go to ChoosePartyScreen
-        this.props.navigateTo('ChoosePartyScreen');
+        this.props.navigateTo('ChoosePartyScreenLogin', { isLogin: true });
       } else {
         // If haven't logged in and somehow on LoadingScreen, go to WelcomeScreen
         this.props.navigateTo('WelcomeScreen');

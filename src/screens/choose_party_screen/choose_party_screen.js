@@ -44,7 +44,11 @@ class ChoosePartyScreen extends React.PureComponent {
     this.setState({ isLoading: true } , () => {
       this.props.editParty(this.props.client.authToken, this.props.client.firebaseUserObj, party)
         .then(() => {
-          this.props.navigateTo('HomeScreen');
+          if (this.props.isLogin) {
+            this.props.navigateTo('HomeScreen');
+          } else {
+            this.props.goBack();
+          }
         })
         .catch((error) => {
           defaultErrorAlert(error);
