@@ -120,11 +120,11 @@ class WelcomeScreen extends React.PureComponent {
         </RN.TouchableWithoutFeedback>
         <RN.Text allowFontScaling={false} style={styles.checkboxText}>
           I agree to the
-            <RN.Text allowFontScaling={false} style={UTILITY_STYLES.textHighlighted} onPress={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/terms-of-use-de17e7b76742')}> Terms of Use</RN.Text>
+            <RN.Text allowFontScaling={false} style={UTILITY_STYLES.textHighlighted} onPress={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/terms-of-use-4b1c31695dfe')}> Terms of Use</RN.Text>
           ,
-            <RN.Text allowFontScaling={false} style={UTILITY_STYLES.textHighlighted} onPress={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/privacy-policy-a18b33e9d916')}> Privacy Policy</RN.Text>
+            <RN.Text allowFontScaling={false} style={UTILITY_STYLES.textHighlighted} onPress={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/privacy-policy-febc9c4cb192')}> Privacy Policy</RN.Text>
           , and
-            <RN.Text allowFontScaling={false} style={UTILITY_STYLES.textHighlighted} onPress={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/community-guidelines-598b3fd77a2e')}> Community Guidelines</RN.Text>
+            <RN.Text allowFontScaling={false} style={UTILITY_STYLES.textHighlighted} onPress={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/community-guidelines-b9ee2fe3daf4')}> Community Guidelines</RN.Text>
         </RN.Text>
       </RN.View>
     )

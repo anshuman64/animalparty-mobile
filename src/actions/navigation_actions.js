@@ -32,6 +32,8 @@ export const navigateTo = (screen, props) => (dispatch) => {
       Actions.ConfirmCodeScreen(props)
     } else if (screen === 'ChoosePartyScreen') {
       Actions.ChoosePartyScreen(props)
+    } else if (screen === 'ChoosePartyScreenLogin') {
+      Actions.ChoosePartyScreenLogin(props)
     } else if (screen === 'HomeScreen') {
       Actions.HomeScreen(props)
     } else if (screen === 'MessagesScreen') {
@@ -52,7 +54,8 @@ export const navigateTo = (screen, props) => (dispatch) => {
   }
 
   if (Actions.currentScene === 'LoginScreen'
-      || Actions.currentScene === 'ConfirmCodeScreen') {
+      || Actions.currentScene === 'ConfirmCodeScreen'
+      || Actions.currentScene === 'MessagesScreen') {
     dismissKeyBoard()
       .then(() => {
         checkRefresh();

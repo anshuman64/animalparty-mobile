@@ -68,7 +68,11 @@ class App extends React.Component {
   _onBackPress = () => {
     let currentScene = Actions.currentScene.replace(/^_/, '');
 
-    if (currentScene === 'LoginScreen') {
+    if (currentScene === 'LoginScreen'
+        || currentScene === 'ChoosePartyScreenLogin'
+        || currentScene === 'LoadingScreen'
+        || currentScene === 'WelcomeScreen'
+        || currentScene === 'HomeScreen') {
       RN.BackHandler.exitApp();
       return false;
     }
@@ -81,29 +85,22 @@ class App extends React.Component {
   // Render Methods
   //--------------------------------------------------------------------//
 
-  // _renderHeader = (backTitle, backIcon) => {
-  //   return () => {
-  //     return (
-  //       <HeaderContainer backTitle={backTitle} backIcon={backIcon} />
-  //     );
-  //   };
-  // }
-
-  //WARNING/NOTE: All screens with PostLists have to be on different screens for performance benefits
   render() {
     return (
       <Provider store={ this.store }>
         <RouterContainer>
           <Scene key='root' headerMode={'screen'} >
-            <Scene key='DebugLoginScreen' component={DebugLoginScreenContainer} panHandlers={null} hideNavBar={true} />
-            <Scene key='LoadingScreen'         component={LoadingScreenContainer}      panHandlers={null} hideNavBar={true} initial={true}/>
-            <Scene key='WelcomeScreen'         component={WelcomeScreenContainer}      panHandlers={null} hideNavBar={true} />
-            <Scene key='LoginScreen'           component={LoginScreenContainer}        panHandlers={null} hideNavBar={true} />
+            <Scene key='DebugLoginScreen'       component={DebugLoginScreenContainer}  panHandlers={null} hideNavBar={true} />
+            <Scene key='LoadingScreen'          component={LoadingScreenContainer}     panHandlers={null} hideNavBar={true} />
+            <Scene key='WelcomeScreen'          component={WelcomeScreenContainer}     panHandlers={null} hideNavBar={true} />
+            <Scene key='LoginScreen'            component={LoginScreenContainer}       panHandlers={null} hideNavBar={true} initial={true}/>
+            <Scene key='ChoosePartyScreenLogin' component={ChoosePartyScreenContainer} panHandlers={null} hideNavBar={true} />
+            <Scene key='ChoosePartyScreen'      component={ChoosePartyScreenContainer} panHandlers={null} hideNavBar={true} />
+            <Scene key='MessagesScreen'         component={MessagesScreenContainer}    panHandlers={null} hideNavBar={true} />
+
+            <Scene key='HomeScreen'             component={HomeScreenContainer}        panHandlers={null} navBar={() => <HeaderContainer logo={true} settingsIcon={true} customIcon={true} />} />
             <Scene key='ConfirmCodeScreen'      component={ConfirmCodeScreenContainer} panHandlers={null} navBar={() => <HeaderContainer backTitle={'Confirm Code'} backIcon={true} />}  />
-            <Scene key='ChoosePartyScreen'      component={ChoosePartyScreenContainer} panHandlers={null} hideNavBar={true}  />
-            <Scene key='HomeScreen'     component={HomeScreenContainer}   panHandlers={null} navBar={() => <HeaderContainer logo={true} settingsIcon={true} customIcon={true} />} />
-            <Scene key='MessagesScreen'        component={MessagesScreenContainer}     panHandlers={null} hideNavBar={true} />
-            <Scene key='MenuScreen'             component={MenuScreen}                 panHandlers={null} navBar={() => <HeaderContainer backTitle={'Settings'} backIcon={true} />} />
+            <Scene key='MenuScreen'             component={MenuScreen}                 panHandlers={null} navBar={() => <HeaderContainer backTitle={'Settings'}     backIcon={true} />} />
           </Scene>
         </RouterContainer>
       </Provider>
