@@ -12,7 +12,7 @@ import MessageListItemContainer           from '../../components/message_list_it
 import { styles }                         from './messages_screen_styles';
 import { pusher }                         from '../../utilities/push_utility';
 import { isStringEmpty, setStateCallback} from '../../utilities/function_utility';
-// import { getEntityDisplayName }           from '../../utilities/entity_utility';
+import { getUsername }                    from '../../utilities/animal_utility';
 import * as StyleUtility                  from '../../utilities/style_utility';
 import { defaultErrorAlert }              from '../../utilities/error_utility';
 
@@ -362,8 +362,7 @@ class MessagesScreen extends React.PureComponent {
   }
 
   render() {
-    let displayName = 'hello'; //TODO
-    let backTitle = this.props.userId > 0 ? displayName + "'s Messages" : displayName;
+    let backTitle = getUsername(this.props.usersCache[this.props.userId]) + "'s Messages";
 
     return (
       <RN.KeyboardAvoidingView behavior={RN.Platform.OS === 'ios' ? 'padding' : null}>
@@ -371,7 +370,7 @@ class MessagesScreen extends React.PureComponent {
           <HeaderContainer
             backIcon={true}
             backTitle={backTitle}
-            settingsIcon={this.props.userId < 0}
+            customButton={true}
             userId={this.props.userId}
             />
           {this._renderMessageList()}

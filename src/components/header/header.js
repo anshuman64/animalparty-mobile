@@ -73,6 +73,35 @@ class Header extends React.PureComponent {
     });
   }
 
+
+
+  _onPressLeave = () => {
+    if (this.isButtonPressed) {
+      return;
+    }
+
+    this.isButtonPressed = true;
+
+    RN.Alert.alert('', 'Are you sure you want to leave this conversation?',
+      [{text: 'Cancel', onPress: () => this.isButtonPressed = false, style: 'cancel'},
+       {text: 'Leave', onPress: this._onConfirmLeave}],
+       {onDismiss: () => this.isButtonPressed = false}
+    );
+  }
+
+  _onConfirmLeave = () => {
+    this.setState({ isLoading: true },() => {
+      this.props.deleteConnection(this.props.client.authToken, this.props.client.firebaseUserObj, this.props.userId)
+        .catch((error) => {
+          defaultErrorAlert(error);
+        })
+        .finally(() => {
+          this.isButtonPressed = false;
+          this.setState({ isLoading: false });
+        });
+    });
+  }
+
   //--------------------------------------------------------------------//
   // Render Methods
   //--------------------------------------------------------------------//
@@ -162,6 +191,18 @@ class Header extends React.PureComponent {
     }
   }
 
+  _renderCustomButton() {
+    if (this.props.customButton) {
+      return (
+        <RN.TouchableOpacity onPress={this._onPressLeave} style={styles.button}>
+          <RN.Text style={[UTILITY_STYLES.lightBlackText16, UTILITY_STYLES.textHighlighted]}>
+            {'Leave'}
+          </RN.Text>
+        </RN.TouchableOpacity>
+      )
+    }
+  }
+
   _renderLoadingModal() {
     return (
       <LoadingModal isLoading={this.state.isLoading}/>
@@ -176,6 +217,7 @@ class Header extends React.PureComponent {
         {this._renderSettingsIcon()}
         {this._renderLogo()}
         {this._renderCustomIcon()}
+        {this._renderCustomButton()}
         {this._renderLoadingModal()}
       </RN.View>
     )

@@ -3,10 +3,9 @@ import React from 'react';
 import RN    from 'react-native';
 
 // Local Imports
-import Avatar                      from '../avatar/avatar';
 import { styles }                  from './connection_list_item_styles';
 import { UTILITY_STYLES, getUsableDimensions }          from '../../utilities/style_utility';
-import { getUsername, getMessagePreview }       from '../../utilities/animal_utility';
+import * as AnimalUtility       from '../../utilities/animal_utility';
 import { renderConversationDate }  from '../../utilities/date_time_utility';
 
 //--------------------------------------------------------------------//
@@ -41,17 +40,17 @@ class ConnectionListItem extends React.PureComponent {
 
   _renderUsernameView() {
     let user = this.props.usersCache[this.props.userId];
-    let username = getUsername(user);
+    let username = AnimalUtility.getUsername(user);
+    let avatar = AnimalUtility.getAvatar(user);
     let message = user ? user.peek_message : null;
-    let messagePreview = getMessagePreview(message, this.props.client.id);
+    let messagePreview = AnimalUtility.getMessagePreview(message, this.props.client.id);
     let maxWidth = getUsableDimensions().width - 170;
 
     return (
       <RN.View style={styles.userView}>
         <RN.Image
-          ref={'loadingIcon'}
           style={styles.avatar}
-          source={require('../../assets/images/animals/cow.png')}
+          source={avatar}
           resizeMode={'cover'}
           />
         <RN.View style={styles.usernameView}>
