@@ -6,7 +6,7 @@ import RN    from 'react-native';
 import Avatar                      from '../avatar/avatar';
 import { styles }                  from './connection_list_item_styles';
 import { UTILITY_STYLES, getUsableDimensions }          from '../../utilities/style_utility';
-import { getMessagePreview }       from '../../utilities/animal_utility';
+import { getUsername, getMessagePreview }       from '../../utilities/animal_utility';
 import { renderConversationDate }  from '../../utilities/date_time_utility';
 
 //--------------------------------------------------------------------//
@@ -41,16 +41,22 @@ class ConnectionListItem extends React.PureComponent {
 
   _renderUsernameView() {
     let user = this.props.usersCache[this.props.userId];
+    let username = getUsername(user);
     let message = user ? user.peek_message : null;
     let messagePreview = getMessagePreview(message, this.props.client.id);
     let maxWidth = getUsableDimensions().width - 170;
 
     return (
       <RN.View style={styles.userView}>
-        <Avatar userId={this.props.userId} avatarSize={46} iconSize={17} frameBorderWidth={1.1} />
+        <RN.Image
+          ref={'loadingIcon'}
+          style={styles.avatar}
+          source={require('../../assets/images/animals/cow.png')}
+          resizeMode={'cover'}
+          />
         <RN.View style={styles.usernameView}>
           <RN.Text allowFontScaling={false} ref={(ref) => this.usernameText = ref} style={[UTILITY_STYLES.regularBlackText16, {maxWidth: maxWidth}]} numberOfLines={1}>
-            {'hey'}
+            {username}
           </RN.Text>
           <RN.Text allowFontScaling={false} style={[styles.messageText, {maxWidth: maxWidth}]} numberOfLines={1}>
             {messagePreview}

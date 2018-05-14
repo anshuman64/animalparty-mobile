@@ -8,6 +8,10 @@ import * as StyleUtility from '../../utilities/style_utility';
 //--------------------------------------------------------------------//
 
 export const styles = StyleSheet.create({
+  avatar: {
+    width: 45,
+    height: 45
+  },
   dateText: {
     fontFamily: StyleUtility.setAndroidFont('Roboto-Light'),
     fontSize: StyleUtility.scaleFont(15),
