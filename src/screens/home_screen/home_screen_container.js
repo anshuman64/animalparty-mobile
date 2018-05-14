@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 // Local Imports
 import HomeScreen  from './home_screen';
+import { requestConnection }  from '../../actions/connection_actions';
 import { navigateTo } from '../../actions/navigation_actions';
 
 //--------------------------------------------------------------------//
@@ -14,6 +15,7 @@ const mapStateToProps = ({ client, connections, usersCache }, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+  requestConnection: (authToken, firebaseUserObj) => dispatch(requestConnection(authToken, firebaseUserObj)),
   navigateTo: (screen, props) => dispatch(navigateTo(screen, props)),
 });
 

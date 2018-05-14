@@ -8,8 +8,9 @@ import { navigateTo, goBack } from '../../actions/navigation_actions';
 
 //--------------------------------------------------------------------//
 
-const mapStateToProps = ({ client }, ownProps) => ({
-  client: client,
+const mapStateToProps = ({ client, usersCache }, ownProps) => ({
+  client:     client,
+  usersCache: usersCache,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

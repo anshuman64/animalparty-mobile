@@ -5,9 +5,10 @@ import Icon        from 'react-native-vector-icons/SimpleLineIcons';
 import Ionicon     from 'react-native-vector-icons/Ionicons';
 
 // Local Imports
-import LoadingModal                            from '../loading_modal/loading_modal.js'
+import LoadingModal                            from '../loading_modal/loading_modal.js';
 import { styles }                              from './header_styles';
 import { UTILITY_STYLES, getUsableDimensions } from '../../utilities/style_utility';
+import { getOppositeParty }                    from '../../utilities/animal_utility';
 import { defaultErrorAlert }                   from '../../utilities/error_utility';
 
 //--------------------------------------------------------------------//
@@ -31,8 +32,8 @@ class Header extends React.PureComponent {
       isLoading: false,
     }
 
-    this.isNextPressed   = false;
-    this.isButtonPressed = false;
+    this.isJoinQueuePressed = false;
+    this.isLeavePressed = false;
     this.isGoBackPressed = false;
   }
 
@@ -54,12 +55,17 @@ class Header extends React.PureComponent {
     this.props.navigateTo('MenuScreen');
   }
 
-  _onPressAdd = () => {
-    if (this.isButtonPressed) {
+  _onPressHelp = () => {
+    let oppositeParty = getOppositeParty(this.props.usersCache[this.props.client.id]);
+    RN.Alert.alert('', "You are in line to be matched with the next available " + oppositeParty + ". We'll notify you when you are matched!", [{text: 'OK', style: 'cancel'}]);
+  }
+
+  _onPressJoinQueue = () => {
+    if (this.isJoinQueuePressed) {
       return;
     }
 
-    this.isButtonPressed = true;
+    this.isJoinQueuePressed = true;
 
     this.setState({ isLoading: true } , () => {
       this.props.requestConnection(this.props.client.authToken, this.props.client.firebaseUserObj)
@@ -67,25 +73,23 @@ class Header extends React.PureComponent {
           defaultErrorAlert(error);
         })
         .finally(() => {
-          this.isButtonPressed = false;
+          this.isJoinQueuePressed = false;
           this.setState({ isLoading: false });
         });
     });
   }
 
-
-
   _onPressLeave = () => {
-    if (this.isButtonPressed) {
+    if (this.isLeavePressed) {
       return;
     }
 
-    this.isButtonPressed = true;
+    this.isLeavePressed = true;
 
     RN.Alert.alert('', 'Are you sure you want to leave this conversation?',
-      [{text: 'Cancel', onPress: () => this.isButtonPressed = false, style: 'cancel'},
+      [{text: 'Cancel', onPress: () => this.isLeavePressed = false, style: 'cancel'},
        {text: 'Leave', onPress: this._onConfirmLeave}],
-       {onDismiss: () => this.isButtonPressed = false}
+       {onDismiss: () => this.isLeavePressed = false}
     );
   }
 
@@ -96,7 +100,7 @@ class Header extends React.PureComponent {
           defaultErrorAlert(error);
         })
         .finally(() => {
-          this.isButtonPressed = false;
+          this.isLeavePressed = false;
           this.setState({ isLoading: false });
         });
     });
@@ -177,14 +181,18 @@ class Header extends React.PureComponent {
 
   _renderCustomIcon() {
     if (this.props.customIcon) {
+      let client = this.props.usersCache[this.props.client.id];
+      let icon = !client.queued_at ? 'plus' : 'question';
+      let callback = !client.queued_at ? this._onPressJoinQueue : this._onPressHelp;
+
       return (
         <RN.TouchableWithoutFeedback
           onPressIn={() => this.customIcon.setNativeProps({style: UTILITY_STYLES.textHighlighted})}
-          onPressOut={() => this.customIcon.setNativeProps({style: styles.customIcon})}
-          onPress={this._onPressAdd}
+          onPressOut={() => this.customIcon.setNativeProps({style: styles.settingsIcon})}
+          onPress={callback}
           >
           <RN.View style={styles.button}>
-            <Icon ref={(ref) => this.customIcon = ref} name='plus' style={styles.settingsIcon} />
+            <Icon ref={(ref) => this.customIcon = ref} name={icon} style={styles.settingsIcon} />
           </RN.View>
         </RN.TouchableWithoutFeedback>
       )

@@ -88,6 +88,14 @@ export const getScaledHeight = (medium, fixedWidth) => {
   }
 }
 
+export const getHighlightColor = (user) => {
+  if (!user || !user.political_party || user.political_party === 'DEMOCRAT') {
+    return UTILITY_STYLES.textHighlighted;
+  } else {
+    return UTILITY_STYLES.textRed;
+  }
+}
+
 export const UTILITY_STYLES = RN.StyleSheet.create({
   // Container Styles
   containerCenter: {

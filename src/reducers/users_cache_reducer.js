@@ -18,11 +18,10 @@ Data is in the form {
     political_party:               'DEMOCRAT',
     is_banned:                     false,
     last_login:                    Date(),
+    queued_at:                     Date(),
     created_at:                    Date(),
     updated_at:                    Date(),
-    is_user_blocked_by_client:     false,
     peek_message:                  {messageObj}
-    friendship_status_with_client: accepted,
   },
   userId2: {...
 */

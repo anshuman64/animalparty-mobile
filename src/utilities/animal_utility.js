@@ -270,6 +270,16 @@ export const getAvatar = (user) => {
   return ANIMALS[index].image;
 }
 
+export const getOppositeParty = (user) => {
+  if (!user || !user.political_party) {
+    return 'member of the opposite party';
+  } else if (user.political_party === 'DEMOCRAT') {
+    return 'Republican';
+  } else if (user.political_party === 'REPUBLICAN') {
+    return 'Democrat';
+  }
+}
+
 export const getMessagePreview = (message, clientId) => {
   let messagePreview = 'Send a message...';
 
