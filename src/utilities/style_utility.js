@@ -96,6 +96,14 @@ export const getHighlightColor = (user) => {
   }
 }
 
+export const getPartyColor = (user) => {
+  if (!user || !user.political_party || user.political_party === 'DEMOCRAT') {
+    return COLORS.appleBlue;
+  } else {
+    return COLORS.appleRed;
+  }
+}
+
 export const UTILITY_STYLES = RN.StyleSheet.create({
   // Container Styles
   containerCenter: {

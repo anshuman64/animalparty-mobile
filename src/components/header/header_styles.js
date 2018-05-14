@@ -54,6 +54,5 @@ export const styles = StyleSheet.create({
     fontWeight: '100',
     fontSize: StyleUtility.scaleFont(16),
     textAlign: 'center',
-    color: StyleUtility.COLORS.appleBlue,
   },
 })

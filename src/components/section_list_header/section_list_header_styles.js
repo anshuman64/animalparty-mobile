@@ -22,21 +22,4 @@ export const styles = StyleSheet.create({
     color: StyleUtility.COLORS.grey700,
     marginLeft: 20
   },
-  icon: {
-    width: 30,
-    fontSize: StyleUtility.scaleFont(14),
-    textAlign: 'center',
-    color: StyleUtility.COLORS.appleBlue,
-  },
-  textInput: {
-    width: 150,
-    height: 30,
-    fontFamily: StyleUtility.setAndroidFont('Roboto-Light'),
-    fontWeight: '100',
-    fontSize: StyleUtility.scaleFont(14.5, true),
-    textAlign: 'left',
-    color: StyleUtility.COLORS.grey900,
-    marginLeft: 15,
-    padding: 0,
-  },
 });

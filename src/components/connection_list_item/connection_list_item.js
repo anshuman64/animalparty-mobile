@@ -4,7 +4,7 @@ import RN    from 'react-native';
 
 // Local Imports
 import { styles }                  from './connection_list_item_styles';
-import { UTILITY_STYLES, getUsableDimensions }          from '../../utilities/style_utility';
+import * as StyleUtility          from '../../utilities/style_utility';
 import * as AnimalUtility       from '../../utilities/animal_utility';
 import { renderConversationDate }  from '../../utilities/date_time_utility';
 
@@ -44,7 +44,7 @@ class ConnectionListItem extends React.PureComponent {
     let avatar = AnimalUtility.getAvatar(user);
     let message = user ? user.peek_message : null;
     let messagePreview = AnimalUtility.getMessagePreview(message, this.props.client.id);
-    let maxWidth = getUsableDimensions().width - 170;
+    let maxWidth = StyleUtility.getUsableDimensions().width - 170;
 
     return (
       <RN.View style={styles.userView}>
@@ -54,7 +54,7 @@ class ConnectionListItem extends React.PureComponent {
           resizeMode={'cover'}
           />
         <RN.View style={styles.usernameView}>
-          <RN.Text allowFontScaling={false} ref={(ref) => this.usernameText = ref} style={[UTILITY_STYLES.regularBlackText16, {maxWidth: maxWidth}]} numberOfLines={1}>
+          <RN.Text allowFontScaling={false} ref={(ref) => this.usernameText = ref} style={[StyleUtility.UTILITY_STYLES.regularBlackText16, {maxWidth: maxWidth}, StyleUtility.getHighlightColor(user)]} numberOfLines={1}>
             {username}
           </RN.Text>
           <RN.Text allowFontScaling={false} style={[styles.messageText, {maxWidth: maxWidth}]} numberOfLines={1}>
@@ -68,7 +68,7 @@ class ConnectionListItem extends React.PureComponent {
   render() {
     return (
       <RN.TouchableOpacity onPress={() => this.props.navigateTo('MessagesScreen', { userId: this.props.userId })}>
-        <RN.View style={UTILITY_STYLES.rowView}>
+        <RN.View style={StyleUtility.UTILITY_STYLES.rowView}>
           {this._renderUsernameView()}
           {this._renderDate()}
         </RN.View>

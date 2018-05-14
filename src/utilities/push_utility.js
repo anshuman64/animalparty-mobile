@@ -62,7 +62,7 @@ export const setPusherClient = (authToken, clientId) => (dispatch) => {
   });
 
   // NOTE: the 'user' sending the Pusher message is defined as us, the 'client'.
-  myChannel.bind('destroy-connection', (data) => {
+  myChannel.bind('block-connection', (data) => {
     dispatch(removeConnection({ userId: data.client_id }));
   });
 

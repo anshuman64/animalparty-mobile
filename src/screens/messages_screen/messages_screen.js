@@ -265,7 +265,7 @@ class MessagesScreen extends React.PureComponent {
   //--------------------------------------------------------------------//
 
   _renderTextInputRow() {
-    let client = this.props.usersCache[this.props.userId];
+    let client = this.props.usersCache[this.props.client.id];
 
     return (
       <RN.View style={styles.textInputRow}>
@@ -287,7 +287,7 @@ class MessagesScreen extends React.PureComponent {
           underlineColorAndroid={'transparent'}
           />
         <RN.TouchableOpacity style={styles.sendButton} onPress={this._onPressSend}>
-          <Icon name='paper-plane' style={styles.sendButtonIcon} />
+          <Icon name='paper-plane' style={[styles.sendButtonIcon, StyleUtility.getHighlightColor(client)]} />
         </RN.TouchableOpacity>
       </RN.View>
     )

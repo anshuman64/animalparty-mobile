@@ -102,7 +102,6 @@ export const styles = StyleSheet.create({
   sendButtonIcon: {
     textAlign: 'center',
     fontSize: StyleUtility.scaleFont(20),
-    color: StyleUtility.COLORS.appleBlue
   },
   messageContainerUser: {
     flexDirection: 'row',

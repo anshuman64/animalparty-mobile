@@ -15,7 +15,7 @@ const ANIMALS = [
     image: require('../assets/images/animals/badger.png'),
   },
   {
-    name: 'BabyBear',
+    name: 'BraveBear',
     image: require('../assets/images/animals/bear.png'),
   },
   {

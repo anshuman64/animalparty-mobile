@@ -51,10 +51,8 @@ class ChoosePartyScreen extends React.PureComponent {
           }
         })
         .catch((error) => {
-          defaultErrorAlert(error);
-        })
-        .finally(() => {
           this.isSelectPressed = false;
+          defaultErrorAlert(error);
         });
     });
   }
