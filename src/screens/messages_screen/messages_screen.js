@@ -6,7 +6,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import Icon        from 'react-native-vector-icons/SimpleLineIcons';
 
 // Local Imports
-import ListFooter                         from '../../components/list_footer/list_footer';
+import ListFooterContainer                         from '../../components/list_footer/list_footer_container';
 import HeaderContainer                    from '../../components/header/header_container';
 import MessageListItemContainer           from '../../components/message_list_item/message_list_item_container';
 import { styles }                         from './messages_screen_styles';
@@ -265,13 +265,15 @@ class MessagesScreen extends React.PureComponent {
   //--------------------------------------------------------------------//
 
   _renderTextInputRow() {
+    let client = this.props.usersCache[this.props.userId];
+
     return (
       <RN.View style={styles.textInputRow}>
         <RN.TouchableOpacity style={styles.imageButton} onPress={this._onPresstakePhotoMedium}>
-          <Icon name='camera' style={[styles.imageButtonIcon, this.state.takePhotoMedium && StyleUtility.UTILITY_STYLES.textHighlighted]} />
+          <Icon name='camera' style={[styles.imageButtonIcon, this.state.takePhotoMedium && StyleUtility.getHighlightColor(client)]} />
         </RN.TouchableOpacity>
         <RN.TouchableOpacity style={styles.imageButton} onPress={this._onPressAddMedia}>
-          <Icon name='picture' style={[styles.imageButtonIcon, this.state.medium && StyleUtility.UTILITY_STYLES.textHighlighted]} />
+          <Icon name='picture' style={[styles.imageButtonIcon, this.state.medium && StyleUtility.getHighlightColor(client)]} />
         </RN.TouchableOpacity>
         <RN.TextInput
           style={styles.textInput}
@@ -302,7 +304,7 @@ class MessagesScreen extends React.PureComponent {
 
     if (messages && messages.isEnd) {
       return (
-        <ListFooter footerWidth={StyleUtility.scaleFont(150)} text={'Begin Conversation'} />
+        <ListFooterContainer footerWidth={StyleUtility.scaleFont(150)} text={'Begin Conversation'} />
       )
     } else {
       return (

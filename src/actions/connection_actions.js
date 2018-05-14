@@ -51,15 +51,15 @@ export const getConnections = (authToken, firebaseUserObj) => (dispatch) => {
     });
 };
 
-export const requestConnection = (authToken, firebaseUserObj) => (dispatch) => {
+export const requestConnection = (authToken, firebaseUserObj, clientId) => (dispatch) => {
   return APIUtility.post(authToken, '/connections')
     .then((user) => {
       amplitude.logEvent('Connection - Request Connection', { is_successful: true });
-      dispatch(receiveConnection({ user: user }));
+      dispatch(receiveConnection({ user: user, clientId: clientId }));
     })
     .catch((error) => {
       if (error.message === "Invalid access token. 'Expiration time' (exp) must be in the future.") {
-        return dispatch(refreshCredsAndResume(firebaseUserObj, createFriendRequest));
+        return dispatch(refreshCredsAndResume(firebaseUserObj, createFriendRequest, clientId));
       }
 
       error = setErrorDescription(error, 'POST for request connection failed');

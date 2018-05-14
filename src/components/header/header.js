@@ -7,7 +7,7 @@ import Ionicon     from 'react-native-vector-icons/Ionicons';
 // Local Imports
 import LoadingModal                            from '../loading_modal/loading_modal.js';
 import { styles }                              from './header_styles';
-import { UTILITY_STYLES, getUsableDimensions } from '../../utilities/style_utility';
+import * as StyleUtility from '../../utilities/style_utility';
 import { getOppositeParty }                    from '../../utilities/animal_utility';
 import { defaultErrorAlert }                   from '../../utilities/error_utility';
 
@@ -68,7 +68,7 @@ class Header extends React.PureComponent {
     this.isJoinQueuePressed = true;
 
     this.setState({ isLoading: true } , () => {
-      this.props.requestConnection(this.props.client.authToken, this.props.client.firebaseUserObj)
+      this.props.requestConnection(this.props.client.authToken, this.props.client.firebaseUserObj, this.props.client.id)
         .catch((error) => {
           defaultErrorAlert(error);
         })
@@ -123,7 +123,7 @@ class Header extends React.PureComponent {
       return (
         <RN.View style={styles.backView}>
           <RN.TouchableWithoutFeedback
-            onPressIn={() => this.backIcon.setNativeProps({style: UTILITY_STYLES.textHighlighted})}
+            onPressIn={() => this.backIcon.setNativeProps({style: StyleUtility.getHighlightColor(client)})}
             onPressOut={() => this.backIcon.setNativeProps({style: styles.backIcon})}
             onPress={this._goBack}
             >
@@ -144,7 +144,7 @@ class Header extends React.PureComponent {
   _renderBackTitle() {
     if (this.props.backTitle) {
       return (
-        <RN.Text allowFontScaling={false} numberOfLines={1} style={[UTILITY_STYLES.regularBlackText18, {maxWidth: getUsableDimensions().width - 140}, !this.props.backIcon && {marginLeft: 50}]}>
+        <RN.Text allowFontScaling={false} numberOfLines={1} style={[StyleUtility.UTILITY_STYLES.regularBlackText18, {maxWidth: StyleUtility.getUsableDimensions().width - 140}, !this.props.backIcon && {marginLeft: 50}]}>
           {this.props.backTitle}
         </RN.Text>
       )
@@ -155,7 +155,7 @@ class Header extends React.PureComponent {
     if (this.props.settingsIcon) {
       return (
         <RN.TouchableWithoutFeedback
-          onPressIn={() => this.settingsIcon.setNativeProps({style: UTILITY_STYLES.textHighlighted})}
+          onPressIn={() => this.settingsIcon.setNativeProps({style: StyleUtility.getHighlightColor(client)})}
           onPressOut={() => this.settingsIcon.setNativeProps({style: styles.settingsIcon})}
           onPress={this._onPressSettings}
           >
@@ -187,7 +187,7 @@ class Header extends React.PureComponent {
 
       return (
         <RN.TouchableWithoutFeedback
-          onPressIn={() => this.customIcon.setNativeProps({style: UTILITY_STYLES.textHighlighted})}
+          onPressIn={() => this.customIcon.setNativeProps({style: StyleUtility.getHighlightColor(client)})}
           onPressOut={() => this.customIcon.setNativeProps({style: styles.settingsIcon})}
           onPress={callback}
           >
@@ -203,7 +203,7 @@ class Header extends React.PureComponent {
     if (this.props.customButton) {
       return (
         <RN.TouchableOpacity onPress={this._onPressLeave} style={styles.button}>
-          <RN.Text style={[UTILITY_STYLES.lightBlackText16, UTILITY_STYLES.textHighlighted]}>
+          <RN.Text style={[StyleUtility.UTILITY_STYLES.lightBlackText16, StyleUtility.getHighlightColor(client)]}>
             {'Leave'}
           </RN.Text>
         </RN.TouchableOpacity>

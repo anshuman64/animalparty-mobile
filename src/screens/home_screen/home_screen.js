@@ -6,8 +6,8 @@ import RN    from 'react-native';
 import LoadingModal                            from '../../components/loading_modal/loading_modal.js';
 import ConnectionListItemContainer  from '../../components/connection_list_item/connection_list_item_container';
 import SectionListHeader            from '../../components/section_list_header/section_list_header';
-import ListHeader                   from '../../components/list_header/list_header';
-import ListFooter                   from '../../components/list_footer/list_footer';
+import ListHeaderContainer                   from '../../components/list_header/list_header_container';
+import ListFooterContainer                   from '../../components/list_footer/list_footer_container';
 import { UTILITY_STYLES, scaleFont }           from '../../utilities/style_utility';
 import { isStringEmpty }            from '../../utilities/function_utility';
 import * as AnimalUtility           from '../../utilities/animal_utility';
@@ -67,7 +67,7 @@ class HomeScreen extends React.PureComponent {
     this.isJoinQueuePressed = true;
 
     this.setState({ isLoading: true } , () => {
-      this.props.requestConnection(this.props.client.authToken, this.props.client.firebaseUserObj)
+      this.props.requestConnection(this.props.client.authToken, this.props.client.firebaseUserObj, this.props.client.id)
         .catch((error) => {
           defaultErrorAlert(error);
         })
@@ -97,7 +97,7 @@ class HomeScreen extends React.PureComponent {
   _renderHeader = () => {
     return (
       <RN.View>
-        <ListHeader text={'Share App With Friends'} iconName={'share'} callback={this._onPressShare} />
+        <ListHeaderContainer text={'Share App With Friends'} iconName={'share'} callback={this._onPressShare} />
       </RN.View>
     )
   }
@@ -111,7 +111,7 @@ class HomeScreen extends React.PureComponent {
 
     return (
       <RN.View>
-        <ListFooter footerWidth={footerWidth} text={text} highlightedText={highlightedText} callback={callback} />
+        <ListFooterContainer footerWidth={footerWidth} text={text} highlightedText={highlightedText} callback={callback} />
       </RN.View>
     )
   }

@@ -6,7 +6,7 @@ import AWS         from 'aws-sdk/dist/aws-sdk-react-native';
 import { Actions } from 'react-native-router-flux';
 
 // Local Imports
-import MenuListItem          from '../../components/menu_list_item/menu_list_item';
+import MenuListItemContainer          from '../../components/menu_list_item/menu_list_item_container';
 import { styles }            from './menu_screen_styles';
 import { UTILITY_STYLES }    from '../../utilities/style_utility';
 import { defaultErrorAlert } from '../../utilities/error_utility';
@@ -45,12 +45,12 @@ class MenuScreen extends React.PureComponent {
     return (
       <RN.View style={styles.container}>
         <RN.View>
-          <MenuListItem iconName={'envelope'}    text={'Contact'}              callback={() => RN.Linking.openURL('mailto:contact@animalparty.app')}/>
-          <MenuListItem iconName={'paper-plane'} text={'Telegram Community'}   callback={() => RN.Linking.openURL('https://t.me/animalpartyapp')}/>
-          <MenuListItem iconName={'docs'}        text={'Terms of Use'}         callback={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/terms-of-use-4b1c31695dfe')}/>
-          <MenuListItem iconName={'lock'}        text={'Privacy Policy'}       callback={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/privacy-policy-febc9c4cb192')}/>
-          <MenuListItem iconName={'people'}      text={'Community Guidelines'} callback={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/community-guidelines-b9ee2fe3daf4')}/>
-          <MenuListItem iconName={'logout'}      text={'Log Out'}              callback={this._logOut}/>
+          <MenuListItemContainer iconName={'envelope'}    text={'Contact'}              callback={() => RN.Linking.openURL('mailto:contact@animalparty.app')}/>
+          <MenuListItemContainer iconName={'paper-plane'} text={'Telegram Community'}   callback={() => RN.Linking.openURL('https://t.me/animalpartyapp')}/>
+          <MenuListItemContainer iconName={'docs'}        text={'Terms of Use'}         callback={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/terms-of-use-4b1c31695dfe')}/>
+          <MenuListItemContainer iconName={'lock'}        text={'Privacy Policy'}       callback={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/privacy-policy-febc9c4cb192')}/>
+          <MenuListItemContainer iconName={'people'}      text={'Community Guidelines'} callback={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/community-guidelines-b9ee2fe3daf4')}/>
+          <MenuListItemContainer iconName={'logout'}      text={'Log Out'}              callback={this._logOut}/>
         </RN.View>
         <RN.Text style={styles.attributionText}>
           {'Icons made by Freepik from www.flaticon.com'}

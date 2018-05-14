@@ -5,7 +5,7 @@ import Icon   from 'react-native-vector-icons/SimpleLineIcons';
 
 // Local Imports
 import { styles }         from './menu_list_item_styles';
-import { UTILITY_STYLES } from '../../utilities/style_utility';
+import { UTILITY_STYLES, getHighlightColor } from '../../utilities/style_utility';
 
 //--------------------------------------------------------------------//
 
@@ -24,11 +24,13 @@ class MenuListItem extends React.PureComponent {
   //--------------------------------------------------------------------//
 
   render() {
+    let client = this.props.usersCache[this.props.client.id];
+
     return(
       <RN.TouchableWithoutFeedback
         onPressIn={() => {
-          this.iconRef.setNativeProps({style: UTILITY_STYLES.textHighlighted})
-          this.textRef.setNativeProps({style: UTILITY_STYLES.textHighlighted})
+          this.iconRef.setNativeProps({style: getHighlightColor(client)})
+          this.textRef.setNativeProps({style: getHighlightColor(client)})
         }}
         onPressOut={() => {
           this.iconRef.setNativeProps({style: styles.menuItemIcon})

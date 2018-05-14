@@ -15,7 +15,7 @@ const mapStateToProps = ({ client, connections, usersCache }, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  requestConnection: (authToken, firebaseUserObj) => dispatch(requestConnection(authToken, firebaseUserObj)),
+  requestConnection: (authToken, firebaseUserObj, clientId) => dispatch(requestConnection(authToken, firebaseUserObj, clientId)),
   navigateTo: (screen, props) => dispatch(navigateTo(screen, props)),
 });
 

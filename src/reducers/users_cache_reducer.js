@@ -51,6 +51,11 @@ const UsersCacheReducer = (state = DEFAULT_STATE, action) => {
       });
 
       return newState;
+    case CONNECTION_ACTION_TYPES.RECEIVE_CONNECTION:
+      user = action.data.user;
+      newState[user.id] = user;
+
+      return newState;
 
   //--------------------------------------------------------------------//
   // Message Actions
