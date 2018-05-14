@@ -38,6 +38,25 @@ class HomeScreen extends React.PureComponent {
   }
 
   //--------------------------------------------------------------------//
+  // Constructor
+  //--------------------------------------------------------------------//
+
+  componentDidMount() {
+    if (this.props.isLogin) {
+      this.setState({ isLoading: true } , () => {
+        this.props.requestConnection(this.props.client.authToken, this.props.client.firebaseUserObj, this.props.client.id)
+          .catch((error) => {
+            defaultErrorAlert(error);
+          })
+          .finally(() => {
+            this.isJoinQueuePressed = false;
+            this.setState({ isLoading: false });
+          });
+      });
+    }
+  }
+
+  //--------------------------------------------------------------------//
   // Callback Methods
   //--------------------------------------------------------------------//
 

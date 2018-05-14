@@ -21,10 +21,10 @@ const ConnectionsReducer = (state = DEFAULT_STATE, action) => {
       newState.connections = action.data.connections.map((x) => x.id);
 
       return newState;
-    case CONNECTION_ACTION_TYPES.RECEIVE_CONNECTIONS:
+    case CONNECTION_ACTION_TYPES.RECEIVE_CONNECTION:
       userId = action.data.user.id;
 
-      if (userId != action.data.client.id) {
+      if (userId != action.data.clientId) {
         newState.connections.unshift(action.data.user.id);
       }
 

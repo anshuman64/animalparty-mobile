@@ -5,7 +5,7 @@ import OneSignal from 'react-native-onesignal';
 // Local Imports
 import { ENV_TYPES, PUSHER_ENV_SETTING } from '../app_config';
 import { getBaseUrl }                    from './api_utility';
-import { receiveConnection }       from '../actions/connection_actions';
+import { receiveConnection, removeConnection }       from '../actions/connection_actions';
 import { receiveMessage }                from '../actions/message_actions';
 
 //--------------------------------------------------------------------//
@@ -58,7 +58,12 @@ export const setPusherClient = (authToken, clientId) => (dispatch) => {
 
   // NOTE: the 'user' sending the Pusher message is defined as us, the 'client'.
   myChannel.bind('receive-connection', (data) => {
-    dispatch(receiveConnection({ user: data.client }));
+    dispatch(receiveConnection({ user: data.client, clientId: data.user_id }));
+  });
+
+  // NOTE: the 'user' sending the Pusher message is defined as us, the 'client'.
+  myChannel.bind('destroy-connection', (data) => {
+    dispatch(removeConnection({ userId: data.client_id }));
   });
 
   // NOTE: the 'user' sending the Pusher message is defined as us, the 'client'.

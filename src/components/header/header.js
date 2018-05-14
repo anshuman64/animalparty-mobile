@@ -96,6 +96,9 @@ class Header extends React.PureComponent {
   _onConfirmLeave = () => {
     this.setState({ isLoading: true },() => {
       this.props.deleteConnection(this.props.client.authToken, this.props.client.firebaseUserObj, this.props.userId)
+        .then(() => {
+          this.props.goBack();
+        })
         .catch((error) => {
           defaultErrorAlert(error);
         })

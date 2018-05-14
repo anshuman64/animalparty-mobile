@@ -53,7 +53,13 @@ const UsersCacheReducer = (state = DEFAULT_STATE, action) => {
       return newState;
     case CONNECTION_ACTION_TYPES.RECEIVE_CONNECTION:
       user = action.data.user;
+      clientId = action.data.clientId;
+
       newState[user.id] = user;
+
+      if (user.id != clientId) {
+        newState[clientId].queued_at = null;
+      }
 
       return newState;
 
