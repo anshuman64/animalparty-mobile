@@ -9,7 +9,7 @@ import SectionListHeader            from '../../components/section_list_header/s
 import ListHeaderContainer                   from '../../components/list_header/list_header_container';
 import ListFooterContainer                   from '../../components/list_footer/list_footer_container';
 import { UTILITY_STYLES, scaleFont }           from '../../utilities/style_utility';
-import { isStringEmpty }            from '../../utilities/function_utility';
+import { isStringEmpty, getRandomInt }            from '../../utilities/function_utility';
 import * as AnimalUtility           from '../../utilities/animal_utility';
 import { defaultErrorAlert }      from '../../utilities/error_utility';
 
@@ -59,7 +59,7 @@ class HomeScreen extends React.PureComponent {
 
     this.isSharedPressed = true;
 
-    let animalSound = AnimalUtility.ANIMAL_SOUNDS[Math.floor(Math.random() * AnimalUtility.ANIMAL_SOUNDS.length)];
+    let animalSound = AnimalUtility.ANIMAL_SOUNDS[getRandomInt(AnimalUtility.ANIMAL_SOUNDS.length)];
     let client = this.props.usersCache[this.props.client.id];
     let oppositeParty = AnimalUtility.getOppositeParty(client);
 

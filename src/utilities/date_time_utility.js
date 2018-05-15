@@ -2,17 +2,17 @@
 // Interface
 //--------------------------------------------------------------------//
 
-export const MONTH_NAMES = ["January", "February", "March", "April", "May",
+const MONTH_NAMES = ["January", "February", "March", "April", "May",
   "June", "July", "August", "September", "October", "November", "December"
 ];
 
-export const DAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const DAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-export const SHORT_MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "June",
+const SHORT_MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "June",
   "July", "Aug", "Sep", "Oct", "Nov", "Dec"
 ];
 
-export const SHORT_DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const SHORT_DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 // Prettifies date-time format on messages
 export const renderMessageDate = (date) => {
