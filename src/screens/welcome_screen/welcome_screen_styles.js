@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
     height: 33,
     marginRight: 13,
     borderWidth: 1,
-    borderColor: StyleUtility.COLORS.grey700
+    borderColor: StyleUtility.COLORS.grey900
   },
   checkboxHighlighted: {
     borderColor: StyleUtility.COLORS.appleBlue
@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
     fontWeight: '100',
     fontSize: StyleUtility.scaleFont(14),
     textAlign: 'left',
-    color: StyleUtility.COLORS.grey700,
+    color: StyleUtility.COLORS.grey900,
   },
 });
 

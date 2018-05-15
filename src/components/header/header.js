@@ -1,7 +1,7 @@
 // Library Imports
 import React       from 'react';
 import RN          from 'react-native';
-import Icon        from 'react-native-vector-icons/SimpleLineIcons';
+import Icon        from 'react-native-vector-icons/Octicons';
 import Ionicon     from 'react-native-vector-icons/Ionicons';
 
 // Local Imports
@@ -57,7 +57,7 @@ class Header extends React.PureComponent {
 
   _onPressHelp = () => {
     let oppositeParty = getOppositeParty(this.props.usersCache[this.props.client.id]);
-    RN.Alert.alert('', "You are in line to be matched with the next available " + oppositeParty + ". We'll notify you when you are matched!", [{text: 'OK', style: 'cancel'}]);
+    RN.Alert.alert('', "We will notify you when you are matched with the next available " + oppositeParty + "!", [{text: 'OK', style: 'cancel'}]);
   }
 
   _onPressJoinQueue = () => {
@@ -163,7 +163,7 @@ class Header extends React.PureComponent {
           onPress={this._onPressSettings}
           >
           <RN.View style={styles.button}>
-            <Icon ref={(ref) => this.settingsIcon = ref} name='options-vertical' style={styles.settingsIcon} />
+            <Icon ref={(ref) => this.settingsIcon = ref} name='kebab-vertical' style={styles.settingsIcon} />
           </RN.View>
         </RN.TouchableWithoutFeedback>
       )
@@ -185,19 +185,17 @@ class Header extends React.PureComponent {
   _renderCustomIcon() {
     if (this.props.customIcon) {
       let client = this.props.usersCache[this.props.client.id];
-      let icon = !client.queued_at ? 'plus' : 'question';
+      let text = !client.queued_at ? 'New' : 'Help';
       let callback = !client.queued_at ? this._onPressJoinQueue : this._onPressHelp;
 
       return (
-        <RN.TouchableWithoutFeedback
-          onPressIn={() => this.customIcon.setNativeProps({style: StyleUtility.getHighlightColor(client)})}
-          onPressOut={() => this.customIcon.setNativeProps({style: styles.settingsIcon})}
-          onPress={callback}
-          >
+        <RN.TouchableOpacity onPress={callback}>
           <RN.View style={styles.button}>
-            <Icon ref={(ref) => this.customIcon = ref} name={icon} style={styles.settingsIcon} />
+            <RN.Text style={[StyleUtility.UTILITY_STYLES.lightBlackText16, StyleUtility.getHighlightColor(client)]}>
+              {text}
+            </RN.Text>
           </RN.View>
-        </RN.TouchableWithoutFeedback>
+        </RN.TouchableOpacity>
       )
     }
   }
@@ -205,7 +203,7 @@ class Header extends React.PureComponent {
   _renderCustomButton() {
     if (this.props.customButton) {
       let client = this.props.usersCache[this.props.client.id];
-      
+
       return (
         <RN.TouchableOpacity onPress={this._onPressLeave} style={styles.button}>
           <RN.Text style={[StyleUtility.UTILITY_STYLES.lightBlackText16, StyleUtility.getHighlightColor(client)]}>

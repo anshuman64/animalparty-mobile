@@ -171,7 +171,11 @@ class MessagesScreen extends React.PureComponent {
     this.setState({ isLoading: true }, () => {
       this.props.createMessage(this.props.client.authToken, this.props.client.firebaseUserObj, this.props.client.id, this.props.userId, messageBody, this.state.medium || this.state.takePhotoMedium)
         .catch((error) => {
-          defaultErrorAlert(error);
+          if (error.message === 'User has been blocked') {
+            RN.Alert.alert('', 'The other user has left the conversation.', [{text: 'OK', style: 'cancel'}]);
+          } else {
+            defaultErrorAlert(error);
+          }
         })
         .finally(() => {
           this.isSendPressed = false;

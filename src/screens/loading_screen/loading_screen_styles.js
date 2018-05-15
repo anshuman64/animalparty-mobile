@@ -24,7 +24,7 @@ export const flipIcon = {
   },
   0.5: {
     rotate: '-180deg',
-    translateY: 15,
+    translateY: 10,
   },
   0.75: {
     rotate: '-270deg',

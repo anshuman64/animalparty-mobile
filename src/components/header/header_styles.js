@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     color: StyleUtility.COLORS.grey900
   },
   settingsIcon: {
-    fontSize: StyleUtility.scaleFont(16),
+    fontSize: StyleUtility.scaleFont(20),
     textAlign: 'center',
     color: StyleUtility.COLORS.grey900
   },
