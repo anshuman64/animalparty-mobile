@@ -4,8 +4,8 @@ import RN     from 'react-native';
 import Icon   from 'react-native-vector-icons/SimpleLineIcons';
 
 // Local Imports
-import { styles }         from './menu_list_item_styles';
-import { UTILITY_STYLES, getHighlightColor } from '../../utilities/style_utility';
+import { styles }            from './menu_list_item_styles';
+import { getHighlightColor } from '../../utilities/style_utility';
 
 //--------------------------------------------------------------------//
 

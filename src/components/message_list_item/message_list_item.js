@@ -5,12 +5,12 @@ import * as Animatable from 'react-native-animatable';
 import Hyperlink       from 'react-native-hyperlink';
 
 // Local Imports
-import MediumContainer          from '../medium/medium_container';
-import { styles }               from './message_list_item_styles';
-import * as StyleUtility        from '../../utilities/style_utility';
-import { renderMessageDate }    from '../../utilities/date_time_utility';
-import { setStateCallback }     from '../../utilities/function_utility';
-import { getAvatar }            from '../../utilities/animal_utility';
+import MediumContainer       from '../medium/medium_container';
+import { styles }            from './message_list_item_styles';
+import * as StyleUtility     from '../../utilities/style_utility';
+import { renderMessageDate } from '../../utilities/date_time_utility';
+import { setStateCallback }  from '../../utilities/function_utility';
+import { getAvatar }         from '../../utilities/animal_utility';
 
 //--------------------------------------------------------------------//
 

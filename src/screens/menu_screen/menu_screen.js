@@ -6,9 +6,8 @@ import AWS         from 'aws-sdk/dist/aws-sdk-react-native';
 import { Actions } from 'react-native-router-flux';
 
 // Local Imports
-import MenuListItemContainer          from '../../components/menu_list_item/menu_list_item_container';
+import MenuListItemContainer from '../../components/menu_list_item/menu_list_item_container';
 import { styles }            from './menu_screen_styles';
-import { UTILITY_STYLES }    from '../../utilities/style_utility';
 import { defaultErrorAlert } from '../../utilities/error_utility';
 
 //--------------------------------------------------------------------//

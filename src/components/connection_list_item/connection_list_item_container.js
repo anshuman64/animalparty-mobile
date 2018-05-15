@@ -2,8 +2,8 @@
 import { connect } from 'react-redux';
 
 // Local Imports
-import ConnectionListItem              from './connection_list_item';
-import { navigateTo } from '../../actions/navigation_actions';
+import ConnectionListItem  from './connection_list_item';
+import { navigateTo }      from '../../actions/navigation_actions';
 
 //--------------------------------------------------------------------//
 
@@ -13,7 +13,7 @@ const mapStateToProps = ({ client, usersCache }, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  navigateTo:         (screen, props) => dispatch(navigateTo(screen, props)),
+  navigateTo: (screen, props) => dispatch(navigateTo(screen, props)),
 });
 
 export default connect(

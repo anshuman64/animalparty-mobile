@@ -2,10 +2,9 @@
 import _ from 'lodash';
 
 // Local Imports
-import { getFile }                 from '../utilities/file_utility';
-import { MEDIUM_ACTION_TYPES }     from '../actions/medium_actions';
-import { CLIENT_ACTION_TYPES }     from '../actions/client_actions';
-import { MESSAGE_ACTION_TYPES }    from '../actions/message_actions';
+import { getFile }              from '../utilities/file_utility';
+import { MEDIUM_ACTION_TYPES }  from '../actions/medium_actions';
+import { MESSAGE_ACTION_TYPES } from '../actions/message_actions';
 
 //--------------------------------------------------------------------//
 

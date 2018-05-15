@@ -1,6 +1,3 @@
-// Library Imports
-import _ from 'lodash';
-
 // Local Imports
 import { refreshAuthToken } from './client_actions';
 

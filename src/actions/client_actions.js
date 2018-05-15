@@ -6,7 +6,7 @@ import OneSignal from 'react-native-onesignal';
 // Local Imports
 import { amplitude }                                  from '../utilities/analytics_utility';
 import * as APIUtility                                from '../utilities/api_utility';
-import { setS3Client, uploadFile }                    from '../utilities/file_utility';
+import { setS3Client }                                from '../utilities/file_utility';
 import { setPusherClient }                            from '../utilities/push_utility';
 import { setErrorDescription, refreshCredsAndResume } from '../utilities/error_utility';
 

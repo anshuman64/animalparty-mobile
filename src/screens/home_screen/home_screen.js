@@ -3,15 +3,15 @@ import React from 'react';
 import RN    from 'react-native';
 
 // Local Imports
-import LoadingModal                            from '../../components/loading_modal/loading_modal.js';
-import ConnectionListItemContainer  from '../../components/connection_list_item/connection_list_item_container';
-import SectionListHeader            from '../../components/section_list_header/section_list_header';
-import ListHeaderContainer                   from '../../components/list_header/list_header_container';
-import ListFooterContainer                   from '../../components/list_footer/list_footer_container';
-import { UTILITY_STYLES, scaleFont }           from '../../utilities/style_utility';
-import { isStringEmpty, getRandomInt }            from '../../utilities/function_utility';
-import * as AnimalUtility           from '../../utilities/animal_utility';
-import { defaultErrorAlert }      from '../../utilities/error_utility';
+import LoadingModal                  from '../../components/loading_modal/loading_modal.js';
+import ConnectionListItemContainer   from '../../components/connection_list_item/connection_list_item_container';
+import SectionListHeader             from '../../components/section_list_header/section_list_header';
+import ListHeaderContainer           from '../../components/list_header/list_header_container';
+import ListFooterContainer           from '../../components/list_footer/list_footer_container';
+import { UTILITY_STYLES, scaleFont } from '../../utilities/style_utility';
+import { getRandomInt }              from '../../utilities/function_utility';
+import * as AnimalUtility            from '../../utilities/animal_utility';
+import { defaultErrorAlert }         from '../../utilities/error_utility';
 
 //--------------------------------------------------------------------//
 

@@ -5,11 +5,11 @@ import Icon        from 'react-native-vector-icons/Octicons';
 import Ionicon     from 'react-native-vector-icons/Ionicons';
 
 // Local Imports
-import LoadingModal                            from '../loading_modal/loading_modal.js';
-import { styles }                              from './header_styles';
-import * as StyleUtility from '../../utilities/style_utility';
-import { getOppositeParty }                    from '../../utilities/animal_utility';
-import { defaultErrorAlert }                   from '../../utilities/error_utility';
+import LoadingModal           from '../loading_modal/loading_modal.js';
+import { styles }             from './header_styles';
+import * as StyleUtility      from '../../utilities/style_utility';
+import { getOppositeParty }   from '../../utilities/animal_utility';
+import { defaultErrorAlert }  from '../../utilities/error_utility';
 
 //--------------------------------------------------------------------//
 

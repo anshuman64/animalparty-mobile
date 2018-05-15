@@ -4,7 +4,7 @@ import RN     from 'react-native';
 import Icon   from 'react-native-vector-icons/SimpleLineIcons';
 
 // Local Imports
-import { styles }         from './list_header_styles';
+import { styles }                            from './list_header_styles';
 import { UTILITY_STYLES, getHighlightColor } from '../../utilities/style_utility';
 
 //--------------------------------------------------------------------//

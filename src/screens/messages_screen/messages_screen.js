@@ -6,15 +6,15 @@ import ImagePicker from 'react-native-image-crop-picker';
 import Icon        from 'react-native-vector-icons/SimpleLineIcons';
 
 // Local Imports
-import ListFooterContainer                         from '../../components/list_footer/list_footer_container';
-import HeaderContainer                    from '../../components/header/header_container';
-import MessageListItemContainer           from '../../components/message_list_item/message_list_item_container';
-import { styles }                         from './messages_screen_styles';
-import { pusher }                         from '../../utilities/push_utility';
-import { isStringEmpty, setStateCallback} from '../../utilities/function_utility';
-import { getUsername }                    from '../../utilities/animal_utility';
-import * as StyleUtility                  from '../../utilities/style_utility';
-import { defaultErrorAlert }              from '../../utilities/error_utility';
+import ListFooterContainer      from '../../components/list_footer/list_footer_container';
+import HeaderContainer          from '../../components/header/header_container';
+import MessageListItemContainer from '../../components/message_list_item/message_list_item_container';
+import { styles }               from './messages_screen_styles';
+import { pusher }               from '../../utilities/push_utility';
+import { isStringEmpty }        from '../../utilities/function_utility';
+import { getUsername }          from '../../utilities/animal_utility';
+import * as StyleUtility        from '../../utilities/style_utility';
+import { defaultErrorAlert }    from '../../utilities/error_utility';
 
 //--------------------------------------------------------------------//
 

@@ -3,10 +3,10 @@ import Pusher    from 'pusher-js/react-native';
 import OneSignal from 'react-native-onesignal';
 
 // Local Imports
-import { ENV_TYPES, PUSHER_ENV_SETTING } from '../app_config';
-import { getBaseUrl }                    from './api_utility';
-import { receiveConnection, removeConnection }       from '../actions/connection_actions';
-import { receiveMessage }                from '../actions/message_actions';
+import { ENV_TYPES, PUSHER_ENV_SETTING }       from '../app_config';
+import { getBaseUrl }                          from './api_utility';
+import { receiveConnection, removeConnection } from '../actions/connection_actions';
+import { receiveMessage }                      from '../actions/message_actions';
 
 //--------------------------------------------------------------------//
 

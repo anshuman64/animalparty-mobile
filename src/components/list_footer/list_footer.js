@@ -3,7 +3,7 @@ import React from 'react';
 import RN    from 'react-native';
 
 // Local Imports
-import { styles }                              from './list_footer_styles';
+import { styles }        from './list_footer_styles';
 import * as StyleUtility from '../../utilities/style_utility';
 
 //--------------------------------------------------------------------//

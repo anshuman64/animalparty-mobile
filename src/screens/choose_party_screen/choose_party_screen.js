@@ -1,12 +1,12 @@
 // Library Imports
-import React from 'react';
-import RN    from 'react-native';
+import React           from 'react';
+import RN              from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 // Local Imports
-import HeaderContainer                    from '../../components/header/header_container';
-import { styles }         from './choose_party_screen_styles';
-import { defaultErrorAlert } from '../../utilities/error_utility';
+import HeaderContainer            from '../../components/header/header_container';
+import { styles }                 from './choose_party_screen_styles';
+import { defaultErrorAlert }      from '../../utilities/error_utility';
 import { UTILITY_STYLES, COLORS } from '../../utilities/style_utility';
 
 //--------------------------------------------------------------------//

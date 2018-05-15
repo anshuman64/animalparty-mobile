@@ -4,9 +4,9 @@ import RN              from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 // Local Imports
-import * as Styles from './welcome_screen_styles';
-import { UTILITY_STYLES }                                   from '../../utilities/style_utility';
-import { setStateCallback }                                 from '../../utilities/function_utility';
+import * as Styles          from './welcome_screen_styles';
+import { UTILITY_STYLES }   from '../../utilities/style_utility';
+import { setStateCallback } from '../../utilities/function_utility';
 
 //--------------------------------------------------------------------//
 

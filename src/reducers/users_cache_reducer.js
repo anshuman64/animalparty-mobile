@@ -2,9 +2,9 @@
 import _ from 'lodash';
 
 // Local Imports
-import { CLIENT_ACTION_TYPES }                   from '../actions/client_actions';
+import { CLIENT_ACTION_TYPES }     from '../actions/client_actions';
 import { CONNECTION_ACTION_TYPES } from '../actions/connection_actions';
-import { MESSAGE_ACTION_TYPES } from '../actions/message_actions';
+import { MESSAGE_ACTION_TYPES }    from '../actions/message_actions';
 
 //--------------------------------------------------------------------//
 
@@ -70,7 +70,7 @@ const UsersCacheReducer = (state = DEFAULT_STATE, action) => {
     //--------------------------------------------------------------------//
     // Message Actions
     //--------------------------------------------------------------------//
-    
+
     case MESSAGE_ACTION_TYPES.RECEIVE_MESSAGE:
       userId = action.data.userId;
       newState[userId].peek_message = action.data.message;

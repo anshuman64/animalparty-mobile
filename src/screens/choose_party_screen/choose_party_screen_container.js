@@ -2,14 +2,14 @@
 import { connect } from 'react-redux';
 
 // Local Imports
-import ChoosePartyScreen from './choose_party_screen';
-import { editParty }     from '../../actions/client_actions';
-import { navigateTo, goBack }    from '../../actions/navigation_actions';
+import ChoosePartyScreen      from './choose_party_screen';
+import { editParty }          from '../../actions/client_actions';
+import { navigateTo, goBack } from '../../actions/navigation_actions';
 
 //--------------------------------------------------------------------//
 
 const mapStateToProps = ({ client }, ownProps) => ({
-  client:        client,
+  client: client,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

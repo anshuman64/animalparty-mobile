@@ -2,7 +2,7 @@
 import { Alert } from 'react-native';
 
 // Local Imports
-import { amplitude } from './analytics_utility';
+import { amplitude }        from './analytics_utility';
 import { refreshAuthToken } from '../actions/client_actions';
 
 //--------------------------------------------------------------------//

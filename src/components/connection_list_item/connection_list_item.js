@@ -3,10 +3,10 @@ import React from 'react';
 import RN    from 'react-native';
 
 // Local Imports
-import { styles }                  from './connection_list_item_styles';
+import { styles }                 from './connection_list_item_styles';
 import * as StyleUtility          from '../../utilities/style_utility';
-import * as AnimalUtility       from '../../utilities/animal_utility';
-import { renderConversationDate }  from '../../utilities/date_time_utility';
+import * as AnimalUtility         from '../../utilities/animal_utility';
+import { renderConversationDate } from '../../utilities/date_time_utility';
 
 //--------------------------------------------------------------------//
 
