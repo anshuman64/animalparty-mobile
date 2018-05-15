@@ -366,6 +366,8 @@ class MessagesScreen extends React.PureComponent {
   }
 
   _renderHeader() {
+    let backTitle = getUsername(this.props.usersCache[this.props.userId]) + "'s Messages";
+
     return (
       <HeaderContainer
         backIcon={true}
@@ -377,8 +379,6 @@ class MessagesScreen extends React.PureComponent {
   }
 
   render() {
-    let backTitle = getUsername(this.props.usersCache[this.props.userId]) + "'s Messages";
-
     return (
       <RN.KeyboardAvoidingView behavior={RN.Platform.OS === 'ios' ? 'padding' : null}>
         <RN.View style={StyleUtility.UTILITY_STYLES.containerStart}>

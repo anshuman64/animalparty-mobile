@@ -63,7 +63,7 @@ class HomeScreen extends React.PureComponent {
     let client = this.props.usersCache[this.props.client.id];
     let oppositeParty = AnimalUtility.getOppositeParty(client);
 
-    RN.Share.share({message: animalSound + "! I'm talking to a " + oppositeParty + " on the Animal Party app. You should try it, too!\n\n-- Download Now --\nhttps://animalparty.app/?utm_source=app&utm_term=share" })
+    RN.Share.share({message: "*" + animalSound + "* I'm talking to a " + oppositeParty + " on the Animal Party app. You should try it, too!\n\n-- Download Now --\nhttps://animalparty.app/?utm_source=app&utm_term=share" })
       .finally(() => {
         this.isSharedPressed = false;
       });
