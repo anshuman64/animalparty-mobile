@@ -204,6 +204,8 @@ class Header extends React.PureComponent {
 
   _renderCustomButton() {
     if (this.props.customButton) {
+      let client = this.props.usersCache[this.props.client.id];
+      
       return (
         <RN.TouchableOpacity onPress={this._onPressLeave} style={styles.button}>
           <RN.Text style={[StyleUtility.UTILITY_STYLES.lightBlackText16, StyleUtility.getHighlightColor(client)]}>

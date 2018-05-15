@@ -105,7 +105,7 @@ class LoadingScreen extends React.PureComponent {
       if (this.navigateToNotification) {
         // If opening app via notification, go to the screen you intended to go to
         if (this.navigateToNotification === 'MessagesScreen') {
-          this.props.navigateTo('FriendScreen'); // NOTE: leave this here so that MessageScreen back doesn't go to login screen
+          this.props.navigateTo('HomeScreen'); // NOTE: leave this here so that MessageScreen back doesn't go to login screen
           this.props.navigateTo('MessagesScreen', { userId: this.navigateToMessages });
         } else {
           this.props.navigateTo(this.navigateToNotification);
@@ -154,42 +154,22 @@ class LoadingScreen extends React.PureComponent {
   }
 
   _onOpened = (openResult) => {
-    // let data = openResult.notification.payload.additionalData;
-    //
-    // switch (data.type) {
-    //   case 'receive-like':
-    //     amplitude.logEvent('Notifications - Receive Like', { is_opened: true });
-    //     this.navigateToNotification = 'AuthoredScreen';
-    //     break;
-    //   case 'receive-friendship':
-    //     amplitude.logEvent('Notifications - Receive Friendship', { is_opened: true });
-    //     this.navigateToNotification = 'PendingScreen';
-    //     break;
-    //   case 'welcome-contact':
-    //     amplitude.logEvent('Notifications - Welcome Contact', { is_opened: true });
-    //     this.navigateToNotification = 'PendingScreen';
-    //     break;
-    //   case 'receive-accepted-friendship':
-    //     amplitude.logEvent('Notifications - Receive Accepted Friendship', { is_opened: true });
-    //     this.navigateToNotification = 'FriendScreen';
-    //     break;
-    //   case 'receive-group':
-    //     amplitude.logEvent('Notifications - Receive Group', { is_opened: true });
-    //     this.navigateToNotification = 'FriendScreen';
-    //     break;
-    //   case 'receive-post':
-    //     amplitude.logEvent('Notifications - Receive Post', { is_opened: true });
-    //     this.navigateToNotification = 'HomeScreen';
-    //     break;
-    //   case 'receive-message':
-    //     amplitude.logEvent('Notifications - Receive Message', { is_opened: true });
-    //     this.navigateToNotification = 'MessagesScreen';
-    //     this.navigateToMessages     = data.client_id ? data.client_id : -1 * data.group_id;
-    //     break;
-    //   default:
-    //     amplitude.logEvent('Notifications - Unknown', { is_opened: true });
-    //     this.navigateToNotification = 'HomeScreen';
-    // }
+    let data = openResult.notification.payload.additionalData;
+
+    switch (data.type) {
+      case 'receive-connection':
+        amplitude.logEvent('Notifications - Receive Connection', { is_opened: true });
+        this.navigateToNotification = 'HomeScreen';
+        break;
+      case 'receive-message':
+        amplitude.logEvent('Notifications - Receive Message', { is_opened: true });
+        this.navigateToNotification = 'MessagesScreen';
+        this.navigateToMessages     = data.client_id;
+        break;
+      default:
+        amplitude.logEvent('Notifications - Unknown', { is_opened: true });
+        this.navigateToNotification = 'HomeScreen';
+    }
   }
 
   _onLogin = () => {
