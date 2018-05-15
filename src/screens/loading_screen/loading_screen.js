@@ -7,7 +7,7 @@ import OneSignal       from 'react-native-onesignal';
 
 // Local Imports
 import { amplitude }           from '../../utilities/analytics_utility';
-import { styles, pulseIcon }   from './loading_screen_styles';
+import { styles, flipIcon }    from './loading_screen_styles';
 import { defaultErrorAlert }   from '../../utilities/error_utility';
 import { UTILITY_STYLES }      from '../../utilities/style_utility';
 
@@ -203,9 +203,9 @@ class LoadingScreen extends React.PureComponent {
         style={styles.icon}
         source={require('../../assets/images/icon/icon.png')}
         resizeMode={'cover'}
-        animation={pulseIcon}
-        direction={'alternate'}
-        easing={'ease-in'}
+        animation={flipIcon}
+        direction={'normal'}
+        easing={'ease-in-out'}
         duration={1500}
         iterationCount={20}
         onAnimationEnd={this._onAnimationEnd}
