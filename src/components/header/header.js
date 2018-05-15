@@ -220,7 +220,6 @@ class Header extends React.PureComponent {
   render() {
     return (
       <RN.View style={[styles.header, styles.border]}>
-        {this._renderBlank()}
         {(this.props.backTitle && !this.props.backIcon) ? this._renderBackTitle() : this._renderBackIcon()}
         {this._renderSettingsIcon()}
         {this._renderLogo()}
