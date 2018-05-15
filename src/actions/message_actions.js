@@ -19,10 +19,15 @@ export const MESSAGE_ACTION_TYPES = {
 // Action Creators
 //--------------------------------------------------------------------//
 
+// messages (array): array of messages in conversation with user
+// userId (int): id of user
+// isNew (bool): bool if messsages are new messages or older ones
 export const receiveMessages = (data) => {
   return { type: MESSAGE_ACTION_TYPES.RECEIVE_MESSAGES, data: data };
 };
 
+// userId (int): id of user
+// message (message object): message object of created message
 export const receiveMessage = (data) => {
   return { type: MESSAGE_ACTION_TYPES.RECEIVE_MESSAGE, data: data };
 };

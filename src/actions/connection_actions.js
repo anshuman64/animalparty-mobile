@@ -19,14 +19,18 @@ export const CONNECTION_ACTION_TYPES = {
 // Action Creators
 //--------------------------------------------------------------------//
 
+// connections (array of users): array of users that the client has connected with
 export const receiveConnections = (data) => {
   return { type: CONNECTION_ACTION_TYPES.RECEIVE_CONNECTIONS, data: data };
 };
 
+// user (user object): either 1) the user the client has connected with or 2) the client with updated queued_at
+// clientId (int): id of client to figure out if user is #1 or #2
 export const receiveConnection = (data) => {
   return { type: CONNECTION_ACTION_TYPES.RECEIVE_CONNECTION, data: data };
 };
 
+// userId (int): user id of user to be removed
 export const removeConnection = (data) => {
   return { type: CONNECTION_ACTION_TYPES.REMOVE_CONNECTION, data: data };
 };

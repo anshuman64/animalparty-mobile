@@ -12,9 +12,9 @@ import { setStateCallback } from '../../utilities/function_utility';
 
 /*
 Required Screen Props:
-
+  -
 Optional Screen Props:
-
+  -
 */
 class WelcomeScreen extends React.PureComponent {
 

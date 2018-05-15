@@ -205,7 +205,7 @@ export const refreshAuthToken = (firebaseUserObj) => (dispatch) => {
     });
 }
 
-// PUT request to API to edit client party from UsernameScreen
+// PUT request to API to edit client party from ChoosePartyScreen
 export const editParty = (authToken, firebaseUserObj, party) => (dispatch) => {
   return APIUtility.put(authToken, '/users', { political_party: party, queued_at: null })
   .then((editedUser) => {

@@ -17,7 +17,13 @@ import { defaultErrorAlert }  from '../../utilities/error_utility';
 Required Passed Props:
   -
 Optional Passed Props:
-  TODO
+  userId (int): user id for leave conversation
+  backIcon (bool): if should render backIcon
+  backTitle (string): title to go with backIcon
+  settingsIcon (bool): if should render settingsIcon for MenuScreen
+  logo (bool): if should render logo
+  homeScreenButton (bool): if should render New/Help button on HomeScreen
+  messagesScreenButton (bool): if should render Leave button on MessagesScreen
 */
 class Header extends React.PureComponent {
 
@@ -213,7 +219,7 @@ class Header extends React.PureComponent {
 
   render() {
     return (
-      <RN.View style={[styles.header, !this.props.noBorder && styles.border]}>
+      <RN.View style={[styles.header, styles.border]}>
         {this._renderBlank()}
         {(this.props.backTitle && !this.props.backIcon) ? this._renderBackTitle() : this._renderBackIcon()}
         {this._renderSettingsIcon()}

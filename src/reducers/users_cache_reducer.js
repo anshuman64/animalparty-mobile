@@ -11,17 +11,17 @@ import { MESSAGE_ACTION_TYPES }    from '../actions/message_actions';
 /*
 Data is in the form {
   userId1: {
-    id:                            30,
-    firebase_uid:                  jhlakjsdhfalkjyewou,
-    phone_number:                  '+14082551245',
-    email:                         null,
-    political_party:               'DEMOCRAT',
-    is_banned:                     false,
-    last_login:                    Date(),
-    queued_at:                     Date(),
-    created_at:                    Date(),
-    updated_at:                    Date(),
-    peek_message:                  {messageObj}
+    id:              30,
+    firebase_uid:    jhlakjsdhfalkjyewou,
+    phone_number:    '+14082551245',
+    email:           null,
+    political_party: 'DEMOCRAT',
+    is_banned:       false,
+    last_login:      Date(),
+    queued_at:       Date(),
+    created_at:      Date(),
+    updated_at:      Date(),
+    peek_message:    {messageObj}
   },
   userId2: {...
 */

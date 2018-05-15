@@ -11,7 +11,7 @@ import { styles } from './section_list_header_styles';
 Required Passed Props:
   title (string): title to display
 Optional Passed Props:
-  TODO
+  callback (func): callback when header is pressed
 */
 class SectionListHeader extends React.PureComponent {
 

@@ -12,7 +12,7 @@ import { renderConversationDate } from '../../utilities/date_time_utility';
 
 /*
 Required Passed Props:
-  userId (int): id of the user or group of the conversation
+  userId (int): id of the user
 Optional Passed Props:
   -
 */

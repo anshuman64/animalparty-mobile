@@ -21,6 +21,8 @@ import { defaultErrorAlert }    from '../../utilities/error_utility';
 /*
 Required Screen Props:
   userId (id): id of group or user whose conversation it is with
+Optional Screen Props:
+  -
 */
 class MessagesScreen extends React.PureComponent {
 
@@ -166,7 +168,7 @@ class MessagesScreen extends React.PureComponent {
     }
 
     this.isSendPressed = true;
-    let messageBody = isStringEmpty(this.state.messageText) ? null : this.state.messageText; // sets post body as null if there is no text
+    let messageBody = isStringEmpty(this.state.messageText) ? null : this.state.messageText; // sets message body as null if there is no text
 
     this.setState({ isLoading: true }, () => {
       this.props.createMessage(this.props.client.authToken, this.props.client.firebaseUserObj, this.props.client.id, this.props.userId, messageBody, this.state.medium || this.state.takePhotoMedium)

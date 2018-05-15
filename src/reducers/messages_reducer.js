@@ -12,12 +12,10 @@ Data is in the form {
     id:            30,
     body:          hello world!,
     author_id:     1,
-    friendship_id: 0,
-    post_id:       30,
+    connection_id: 0,
     created_at:    2018-01-18T23:48:06.000Z,
     updated_at:    2018-01-18T23:48:06.000Z,
     medium:        {mediumObj}
-    post:          {postObj}
   }, {
     ...another message object
   }]

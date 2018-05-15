@@ -15,7 +15,7 @@ import { UTILITY_STYLES, COLORS } from '../../utilities/style_utility';
 Required Screen Props:
   -
 Optional Screen Props:
-  -
+  isLogin (bool): if this is a new user going through onboarding for first time
 */
 class ChoosePartyScreen extends React.PureComponent {
 

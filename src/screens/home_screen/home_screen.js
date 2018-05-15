@@ -19,7 +19,7 @@ import { defaultErrorAlert }         from '../../utilities/error_utility';
 Required Screen Props:
   -
 Optional Screen Props:
-  -
+  isLogin (bool): if this is a new user coming to HomeScreen for first time
 */
 class HomeScreen extends React.PureComponent {
 

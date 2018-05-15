@@ -11,9 +11,11 @@ import { COUNTRY_CODES } from '../../utilities/country_utility';
 
 /*
 Required Passed Props:
-
+  isModalVisible (bool): determines if modal should be visible
+  setParentState (func): used on CancelButton to close modal
 Optional Passed Props:
-
+  countryIndex (int): index of selected country in country_utility to determine scroll position
+  setCountry (func): changes LoginScreen state with new country and country code. Used as proxy for login screen
 */
 class ListModal extends React.PureComponent {
 
