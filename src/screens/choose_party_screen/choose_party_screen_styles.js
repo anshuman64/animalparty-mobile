@@ -14,15 +14,58 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     height: '100%',
+    backgroundColor: StyleUtility.COLORS.grey50
   },
-  blueView: {
-    width: '50%',
-    height: '100%',
-    backgroundColor: 'blue',
+  partyView: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    flex: 1,
+    borderWidth: 10,
+    borderColor: StyleUtility.COLORS.grey50
   },
-  redView: {
-    width: '50%',
-    height: '100%',
-    backgroundColor: 'red',
-  }
+  choosePartyView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: 70,
+  },
+  horizontalLine: {
+    alignSelf: 'flex-start',
+    width: (StyleUtility.getUsableDimensions().width - StyleUtility.scaleFont(150)) / 2 - 30, // Device width minus footerText width over 2 minus aesthetic value
+    height: '50%',
+    borderBottomWidth: 1.5,
+    borderBottomColor: StyleUtility.COLORS.grey900,
+    marginLeft: 15,
+    marginRight: 15
+  },
+  choosePartyText: {
+    fontFamily: StyleUtility.setAndroidFont('Roboto-Black'),
+    fontSize: 24,
+    fontWeight: '400',
+    textAlign: 'center',
+    color: StyleUtility.COLORS.grey900,
+  },
+  animal: {
+    height: 120,
+    tintColor: 'white'
+  },
+  titleText: {
+    fontFamily: StyleUtility.setAndroidFont('Roboto-Black'),
+    fontSize: 28,
+    fontWeight: '400',
+    textAlign: 'center',
+    color: 'white',
+    marginTop: 10
+  },
+  subtitleText: {
+    fontFamily: StyleUtility.setAndroidFont('Roboto-Bold'),
+    fontSize: 22,
+    fontWeight: '400',
+    textAlign: 'center',
+    color: 'white',
+    marginTop: 5
+  },
 });
