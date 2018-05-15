@@ -163,7 +163,7 @@ class WelcomeScreen extends React.PureComponent {
         disabled={!this.state.isChecked}
         >
         <RN.Text allowFontScaling={false} style={[UTILITY_STYLES.lightWhiteText18, !this.state.isChecked && UTILITY_STYLES.nextButtonTextDisabled]}>
-          Next
+          {'Next'}
         </RN.Text>
       </RN.TouchableOpacity>
     )

@@ -57,7 +57,7 @@ class Header extends React.PureComponent {
 
   _onPressHelp = () => {
     let oppositeParty = getOppositeParty(this.props.usersCache[this.props.client.id]);
-    RN.Alert.alert('', "We will notify you when you are matched with the next available " + oppositeParty + "!", [{text: 'OK', style: 'cancel'}]);
+    RN.Alert.alert('', "We will notify you when you are matched with the next available " + oppositeParty + ".", [{text: 'OK', style: 'cancel'}]);
   }
 
   _onPressJoinQueue = () => {
@@ -112,14 +112,6 @@ class Header extends React.PureComponent {
   //--------------------------------------------------------------------//
   // Render Methods
   //--------------------------------------------------------------------//
-
-  _renderBlank() {
-    if (this.props.blank) {
-      return (
-        <RN.View />
-      )
-    }
-  }
 
   _renderBackIcon() {
     if (this.props.backIcon) {
@@ -182,11 +174,24 @@ class Header extends React.PureComponent {
     }
   }
 
-  _renderCustomIcon() {
-    if (this.props.customIcon) {
+  _renderCustomButton() {
+    if (this.props.homeScreenButton || this.props.messagesScreenButton) {
       let client = this.props.usersCache[this.props.client.id];
-      let text = !client.queued_at ? 'New' : 'Help';
-      let callback = !client.queued_at ? this._onPressJoinQueue : this._onPressHelp;
+      let text;
+      let callback;
+
+      if (this.props.homeScreenButton) {
+        if (!client.queued_at) {
+          text = 'New';
+          callback = this._onPressJoinQueue;
+        } else {
+          text = 'Help';
+          callback = this._onPressHelp;
+        }
+      } else if (this.props.messagesScreenButton) {
+        text = 'Leave';
+        callback = this._onPressLeave;
+      }
 
       return (
         <RN.TouchableOpacity onPress={callback}>
@@ -195,20 +200,6 @@ class Header extends React.PureComponent {
               {text}
             </RN.Text>
           </RN.View>
-        </RN.TouchableOpacity>
-      )
-    }
-  }
-
-  _renderCustomButton() {
-    if (this.props.customButton) {
-      let client = this.props.usersCache[this.props.client.id];
-
-      return (
-        <RN.TouchableOpacity onPress={this._onPressLeave} style={styles.button}>
-          <RN.Text allowFontScaling={false} style={[StyleUtility.UTILITY_STYLES.lightBlackText16, StyleUtility.getHighlightColor(client)]}>
-            {'Leave'}
-          </RN.Text>
         </RN.TouchableOpacity>
       )
     }
@@ -227,7 +218,6 @@ class Header extends React.PureComponent {
         {(this.props.backTitle && !this.props.backIcon) ? this._renderBackTitle() : this._renderBackIcon()}
         {this._renderSettingsIcon()}
         {this._renderLogo()}
-        {this._renderCustomIcon()}
         {this._renderCustomButton()}
         {this._renderLoadingModal()}
       </RN.View>

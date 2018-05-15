@@ -214,7 +214,7 @@ class LoginScreen extends React.PureComponent {
     return (
       <RN.View style={styles.invalidNumberTextView}>
         <RN.Text allowFontScaling={false} style={[styles.invalidNumberText, !this.state.isPhoneNumberInvalid && UTILITY_STYLES.transparentText]}>
-          Invalid Number
+          {'Invalid Number'}
         </RN.Text>
       </RN.View>
     )
@@ -228,7 +228,7 @@ class LoginScreen extends React.PureComponent {
         disabled={this.state.isNextButtonDisabled || this.state.isLoading}
         >
         <RN.Text allowFontScaling={false} style={[UTILITY_STYLES.lightWhiteText18, this.state.isNextButtonDisabled && UTILITY_STYLES.nextButtonTextDisabled]}>
-          Next
+          {'Next'}
         </RN.Text>
       </RN.TouchableOpacity>
     )

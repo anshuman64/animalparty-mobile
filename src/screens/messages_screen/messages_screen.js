@@ -212,13 +212,9 @@ class MessagesScreen extends React.PureComponent {
   //--------------------------------------------------------------------//
 
   _setupPusher = () => {
-    if (this.props.userId < 0) {
-      this.convoChannelName = 'private-group-' + (-1 * this.props.userId);
-    } else if (this.props.userId > 0) {
-      smallerId = this.props.client.id < this.props.userId ? this.props.client.id : this.props.userId;
-      biggerId = this.props.client.id > this.props.userId ? this.props.client.id : this.props.userId;
-      this.convoChannelName = 'private-convo-' + smallerId + '-' + biggerId;
-    }
+    smallerId = this.props.client.id < this.props.userId ? this.props.client.id : this.props.userId;
+    biggerId = this.props.client.id > this.props.userId ? this.props.client.id : this.props.userId;
+    this.convoChannelName = 'private-convo-' + smallerId + '-' + biggerId;
 
     convoChannel = pusher.subscribe(this.convoChannelName);
 
@@ -303,7 +299,7 @@ class MessagesScreen extends React.PureComponent {
     )
   }
 
-  _renderFooter = () => {
+  _renderListFooter = () => {
     let messages = this.props.messages[this.props.userId];
 
     if (messages && messages.isEnd) {
@@ -319,7 +315,7 @@ class MessagesScreen extends React.PureComponent {
     }
   }
 
-  _renderHeader = () => {
+  _renderListHeader = () => {
     let isUserTyping = this.state.usersTyping.length > 0;
 
     if (this.state.isLoading || isUserTyping) {
@@ -359,10 +355,21 @@ class MessagesScreen extends React.PureComponent {
         showsVerticalScrollIndicator={false}
         inverted={true}
         onEndReached={this._onEndReached}
-        ListFooterComponent={this._renderFooter}
-        ListHeaderComponent={this._renderHeader}
+        ListFooterComponent={this._renderListFooter}
+        ListHeaderComponent={this._renderListHeader}
         onMomentumScrollBegin={() => this.onEndReachedCalledDuringMomentum = false}
         onEndReachedThreshold={0.01}
+        />
+    )
+  }
+
+  _renderHeader() {
+    return (
+      <HeaderContainer
+        backIcon={true}
+        backTitle={backTitle}
+        messagesScreenButton={true}
+        userId={this.props.userId}
         />
     )
   }
@@ -373,12 +380,7 @@ class MessagesScreen extends React.PureComponent {
     return (
       <RN.KeyboardAvoidingView behavior={RN.Platform.OS === 'ios' ? 'padding' : null}>
         <RN.View style={StyleUtility.UTILITY_STYLES.containerStart}>
-          <HeaderContainer
-            backIcon={true}
-            backTitle={backTitle}
-            customButton={true}
-            userId={this.props.userId}
-            />
+          {this._renderHeader()}
           {this._renderMessageList()}
           {this._renderTextInputRow()}
         </RN.View>

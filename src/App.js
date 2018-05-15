@@ -98,7 +98,7 @@ class App extends React.Component {
             <Scene key='ChoosePartyScreen'      component={ChoosePartyScreenContainer} panHandlers={null} hideNavBar={true} />
             <Scene key='MessagesScreen'         component={MessagesScreenContainer}    panHandlers={null} hideNavBar={true} />
 
-            <Scene key='HomeScreen'             component={HomeScreenContainer}        panHandlers={null} navBar={() => <HeaderContainer logo={true} settingsIcon={true} customIcon={true} />} />
+            <Scene key='HomeScreen'             component={HomeScreenContainer}        panHandlers={null} navBar={() => <HeaderContainer logo={true} settingsIcon={true} homeScreenButton={true} />} />
             <Scene key='ConfirmCodeScreen'      component={ConfirmCodeScreenContainer} panHandlers={null} navBar={() => <HeaderContainer backTitle={'Confirm Code'} backIcon={true} />}  />
             <Scene key='MenuScreen'             component={MenuScreenContainer}                 panHandlers={null} navBar={() => <HeaderContainer backTitle={'Settings'}     backIcon={true} />} />
           </Scene>

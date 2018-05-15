@@ -34,14 +34,18 @@ const UsersCacheReducer = (state = DEFAULT_STATE, action) => {
 
   switch(action.type) {
 
-  //--------------------------------------------------------------------//
-  // Client Actions
-  //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    // Client Actions
+    //--------------------------------------------------------------------//
 
     case CLIENT_ACTION_TYPES.RECEIVE_CLIENT:
       newState[action.data.client.id] = action.data.client;
 
       return newState;
+
+    //--------------------------------------------------------------------//
+    // Connection Actions
+    //--------------------------------------------------------------------//
 
     case CONNECTION_ACTION_TYPES.RECEIVE_CONNECTIONS:
       connections = action.data.connections;
@@ -63,9 +67,10 @@ const UsersCacheReducer = (state = DEFAULT_STATE, action) => {
 
       return newState;
 
-  //--------------------------------------------------------------------//
-  // Message Actions
-  //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    // Message Actions
+    //--------------------------------------------------------------------//
+    
     case MESSAGE_ACTION_TYPES.RECEIVE_MESSAGE:
       userId = action.data.userId;
       newState[userId].peek_message = action.data.message;

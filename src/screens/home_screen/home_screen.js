@@ -11,6 +11,7 @@ import ListFooterContainer                   from '../../components/list_footer/
 import { UTILITY_STYLES, scaleFont }           from '../../utilities/style_utility';
 import { isStringEmpty }            from '../../utilities/function_utility';
 import * as AnimalUtility           from '../../utilities/animal_utility';
+import { defaultErrorAlert }      from '../../utilities/error_utility';
 
 //--------------------------------------------------------------------//
 
@@ -43,16 +44,7 @@ class HomeScreen extends React.PureComponent {
 
   componentDidMount() {
     if (this.props.isLogin) {
-      this.setState({ isLoading: true } , () => {
-        this.props.requestConnection(this.props.client.authToken, this.props.client.firebaseUserObj, this.props.client.id)
-          .catch((error) => {
-            defaultErrorAlert(error);
-          })
-          .finally(() => {
-            this.isJoinQueuePressed = false;
-            this.setState({ isLoading: false });
-          });
-      });
+      this._onPressJoinQueue();
     }
   }
 
@@ -71,8 +63,7 @@ class HomeScreen extends React.PureComponent {
     let client = this.props.usersCache[this.props.client.id];
     let oppositeParty = AnimalUtility.getOppositeParty(client);
 
-    // TODO: make sure this fits in Tweet limit
-    RN.Share.share({message: animalSound + "! I'm talking to a " + oppositeParty + " on the Animal Party app! \n\n-- Download Now --\nhttps://animalparty.app/?utm_source=app&utm_term=share" })
+    RN.Share.share({message: animalSound + "! I'm talking to a " + oppositeParty + " on the Animal Party app. You should try it, too!\n\n-- Download Now --\nhttps://animalparty.app/?utm_source=app&utm_term=share" })
       .finally(() => {
         this.isSharedPressed = false;
       });

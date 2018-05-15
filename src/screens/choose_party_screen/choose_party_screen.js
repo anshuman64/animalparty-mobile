@@ -26,10 +26,6 @@ class ChoosePartyScreen extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      isLoading:     false,
-    };
-
     this.isSelectPressed = false;
   }
 
@@ -63,8 +59,6 @@ class ChoosePartyScreen extends React.PureComponent {
   // Render Methods
   //--------------------------------------------------------------------//
 
-  // TODO: make sure all Text have avoid allowFontScaling
-  // TODO: make sure all screens have defaultErrorAlert import
   _renderPartyView(animalName, partyName, partySubtitle, imagePath, backgroundColor) {
     return (
       <RN.TouchableWithoutFeedback onPress={() => this._onPressSelectParty(animalName, partyName)} >

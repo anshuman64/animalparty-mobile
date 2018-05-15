@@ -48,6 +48,12 @@ export const getMessages = (authToken, firebaseUserObj, isNew, userId, queryPara
 };
 
 export const createMessage = (authToken, firebaseUserObj, clientId, userId, messageBody, messageMedium) => (dispatch) => {
+  let postMessageError = (error) => {
+    error = setErrorDescription(error, 'POST message failed');
+    amplitude.logEvent('Messages - Create Message', { is_successful: false, body: messageBody, media: messageMedium ? true : false, error_description: error.description, error_message: error.message });
+    throw error;
+  }
+
   let postMessage = (updatedMedium) => {
     return APIUtility.post(authToken, '/messages/direct/', { body: messageBody, medium: updatedMedium, user_id: userId })
       .then((newMessage) => {
@@ -61,12 +67,6 @@ export const createMessage = (authToken, firebaseUserObj, clientId, userId, mess
 
         postMessageError(error);
       });
-  }
-
-  let postMessageError = (error) => {
-    error = setErrorDescription(error, 'POST message failed');
-    amplitude.logEvent('Messages - Create Message', { is_successful: false, body: messageBody, media: messageMedium ? true : false, error_description: error.description, error_message: error.message });
-    throw error;
   }
 
   if (messageMedium) {

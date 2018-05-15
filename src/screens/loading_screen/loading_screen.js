@@ -55,9 +55,9 @@ class LoadingScreen extends React.PureComponent {
             client = this.props.usersCache[this.props.client.id];
             // console.log('Logged in'); // Debug Test
             if (client.is_banned) {
-              RN.Alert.alert('', 'This account has been disabled. Email support@insiya.io for more info.', [{text: 'OK', style: 'cancel'}]);
+              RN.Alert.alert('', 'This account has been disabled. Email support@animalparty.app for more info.', [{text: 'OK', style: 'cancel'}]);
             } else {
-              this._loadData()
+              this.props.getConnections(this.props.client.authToken, this.props.client.firebaseUserObj)
                 .then(() => {
                   // console.log('Data loaded'); // Debug Test
                   this._onLogin();
@@ -85,17 +85,6 @@ class LoadingScreen extends React.PureComponent {
   //--------------------------------------------------------------------//
   // Private Methods
   //--------------------------------------------------------------------//
-
-  // TODO: add try/catch error handling
-  async _loadData() {
-    await this._refreshData();
-    // await this.props.getCircles(this.props.client.authToken, this.props.client.firebaseUserObj);
-    // await this.props.getBlockedUsers(this.props.client.authToken, this.props.client.firebaseUserObj);
-  }
-
-  async _refreshData() {
-    await this.props.getConnections(this.props.client.authToken, this.props.client.firebaseUserObj);
-  }
 
   _navigateFromLoading = () => {
     // Make sure you are logged in
@@ -145,7 +134,7 @@ class LoadingScreen extends React.PureComponent {
       let minsDiff = (currentTime - this.lastUpdate) / (1000 * 60);
 
       if (minsDiff > 1) {
-        this._refreshData();
+        this.props.getConnections(this.props.client.authToken, this.props.client.firebaseUserObj);
         this.lastUpdate = new Date();
       }
     }

@@ -17,6 +17,10 @@ const ConnectionsReducer = (state = DEFAULT_STATE, action) => {
 
   switch(action.type) {
 
+    //--------------------------------------------------------------------//
+    // Connection Actions
+    //--------------------------------------------------------------------//
+
     case CONNECTION_ACTION_TYPES.RECEIVE_CONNECTIONS:
       newState.connections = action.data.connections.map((x) => x.id);
 
