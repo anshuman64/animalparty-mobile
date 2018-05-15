@@ -114,7 +114,7 @@ class LoadingScreen extends React.PureComponent {
       }
     } else if (!this.navigateToNotification) {
       // If haven't logged in and somehow on LoadingScreen, go to WelcomeScreen
-      this.props.navigateTo('WelcomeScreen');
+      this.props.navigateTo('WelcomeScreen'); // Debug Test: should be WelcomeScreen
     }
   }
 

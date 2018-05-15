@@ -3,6 +3,7 @@ package com.animalparty.android;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.avishayil.rnrestart.ReactNativeRestartPackage;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import com.microsoft.codepush.react.CodePush;
@@ -38,6 +39,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactNativeRestartPackage(),
             new CodePush(null, getApplicationContext(), BuildConfig.DEBUG),
             new ReactVideoPackage(),
             new RNFetchBlobPackage(),
