@@ -19,10 +19,11 @@ export const styles = StyleSheet.create({
     backgroundColor: StyleUtility.COLORS.grey50
   },
   attributionText: {
+    width: '100%',
     fontFamily: StyleUtility.setAndroidFont('Roboto-Light'),
     fontWeight: '100',
     fontSize: StyleUtility.scaleFont(14),
-    textAlign: 'left',
+    textAlign: 'center',
     color: StyleUtility.COLORS.grey600,
     marginBottom: 20,
   },

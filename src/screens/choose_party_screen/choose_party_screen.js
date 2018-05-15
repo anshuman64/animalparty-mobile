@@ -75,10 +75,10 @@ class ChoosePartyScreen extends React.PureComponent {
             source={imagePath}
             resizeMode={'contain'}
             />
-          <RN.Text style={styles.titleText}>
+          <RN.Text allowFontScaling={false} style={styles.titleText}>
             {partyName}
           </RN.Text>
-          <RN.Text style={styles.subtitleText}>
+          <RN.Text allowFontScaling={false} style={styles.subtitleText}>
             {partySubtitle}
           </RN.Text>
         </RN.View>
@@ -90,7 +90,7 @@ class ChoosePartyScreen extends React.PureComponent {
     return (
       <RN.View style={styles.choosePartyView}>
         <RN.View style={styles.horizontalLine} />
-          <RN.Text style={styles.choosePartyText}>
+          <RN.Text allowFontScaling={false} style={styles.choosePartyText}>
             {'Choose Party'}
           </RN.Text>
         <RN.View style={styles.horizontalLine} />

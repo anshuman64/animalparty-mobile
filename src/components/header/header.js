@@ -147,7 +147,7 @@ class Header extends React.PureComponent {
   _renderBackTitle() {
     if (this.props.backTitle) {
       return (
-        <RN.Text allowFontScaling={false} numberOfLines={1} style={[StyleUtility.UTILITY_STYLES.regularBlackText18, {maxWidth: StyleUtility.getUsableDimensions().width - 140}, !this.props.backIcon && {marginLeft: 50}]}>
+        <RN.Text allowFontScaling={false} numberOfLines={1} style={[StyleUtility.UTILITY_STYLES.regularBlackText18, {maxWidth: StyleUtility.getUsableDimensions().width - 150}, !this.props.backIcon && {marginLeft: 50}]}>
           {this.props.backTitle}
         </RN.Text>
       )
@@ -191,7 +191,7 @@ class Header extends React.PureComponent {
       return (
         <RN.TouchableOpacity onPress={callback}>
           <RN.View style={styles.button}>
-            <RN.Text style={[StyleUtility.UTILITY_STYLES.lightBlackText16, StyleUtility.getHighlightColor(client)]}>
+            <RN.Text allowFontScaling={false} style={[StyleUtility.UTILITY_STYLES.lightBlackText16, StyleUtility.getHighlightColor(client)]}>
               {text}
             </RN.Text>
           </RN.View>
@@ -206,7 +206,7 @@ class Header extends React.PureComponent {
 
       return (
         <RN.TouchableOpacity onPress={this._onPressLeave} style={styles.button}>
-          <RN.Text style={[StyleUtility.UTILITY_STYLES.lightBlackText16, StyleUtility.getHighlightColor(client)]}>
+          <RN.Text allowFontScaling={false} style={[StyleUtility.UTILITY_STYLES.lightBlackText16, StyleUtility.getHighlightColor(client)]}>
             {'Leave'}
           </RN.Text>
         </RN.TouchableOpacity>

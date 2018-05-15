@@ -72,7 +72,7 @@ class HomeScreen extends React.PureComponent {
     let oppositeParty = AnimalUtility.getOppositeParty(client);
 
     // TODO: make sure this fits in Tweet limit
-    RN.Share.share({message: animalSound + "! I'm talking to a" + oppositeParty + " on the Animal Party app! \n\n-- Download Now --\nhttps://animalparty.app/?utm_source=app&utm_term=share" })
+    RN.Share.share({message: animalSound + "! I'm talking to a " + oppositeParty + " on the Animal Party app! \n\n-- Download Now --\nhttps://animalparty.app/?utm_source=app&utm_term=share" })
       .finally(() => {
         this.isSharedPressed = false;
       });

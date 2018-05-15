@@ -58,7 +58,7 @@ export const styles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'center',
     color: 'white',
-    marginTop: 10
+    marginTop: 7
   },
   subtitleText: {
     fontFamily: StyleUtility.setAndroidFont('Roboto-Bold'),
@@ -66,6 +66,6 @@ export const styles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'center',
     color: 'white',
-    marginTop: 5
+    marginTop: 2
   },
 });

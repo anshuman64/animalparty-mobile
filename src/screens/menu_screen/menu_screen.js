@@ -57,7 +57,7 @@ class MenuScreen extends React.PureComponent {
           <MenuListItemContainer iconName={'people'}      text={'Community Guidelines'} callback={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/community-guidelines-b9ee2fe3daf4')}/>
           <MenuListItemContainer iconName={'logout'}      text={'Log Out'}              callback={this._logOut}/>
         </RN.View>
-        <RN.Text style={styles.attributionText}>
+        <RN.Text allowFontScaling={false} style={styles.attributionText}>
           {'Icons made by Freepik from www.flaticon.com'}
         </RN.Text>
      </RN.View>
