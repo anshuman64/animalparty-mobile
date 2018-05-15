@@ -37,7 +37,6 @@ class ConfirmCodeScreen extends React.PureComponent {
     };
 
     this.timer = null;
-    this.render = this.render.bind(this);
   }
 
   //--------------------------------------------------------------------//

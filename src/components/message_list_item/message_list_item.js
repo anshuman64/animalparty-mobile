@@ -33,7 +33,6 @@ class MessageListItem extends React.PureComponent {
 
     this.state = {
       isDateShown:    false,
-      isModalVisible: false,
     };
   }
 
