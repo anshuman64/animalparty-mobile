@@ -49,10 +49,4 @@ export const styles = StyleSheet.create({
   logo: {
     height: StyleUtility.scaleFont(25),
   },
-  customButton: {
-    fontFamily: StyleUtility.setAndroidFont('Roboto-Light'),
-    fontWeight: '100',
-    fontSize: StyleUtility.scaleFont(16),
-    textAlign: 'center',
-  },
 })

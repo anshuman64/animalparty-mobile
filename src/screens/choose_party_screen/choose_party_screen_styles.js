@@ -8,14 +8,6 @@ import * as StyleUtility from '../../utilities/style_utility';
 //--------------------------------------------------------------------//
 
 export const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-    backgroundColor: StyleUtility.COLORS.grey50
-  },
   partyView: {
     flexDirection: 'column',
     justifyContent: 'center',
