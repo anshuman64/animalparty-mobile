@@ -1,6 +1,3 @@
-// Library Imports
-import _ from 'lodash';
-
 // Local Imports
 import { refreshAuthToken } from './client_actions';
 
@@ -18,7 +15,7 @@ export const MEDIUM_ACTION_TYPES = {
 // Action Creators
 //--------------------------------------------------------------------//
 
-// media (array): array of photo and video urls for caching
+// medium (medium object): medium object that needs new url after token refresh
 export const receiveMedium = (data) => {
   return { type: MEDIUM_ACTION_TYPES.RECEIVE_MEDIUM, data: data };
 };

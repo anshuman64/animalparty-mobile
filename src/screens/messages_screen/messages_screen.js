@@ -6,21 +6,23 @@ import ImagePicker from 'react-native-image-crop-picker';
 import Icon        from 'react-native-vector-icons/SimpleLineIcons';
 
 // Local Imports
-import ListFooter                         from '../../components/list_footer/list_footer';
-import HeaderContainer                    from '../../components/header/header_container';
-import MessageListItemContainer           from '../../components/message_list_item/message_list_item_container';
-import { styles }                         from './messages_screen_styles';
-import { pusher }                         from '../../utilities/push_utility';
-import { isStringEmpty, setStateCallback} from '../../utilities/function_utility';
-// import { getEntityDisplayName }           from '../../utilities/entity_utility';
-import * as StyleUtility                  from '../../utilities/style_utility';
-import { defaultErrorAlert }              from '../../utilities/error_utility';
+import ListFooterContainer      from '../../components/list_footer/list_footer_container';
+import HeaderContainer          from '../../components/header/header_container';
+import MessageListItemContainer from '../../components/message_list_item/message_list_item_container';
+import { styles }               from './messages_screen_styles';
+import { pusher }               from '../../utilities/push_utility';
+import { isStringEmpty }        from '../../utilities/function_utility';
+import { getUsername }          from '../../utilities/animal_utility';
+import * as StyleUtility        from '../../utilities/style_utility';
+import { defaultErrorAlert }    from '../../utilities/error_utility';
 
 //--------------------------------------------------------------------//
 
 /*
 Required Screen Props:
   userId (id): id of group or user whose conversation it is with
+Optional Screen Props:
+  -
 */
 class MessagesScreen extends React.PureComponent {
 
@@ -166,12 +168,16 @@ class MessagesScreen extends React.PureComponent {
     }
 
     this.isSendPressed = true;
-    let messageBody = isStringEmpty(this.state.messageText) ? null : this.state.messageText; // sets post body as null if there is no text
+    let messageBody = isStringEmpty(this.state.messageText) ? null : this.state.messageText; // sets message body as null if there is no text
 
     this.setState({ isLoading: true }, () => {
       this.props.createMessage(this.props.client.authToken, this.props.client.firebaseUserObj, this.props.client.id, this.props.userId, messageBody, this.state.medium || this.state.takePhotoMedium)
         .catch((error) => {
-          defaultErrorAlert(error);
+          if (error.message === 'Connection has been blocked') {
+            RN.Alert.alert('', 'The other user has left the conversation.', [{text: 'OK', style: 'cancel'}]);
+          } else {
+            defaultErrorAlert(error);
+          }
         })
         .finally(() => {
           this.isSendPressed = false;
@@ -208,13 +214,9 @@ class MessagesScreen extends React.PureComponent {
   //--------------------------------------------------------------------//
 
   _setupPusher = () => {
-    if (this.props.userId < 0) {
-      this.convoChannelName = 'private-group-' + (-1 * this.props.userId);
-    } else if (this.props.userId > 0) {
-      smallerId = this.props.client.id < this.props.userId ? this.props.client.id : this.props.userId;
-      biggerId = this.props.client.id > this.props.userId ? this.props.client.id : this.props.userId;
-      this.convoChannelName = 'private-convo-' + smallerId + '-' + biggerId;
-    }
+    smallerId = this.props.client.id < this.props.userId ? this.props.client.id : this.props.userId;
+    biggerId = this.props.client.id > this.props.userId ? this.props.client.id : this.props.userId;
+    this.convoChannelName = 'private-convo-' + smallerId + '-' + biggerId;
 
     convoChannel = pusher.subscribe(this.convoChannelName);
 
@@ -265,13 +267,15 @@ class MessagesScreen extends React.PureComponent {
   //--------------------------------------------------------------------//
 
   _renderTextInputRow() {
+    let client = this.props.usersCache[this.props.client.id];
+
     return (
       <RN.View style={styles.textInputRow}>
         <RN.TouchableOpacity style={styles.imageButton} onPress={this._onPresstakePhotoMedium}>
-          <Icon name='camera' style={[styles.imageButtonIcon, this.state.takePhotoMedium && StyleUtility.UTILITY_STYLES.textHighlighted]} />
+          <Icon name='camera' style={[styles.imageButtonIcon, this.state.takePhotoMedium && StyleUtility.getHighlightColor(client)]} />
         </RN.TouchableOpacity>
         <RN.TouchableOpacity style={styles.imageButton} onPress={this._onPressAddMedia}>
-          <Icon name='picture' style={[styles.imageButtonIcon, this.state.medium && StyleUtility.UTILITY_STYLES.textHighlighted]} />
+          <Icon name='picture' style={[styles.imageButtonIcon, this.state.medium && StyleUtility.getHighlightColor(client)]} />
         </RN.TouchableOpacity>
         <RN.TextInput
           style={styles.textInput}
@@ -285,7 +289,7 @@ class MessagesScreen extends React.PureComponent {
           underlineColorAndroid={'transparent'}
           />
         <RN.TouchableOpacity style={styles.sendButton} onPress={this._onPressSend}>
-          <Icon name='paper-plane' style={styles.sendButtonIcon} />
+          <Icon name='paper-plane' style={[styles.sendButtonIcon, StyleUtility.getHighlightColor(client)]} />
         </RN.TouchableOpacity>
       </RN.View>
     )
@@ -297,12 +301,12 @@ class MessagesScreen extends React.PureComponent {
     )
   }
 
-  _renderFooter = () => {
+  _renderListFooter = () => {
     let messages = this.props.messages[this.props.userId];
 
     if (messages && messages.isEnd) {
       return (
-        <ListFooter footerWidth={StyleUtility.scaleFont(150)} text={'Begin Conversation'} />
+        <ListFooterContainer footerWidth={StyleUtility.scaleFont(150)} text={'Begin Conversation'} />
       )
     } else {
       return (
@@ -313,7 +317,7 @@ class MessagesScreen extends React.PureComponent {
     }
   }
 
-  _renderHeader = () => {
+  _renderListHeader = () => {
     let isUserTyping = this.state.usersTyping.length > 0;
 
     if (this.state.isLoading || isUserTyping) {
@@ -353,27 +357,32 @@ class MessagesScreen extends React.PureComponent {
         showsVerticalScrollIndicator={false}
         inverted={true}
         onEndReached={this._onEndReached}
-        ListFooterComponent={this._renderFooter}
-        ListHeaderComponent={this._renderHeader}
+        ListFooterComponent={this._renderListFooter}
+        ListHeaderComponent={this._renderListHeader}
         onMomentumScrollBegin={() => this.onEndReachedCalledDuringMomentum = false}
         onEndReachedThreshold={0.01}
         />
     )
   }
 
-  render() {
-    let displayName = 'hello'; //TODO
-    let backTitle = this.props.userId > 0 ? displayName + "'s Messages" : displayName;
+  _renderHeader() {
+    let backTitle = getUsername(this.props.usersCache[this.props.userId]) + "'s Messages";
 
+    return (
+      <HeaderContainer
+        backIcon={true}
+        backTitle={backTitle}
+        messagesScreenButton={true}
+        userId={this.props.userId}
+        />
+    )
+  }
+
+  render() {
     return (
       <RN.KeyboardAvoidingView behavior={RN.Platform.OS === 'ios' ? 'padding' : null}>
         <RN.View style={StyleUtility.UTILITY_STYLES.containerStart}>
-          <HeaderContainer
-            backIcon={true}
-            backTitle={backTitle}
-            settingsIcon={this.props.userId < 0}
-            userId={this.props.userId}
-            />
+          {this._renderHeader()}
           {this._renderMessageList()}
           {this._renderTextInputRow()}
         </RN.View>

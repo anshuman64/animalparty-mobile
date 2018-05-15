@@ -6,10 +6,9 @@ import MessageListItem from './message_list_item';
 
 //--------------------------------------------------------------------//
 
-const mapStateToProps = ({ client, usersCache, mediaCache, messages }, ownProps) => ({
+const mapStateToProps = ({ client, usersCache, messages }, ownProps) => ({
   client:      client,
   usersCache:  usersCache,
-  mediaCache: mediaCache,
   messages:    messages,
 });
 

@@ -1,12 +1,9 @@
 // Library Imports
 import React  from 'react';
 import RN     from 'react-native';
-import _      from 'lodash';
-import Icon   from 'react-native-vector-icons/SimpleLineIcons';
 
 // Local Imports
-import { styles }                 from './section_list_header_styles';
-import { UTILITY_STYLES, COLORS } from '../../utilities/style_utility';
+import { styles } from './section_list_header_styles';
 
 //--------------------------------------------------------------------//
 
@@ -14,7 +11,7 @@ import { UTILITY_STYLES, COLORS } from '../../utilities/style_utility';
 Required Passed Props:
   title (string): title to display
 Optional Passed Props:
-  TODO
+  callback (func): callback when header is pressed
 */
 class SectionListHeader extends React.PureComponent {
 

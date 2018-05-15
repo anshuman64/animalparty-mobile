@@ -33,20 +33,6 @@ open ./node_modules/react-native-video-player/index.js
 Replace contents with this file: https://drive.google.com/file/d/1-99De6dgEY4WnHhBvfqVrp5ktRA5a6wg/view?usp=sharing
 
 ### Setup - iOS
-0. Fix react-native-image-crop-picker UI
-````
-open ./node_modules/react-native-image-crop-picker/ios/RSKImageCropper/RSKImageCropper/RSKImageCropViewController.m
-````
-Change lines 335 and 359 (approximately) to:
-````
-//line 335:
-_moveAndScaleLabel.text = RSKLocalizedString(@"", @"Move and Scale label");
-
-//line 359:
-[_chooseButton setTitle:RSKLocalizedString(@"Done", @"Choose button") forState:UIControlStateNormal];
-````
-NOTE: If you forget to do this step before installing pods below, also make the same changes in ````./ios/Pods/RSKImageCropper/RSKImageCropper/RSKImageCropViewController.m````
-
 1. Install Pods
 ````
 cd ios && pod install && cd ..
@@ -61,12 +47,10 @@ Edit ````#import <React/RCTDefines.h>```` to ````#import "RCTDefines.h" ````
 3. Open XCode application
 4. ````File > Open > $ANIMALPARTY-MOBILE/ios````
 5. Click on "Pods" in left panel
-6. Select react-native-amplitude-analytics from the dropdown at the top
+6. Select "react-native-amplitude-analytics" from the dropdown at the top
 7. Click on "Header Search Paths"
 8. Add ````"$(PODS_ROOT)/../../node_modules/react-native/React/"````
 9. Set as "Recursive"
-
-![Alt text](https://s3.amazonaws.com/animalparty-public/XCode_Amplitude_Header_Config.png)
 
 
 ## Release
@@ -80,12 +64,12 @@ Edit ````#import <React/RCTDefines.h>```` to ````#import "RCTDefines.h" ````
 0. Make sure you follow the steps under "Release - General"!
 1. Android
 ````
-appcenter codepush release-react -a AnimalParty/Postcard-Android -d Production
+appcenter codepush release-react -a AnimalParty/AnimalParty-Android -d Production
 ````
 
 2. iOS
 ````
-appcenter codepush release-react -a AnimalParty/Postcard-iOS -d Production
+appcenter codepush release-react -a AnimalParty/AnimalParty-iOS -d Production
 ````
 Note: Add option ````---mandatory```` if the update should cause the app to refresh on start
 
@@ -126,13 +110,3 @@ git tag vX.Y.Z
 git push origin vX.Y.Z
 git checkout master
 ````
-
-## Other Stuff
-### Definitions
-1. convo: a user or group (referring to conversations on the FriendScreen)
-2. entity: a user, group, or contact
-3. entityId: the id of a user (positive int), group (negative int), or contact phone number (string)
-3. usersCache indices run from [1,infinity) and groupsCache indices run from (-infinity, -1]. If the object is a group, its index should be negative.
-
-### Do's and Dont's
-1. Read comments titled "WARNING". They are there for a reason.

@@ -7,7 +7,7 @@ import OneSignal       from 'react-native-onesignal';
 
 // Local Imports
 import { amplitude }           from '../../utilities/analytics_utility';
-import { styles, pulseIcon }   from './loading_screen_styles';
+import { styles, flipIcon }    from './loading_screen_styles';
 import { defaultErrorAlert }   from '../../utilities/error_utility';
 import { UTILITY_STYLES }      from '../../utilities/style_utility';
 
@@ -55,9 +55,9 @@ class LoadingScreen extends React.PureComponent {
             client = this.props.usersCache[this.props.client.id];
             // console.log('Logged in'); // Debug Test
             if (client.is_banned) {
-              RN.Alert.alert('', 'This account has been disabled. Email support@insiya.io for more info.', [{text: 'OK', style: 'cancel'}]);
+              RN.Alert.alert('', 'This account has been disabled. Email support@animalparty.app for more info.', [{text: 'OK', style: 'cancel'}]);
             } else {
-              this._loadData()
+              this.props.getConnections(this.props.client.authToken, this.props.client.firebaseUserObj)
                 .then(() => {
                   // console.log('Data loaded'); // Debug Test
                   this._onLogin();
@@ -86,17 +86,6 @@ class LoadingScreen extends React.PureComponent {
   // Private Methods
   //--------------------------------------------------------------------//
 
-  // TODO: add try/catch error handling
-  async _loadData() {
-    await this._refreshData();
-    // await this.props.getCircles(this.props.client.authToken, this.props.client.firebaseUserObj);
-    // await this.props.getBlockedUsers(this.props.client.authToken, this.props.client.firebaseUserObj);
-  }
-
-  async _refreshData() {
-    await this.props.getConnections(this.props.client.authToken, this.props.client.firebaseUserObj);
-  }
-
   _navigateFromLoading = () => {
     // Make sure you are logged in
     if (this.isLoggedIn) {
@@ -105,7 +94,7 @@ class LoadingScreen extends React.PureComponent {
       if (this.navigateToNotification) {
         // If opening app via notification, go to the screen you intended to go to
         if (this.navigateToNotification === 'MessagesScreen') {
-          this.props.navigateTo('FriendScreen'); // NOTE: leave this here so that MessageScreen back doesn't go to login screen
+          this.props.navigateTo('HomeScreen'); // NOTE: leave this here so that MessageScreen back doesn't go to login screen
           this.props.navigateTo('MessagesScreen', { userId: this.navigateToMessages });
         } else {
           this.props.navigateTo(this.navigateToNotification);
@@ -118,14 +107,14 @@ class LoadingScreen extends React.PureComponent {
         this.props.navigateTo('HomeScreen'); // Debug Test: should be HomeScreen
       } else if (client && !client.political_party) {
         // If opening the app normally and haven't selected party, go to ChoosePartyScreen
-        this.props.navigateTo('ChoosePartyScreen');
+        this.props.navigateTo('ChoosePartyScreenLogin', { isLogin: true });
       } else {
         // If haven't logged in and somehow on LoadingScreen, go to WelcomeScreen
         this.props.navigateTo('WelcomeScreen');
       }
     } else if (!this.navigateToNotification) {
       // If haven't logged in and somehow on LoadingScreen, go to WelcomeScreen
-      this.props.navigateTo('WelcomeScreen');
+      this.props.navigateTo('WelcomeScreen'); // Debug Test: should be WelcomeScreen
     }
   }
 
@@ -145,7 +134,7 @@ class LoadingScreen extends React.PureComponent {
       let minsDiff = (currentTime - this.lastUpdate) / (1000 * 60);
 
       if (minsDiff > 1) {
-        this._refreshData();
+        this.props.getConnections(this.props.client.authToken, this.props.client.firebaseUserObj);
         this.lastUpdate = new Date();
       }
     }
@@ -154,42 +143,22 @@ class LoadingScreen extends React.PureComponent {
   }
 
   _onOpened = (openResult) => {
-    // let data = openResult.notification.payload.additionalData;
-    //
-    // switch (data.type) {
-    //   case 'receive-like':
-    //     amplitude.logEvent('Notifications - Receive Like', { is_opened: true });
-    //     this.navigateToNotification = 'AuthoredScreen';
-    //     break;
-    //   case 'receive-friendship':
-    //     amplitude.logEvent('Notifications - Receive Friendship', { is_opened: true });
-    //     this.navigateToNotification = 'PendingScreen';
-    //     break;
-    //   case 'welcome-contact':
-    //     amplitude.logEvent('Notifications - Welcome Contact', { is_opened: true });
-    //     this.navigateToNotification = 'PendingScreen';
-    //     break;
-    //   case 'receive-accepted-friendship':
-    //     amplitude.logEvent('Notifications - Receive Accepted Friendship', { is_opened: true });
-    //     this.navigateToNotification = 'FriendScreen';
-    //     break;
-    //   case 'receive-group':
-    //     amplitude.logEvent('Notifications - Receive Group', { is_opened: true });
-    //     this.navigateToNotification = 'FriendScreen';
-    //     break;
-    //   case 'receive-post':
-    //     amplitude.logEvent('Notifications - Receive Post', { is_opened: true });
-    //     this.navigateToNotification = 'HomeScreen';
-    //     break;
-    //   case 'receive-message':
-    //     amplitude.logEvent('Notifications - Receive Message', { is_opened: true });
-    //     this.navigateToNotification = 'MessagesScreen';
-    //     this.navigateToMessages     = data.client_id ? data.client_id : -1 * data.group_id;
-    //     break;
-    //   default:
-    //     amplitude.logEvent('Notifications - Unknown', { is_opened: true });
-    //     this.navigateToNotification = 'HomeScreen';
-    // }
+    let data = openResult.notification.payload.additionalData;
+
+    switch (data.type) {
+      case 'receive-connection':
+        amplitude.logEvent('Notifications - Receive Connection', { is_opened: true });
+        this.navigateToNotification = 'HomeScreen';
+        break;
+      case 'receive-message':
+        amplitude.logEvent('Notifications - Receive Message', { is_opened: true });
+        this.navigateToNotification = 'MessagesScreen';
+        this.navigateToMessages     = data.client_id;
+        break;
+      default:
+        amplitude.logEvent('Notifications - Unknown', { is_opened: true });
+        this.navigateToNotification = 'HomeScreen';
+    }
   }
 
   _onLogin = () => {
@@ -223,9 +192,9 @@ class LoadingScreen extends React.PureComponent {
         style={styles.icon}
         source={require('../../assets/images/icon/icon.png')}
         resizeMode={'cover'}
-        animation={pulseIcon}
-        direction={'alternate'}
-        easing={'ease-in'}
+        animation={flipIcon}
+        direction={'normal'}
+        easing={'ease-in-out'}
         duration={1500}
         iterationCount={20}
         onAnimationEnd={this._onAnimationEnd}

@@ -52,34 +52,6 @@ export const styles = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? 0 : 6,
     padding: 0, // handles weird behavior where TextInput is not centered on Android
   },
-  closeButton: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 50,
-    width: 50,
-  },
-  closeButtonBackground: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 25,
-    width: 25,
-    marginLeft: 2,
-    marginTop: 2
-  },
-  closeIcon: {
-    fontSize: StyleUtility.scaleFont(20),
-    color: 'white',
-    textAlign: 'center',
-  },
-  image: {
-    alignSelf: 'flex-end',
-    width: StyleUtility.DEVICE_DIM.width * 0.5,
-    height: StyleUtility.DEVICE_DIM.width * 0.5,
-    marginRight: 15,
-    backgroundColor: StyleUtility.COLORS.grey900
-  },
   imageButton: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -102,7 +74,6 @@ export const styles = StyleSheet.create({
   sendButtonIcon: {
     textAlign: 'center',
     fontSize: StyleUtility.scaleFont(20),
-    color: StyleUtility.COLORS.appleBlue
   },
   messageContainerUser: {
     flexDirection: 'row',

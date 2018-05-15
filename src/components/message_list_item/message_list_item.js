@@ -5,11 +5,12 @@ import * as Animatable from 'react-native-animatable';
 import Hyperlink       from 'react-native-hyperlink';
 
 // Local Imports
-import MediumContainer          from '../medium/medium_container';
-import { styles }               from './message_list_item_styles';
-import * as StyleUtility        from '../../utilities/style_utility';
-import { renderMessageDate }    from '../../utilities/date_time_utility';
-import { setStateCallback }     from '../../utilities/function_utility';
+import MediumContainer       from '../medium/medium_container';
+import { styles }            from './message_list_item_styles';
+import * as StyleUtility     from '../../utilities/style_utility';
+import { renderMessageDate } from '../../utilities/date_time_utility';
+import { setStateCallback }  from '../../utilities/function_utility';
+import { getAvatar }         from '../../utilities/animal_utility';
 
 //--------------------------------------------------------------------//
 
@@ -32,7 +33,6 @@ class MessageListItem extends React.PureComponent {
 
     this.state = {
       isDateShown:    false,
-      isModalVisible: false,
     };
   }
 
@@ -98,8 +98,17 @@ class MessageListItem extends React.PureComponent {
       }
     }
 
-    if (isAvatar) { // TODO
-      return null;
+    if (isAvatar) {
+      let user = this.props.usersCache[this.props.message.author_id];
+      let avatar = getAvatar(user);
+
+      return (
+        <RN.Image
+          style={styles.avatar}
+          source={avatar}
+          resizeMode={'cover'}
+          />
+      )
     } else if (this.props.message.author_id != this.props.client.id) {
       return (
         <RN.View style={{width: 30, height: 30}} />
@@ -111,11 +120,9 @@ class MessageListItem extends React.PureComponent {
 
   _renderBody(isAuthoredByClient) {
     if (this.props.message.body) {
-      let bodyStyle = isAuthoredByClient ? styles.bodyTextClient : styles.bodyTextUser;
-
       return (
         <Hyperlink linkDefault={true} linkStyle={{color: StyleUtility.COLORS.grey900}}>
-          <RN.Text allowFontScaling={false} style={bodyStyle}>
+          <RN.Text allowFontScaling={false} style={styles.bodyText}>
             {this.props.message.body}
           </RN.Text>
         </Hyperlink>
@@ -148,6 +155,7 @@ class MessageListItem extends React.PureComponent {
   }
 
   _renderMessage() {
+    let user = this.props.usersCache[this.props.message.author_id];
     let isAuthoredByClient = this.props.message.author_id === this.props.client.id;
     let isBackgroundColor  = this.props.message.body;
     let isFirstMessage = this.props.index === 0;
@@ -161,7 +169,7 @@ class MessageListItem extends React.PureComponent {
           activeOpacity={0.5}
           onPress={setStateCallback(this, { isDateShown: !this.state.isDateShown})}
           >
-          <RN.View style={[messageStyle, !isBackgroundColor && {backgroundColor: 'transparent'}]}>
+          <RN.View style={[messageStyle, {backgroundColor: StyleUtility.getPartyColor(user)}, !isBackgroundColor && {backgroundColor: 'transparent'}]}>
             {this._renderBody(isAuthoredByClient)}
             {this._renderMedium(isAuthoredByClient)}
           </RN.View>

@@ -40,7 +40,6 @@ export const styles = StyleSheet.create({
     maxWidth: StyleUtility.getUsableDimensions().width * 0.75,
     marginRight: DEFAULT_MARGIN,
     borderRadius: 15,
-    backgroundColor: StyleUtility.COLORS.appleBlue,
   },
   messageViewUser: {
     flexDirection: 'column',
@@ -50,22 +49,13 @@ export const styles = StyleSheet.create({
     maxWidth: StyleUtility.getUsableDimensions().width * 0.75,
     marginLeft: DEFAULT_MARGIN,
     borderRadius: 15,
-    backgroundColor: StyleUtility.COLORS.grey200,
   },
-  bodyTextClient: {
+  bodyText: {
     fontFamily: StyleUtility.setAndroidFont('Roboto-Regular'),
     fontSize: StyleUtility.scaleFont(15),
     fontWeight: '400',
     textAlign: 'left',
     color: 'white',
-    margin: 10
-  },
-  bodyTextUser: {
-    fontFamily: StyleUtility.setAndroidFont('Roboto-Regular'),
-    fontSize: StyleUtility.scaleFont(15),
-    fontWeight: '400',
-    textAlign: 'left',
-    color: StyleUtility.COLORS.grey900,
     margin: 10
   },
   date: {
@@ -98,5 +88,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
+  avatar: {
+    width: 25,
+    height: 25
+  },
 });

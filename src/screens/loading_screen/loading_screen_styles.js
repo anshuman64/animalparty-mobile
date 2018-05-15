@@ -14,13 +14,23 @@ export const styles = StyleSheet.create({
   },
 });
 
-export const pulseIcon = {
-  from: {
-    opacity: 0.4,
-    scale: 0.9,
+export const flipIcon = {
+  0: {
+    rotate: '0deg',
+    translateY: 0,
   },
-  to: {
-    opacity: 1,
-    scale: 1,
+  0.25: {
+    rotate: '-90deg',
+  },
+  0.5: {
+    rotate: '-180deg',
+    translateY: 10,
+  },
+  0.75: {
+    rotate: '-270deg',
+  },
+  1: {
+    rotate: '-360deg',
+    translateY: 0,
   },
 };

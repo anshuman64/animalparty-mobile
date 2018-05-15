@@ -2,7 +2,7 @@
 import _ from 'lodash';
 
 // Local Imports
-import { MESSAGE_ACTION_TYPES }    from '../actions/message_actions';
+import { MESSAGE_ACTION_TYPES } from '../actions/message_actions';
 
 //--------------------------------------------------------------------//
 
@@ -12,12 +12,10 @@ Data is in the form {
     id:            30,
     body:          hello world!,
     author_id:     1,
-    friendship_id: 0,
-    post_id:       30,
+    connection_id: 0,
     created_at:    2018-01-18T23:48:06.000Z,
     updated_at:    2018-01-18T23:48:06.000Z,
     medium:        {mediumObj}
-    post:          {postObj}
   }, {
     ...another message object
   }]
@@ -66,24 +64,6 @@ const MessagesReducer = (state = DEFAULT_STATE, action) => {
       newState[userId].data = newState[userId].data.filter((thing, index, self) => index === self.findIndex((t) => t.id === thing.id));
 
       return newState;
-
-    //--------------------------------------------------------------------//
-    // Friendship Actions
-    //--------------------------------------------------------------------//
-
-    // Since we don't know if user is requester or requestee, delete messages for both
-    // case FRIENDSHIP_ACTION_TYPES.REMOVE_FRIENDSHIP:
-    //   let removeMessages = (id) => {
-    //     newState[id]       = {};
-    //     newState[id].data  = [];
-    //     newState[id].isEnd = false;
-    //   }
-    //
-    //   removeMessages(action.data.friendship.requester_id);
-    //   removeMessages(action.data.friendship.requestee_id);
-    //
-    //   return newState;
-
     default:
       return state;
   }

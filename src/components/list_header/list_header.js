@@ -4,8 +4,8 @@ import RN     from 'react-native';
 import Icon   from 'react-native-vector-icons/SimpleLineIcons';
 
 // Local Imports
-import { styles }         from './list_header_styles';
-import { UTILITY_STYLES } from '../../utilities/style_utility';
+import { styles }                            from './list_header_styles';
+import { UTILITY_STYLES, getHighlightColor } from '../../utilities/style_utility';
 
 //--------------------------------------------------------------------//
 
@@ -24,11 +24,13 @@ class ListHeader extends React.PureComponent {
   //--------------------------------------------------------------------//
 
   render() {
+    let client = this.props.usersCache[this.props.client.id];
+
     return(
       <RN.TouchableOpacity onPress={this.props.callback}>
         <RN.View style={styles.headerItemView}>
-          <Icon name={this.props.iconName} style={[styles.headerItemIcon, UTILITY_STYLES.textHighlighted]} />
-          <RN.Text allowFontScaling={false} style={[UTILITY_STYLES.lightBlackText16, UTILITY_STYLES.textHighlighted]}>
+          <Icon name={this.props.iconName} style={[styles.headerItemIcon, getHighlightColor(client)]} />
+          <RN.Text allowFontScaling={false} style={[UTILITY_STYLES.lightBlackText16, getHighlightColor(client)]}>
             {this.props.text}
           </RN.Text>
         </RN.View>

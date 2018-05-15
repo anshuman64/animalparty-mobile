@@ -2,8 +2,8 @@
 import { Alert } from 'react-native';
 
 // Local Imports
-// import { amplitude } from './analytics_utility';
-// import { refreshAuthToken } from '../actions/client_actions';
+import { amplitude }        from './analytics_utility';
+import { refreshAuthToken } from '../actions/client_actions';
 
 //--------------------------------------------------------------------//
 
@@ -30,7 +30,7 @@ export const defaultErrorAlert = (error) => {
   }
 
   if (!error.description) {
-    // amplitude.logEvent('Error - Default Error Alert', { error_description: error.description, error_message: error.message });
+    amplitude.logEvent('Error - Default Error Alert', { error_description: error.description, error_message: error.message });
   }
   console.error(error); // Debug Test
 
@@ -51,14 +51,14 @@ export const setErrorDescription = (error, description) => {
   return error;
 };
 
-// export const refreshCredsAndResume = (firebaseUserObj, func, ...params) => (dispatch) => {
-//   return dispatch(refreshAuthToken(firebaseUserObj))
-//     .then((newAuthToken) => {
-//       return dispatch(func(newAuthToken, firebaseUserObj, ...params));
-//     })
-//     .catch((error) => {
-//       if (error.message === 'Token refresh was in progress') {
-//         return dispatch(refreshCredsAndResume(firebaseUserObj, func, ...params));
-//       }
-//     });
-// }
+export const refreshCredsAndResume = (firebaseUserObj, func, ...params) => (dispatch) => {
+  return dispatch(refreshAuthToken(firebaseUserObj))
+    .then((newAuthToken) => {
+      return dispatch(func(newAuthToken, firebaseUserObj, ...params));
+    })
+    .catch((error) => {
+      if (error.message === 'Token refresh was in progress') {
+        return dispatch(refreshCredsAndResume(firebaseUserObj, func, ...params));
+      }
+    });
+}

@@ -3,8 +3,8 @@ import React from 'react';
 import RN    from 'react-native';
 
 // Local Imports
-import { styles }                              from './list_footer_styles';
-import { UTILITY_STYLES, getUsableDimensions } from '../../utilities/style_utility';
+import { styles }        from './list_footer_styles';
+import * as StyleUtility from '../../utilities/style_utility';
 
 //--------------------------------------------------------------------//
 
@@ -23,7 +23,8 @@ class ListFooter extends React.PureComponent {
   //--------------------------------------------------------------------//
 
   render() {
-    let lineWidth = (getUsableDimensions().width - this.props.footerWidth) / 2 - 20;
+    let lineWidth = (StyleUtility.getUsableDimensions().width - this.props.footerWidth) / 2 - 20;
+    let client = this.props.usersCache[this.props.client.id];
 
     return (
       <RN.TouchableWithoutFeedback onPress={this.props.callback} disabled={!this.props.callback}>
@@ -32,7 +33,7 @@ class ListFooter extends React.PureComponent {
           <RN.Text allowFontScaling={false} style={styles.footerText}>
             {this.props.text}
           </RN.Text>
-          <RN.Text allowFontScaling={false} style={[styles.footerText, UTILITY_STYLES.textHighlighted]}>
+          <RN.Text allowFontScaling={false} style={[styles.footerText, StyleUtility.getHighlightColor(client)]}>
             {this.props.highlightedText}
           </RN.Text>
           <RN.View style={[styles.horizontalLine, {width: lineWidth}]} />

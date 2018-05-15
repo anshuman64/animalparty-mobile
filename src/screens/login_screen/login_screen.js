@@ -7,7 +7,7 @@ import Ionicon                 from 'react-native-vector-icons/Ionicons';
 
 // Local Imports
 import LoadingModal                from '../../components/loading_modal/loading_modal';
-// import ListModalContainer          from '../../components/list_modal/list_modal_container';
+import ListModal                   from '../../components/list_modal/list_modal';
 import { styles }                  from './login_screen_styles';
 import { COUNTRY_CODES }           from '../../utilities/country_utility';
 import { setStateCallback }        from '../../utilities/function_utility';
@@ -214,7 +214,7 @@ class LoginScreen extends React.PureComponent {
     return (
       <RN.View style={styles.invalidNumberTextView}>
         <RN.Text allowFontScaling={false} style={[styles.invalidNumberText, !this.state.isPhoneNumberInvalid && UTILITY_STYLES.transparentText]}>
-          Invalid Number
+          {'Invalid Number'}
         </RN.Text>
       </RN.View>
     )
@@ -228,7 +228,7 @@ class LoginScreen extends React.PureComponent {
         disabled={this.state.isNextButtonDisabled || this.state.isLoading}
         >
         <RN.Text allowFontScaling={false} style={[UTILITY_STYLES.lightWhiteText18, this.state.isNextButtonDisabled && UTILITY_STYLES.nextButtonTextDisabled]}>
-          Next
+          {'Next'}
         </RN.Text>
       </RN.TouchableOpacity>
     )
@@ -242,11 +242,11 @@ class LoginScreen extends React.PureComponent {
     )
   }
 
-  // _renderListModal() {
-  //   return (
-  //     <ListModalContainer isModalVisible={this.state.isModalVisible} countryIndex={this.state.countryIndex} setParentState={this.setParentState} setCountry={this.setCountry} />
-  //   )
-  // }
+  _renderListModal() {
+    return (
+      <ListModal isModalVisible={this.state.isModalVisible} countryIndex={this.state.countryIndex} setParentState={this.setParentState} setCountry={this.setCountry} />
+    )
+  }
 
   _renderLoadingModal() {
     return (
@@ -268,6 +268,7 @@ class LoginScreen extends React.PureComponent {
             {this._renderSMSNoticeText()}
             <RN.View style={{flex: 1.5}} />
             {this._renderLoadingModal()}
+            {this._renderListModal()}
           </RN.View>
         </RN.TouchableWithoutFeedback>
       </RN.KeyboardAvoidingView>

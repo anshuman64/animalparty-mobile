@@ -2,10 +2,9 @@
 import _ from 'lodash';
 
 // Local Imports
-import { getFile }                 from '../utilities/file_utility';
-import { MEDIUM_ACTION_TYPES }     from '../actions/medium_actions';
-import { CLIENT_ACTION_TYPES }     from '../actions/client_actions';
-import { MESSAGE_ACTION_TYPES }    from '../actions/message_actions';
+import { getFile }              from '../utilities/file_utility';
+import { MEDIUM_ACTION_TYPES }  from '../actions/medium_actions';
+import { MESSAGE_ACTION_TYPES } from '../actions/message_actions';
 
 //--------------------------------------------------------------------//
 
@@ -17,9 +16,10 @@ Data is in the form {
     height:      1600,
     width:       900,
     owner_id:    5,
-    post_id:     6,
     message_id:  null,
-    url:         'www.insiya-public.com/asdlkalsdjkf'
+    created_at:  Date(),
+    updated_at:  Date(),
+    url:         'www.animalparty-public.com/asdlkalsdjkf'
     lastUpdated: Date()
   },
   mediumId2: { ...

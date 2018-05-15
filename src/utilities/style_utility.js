@@ -52,11 +52,6 @@ export const getStatusBarHeight = () => {
   return RN.Platform.OS === 'ios' ? (isIphoneX() ? 30 : 20) : 24;
 };
 
-// Scales image by PixelSize
-export const scaleImage = (size) => {
-  return RN.PixelRatio.getPixelSizeForLayoutSize(size);
-};
-
 // Put a cap on fontScale value
 export const scaleFont = (fontSize, removeScale) => {
   let scale = RN.PixelRatio.getFontScale();
@@ -67,11 +62,6 @@ export const scaleFont = (fontSize, removeScale) => {
 // Sets Android font but uses System for iOS
 export const setAndroidFont = (fontFamily) => {
   return RN.Platform.OS === 'ios'? 'System' : fontFamily;
-};
-
-// Sets image border radius with correction for Android
-export const getImageBorderRadius = (dimensions) => {
-  return RN.Platform.OS === 'ios' ? dimensions / 2 : 10000;
 };
 
 // Given a width, gets the height while fixing aspect ratio for medium
@@ -85,6 +75,24 @@ export const getScaledHeight = (medium, fixedWidth) => {
     return Math.round(scaledHeight);
   } else {
     return null;
+  }
+}
+
+// Given a user, gets the right text highlight style for political_party
+export const getHighlightColor = (user) => {
+  if (!user || !user.political_party || user.political_party === 'DEMOCRAT') {
+    return UTILITY_STYLES.textHighlighted;
+  } else {
+    return UTILITY_STYLES.textRed;
+  }
+}
+
+// Given a user, gets the right color for political_party
+export const getPartyColor = (user) => {
+  if (!user || !user.political_party || user.political_party === 'DEMOCRAT') {
+    return COLORS.appleBlue;
+  } else {
+    return COLORS.appleRed;
   }
 }
 

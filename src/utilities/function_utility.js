@@ -1,5 +1,3 @@
-// Library Imports
-import _ from 'lodash';
 
 //--------------------------------------------------------------------//
 // Interface
@@ -21,21 +19,3 @@ export const setStateCallback = (component, state) => {
     component.setState(state);
   };
 };
-
-// Takes media from posts and gets imageUrls for ImageViewer
-export const getImageUrlsFromMedia = (media, mediaCache) => {
-  let imageUrls = [];
-  let cachedMedium;
-  let mediumUrl;
-
-  _.forEach(media, (medium) => {
-    cachedMedium = mediaCache[medium.id];
-    mediumUrl = cachedMedium ? cachedMedium.url : null;
-
-    if (mediumUrl && cachedMedium.mime_type.startsWith('image/')) {
-      imageUrls.push({ url: mediumUrl });
-    }
-  });
-
-  return imageUrls;
-}

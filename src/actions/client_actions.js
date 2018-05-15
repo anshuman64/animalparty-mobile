@@ -6,7 +6,7 @@ import OneSignal from 'react-native-onesignal';
 // Local Imports
 import { amplitude }                                  from '../utilities/analytics_utility';
 import * as APIUtility                                from '../utilities/api_utility';
-import { setS3Client, uploadFile }                    from '../utilities/file_utility';
+import { setS3Client }                                from '../utilities/file_utility';
 import { setPusherClient }                            from '../utilities/push_utility';
 import { setErrorDescription, refreshCredsAndResume } from '../utilities/error_utility';
 
@@ -205,9 +205,9 @@ export const refreshAuthToken = (firebaseUserObj) => (dispatch) => {
     });
 }
 
-// PUT request to API to edit client party from UsernameScreen
+// PUT request to API to edit client party from ChoosePartyScreen
 export const editParty = (authToken, firebaseUserObj, party) => (dispatch) => {
-  return APIUtility.put(authToken, '/users', { political_party: party })
+  return APIUtility.put(authToken, '/users', { political_party: party, queued_at: null })
   .then((editedUser) => {
     amplitude.logEvent('Onboarding - Edit Party', { is_successful: true, political_party: party });
     amplitude.setUserProperties({ political_party: party });
