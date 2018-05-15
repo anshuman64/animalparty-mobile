@@ -24,6 +24,8 @@ export const navigateTo = (screen, props) => (dispatch) => {
   let navigateScreens = () => {
     if (screen === 'LoadingScreen') {
       Actions.LoadingScreen(props)
+    } else if (screen === 'DebugLoginScreen') {
+      Actions.DebugLoginScreen(props)
     } else if (screen === 'LoginScreen') {
       Actions.LoginScreen(props)
     } else if (screen === 'WelcomeScreen') {
