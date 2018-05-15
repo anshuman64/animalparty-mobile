@@ -4,7 +4,7 @@ import RN              from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 // Local Imports
-import { styles, fadeInIcon, translateIcon, translateLogo } from './welcome_screen_styles';
+import * as Styles from './welcome_screen_styles';
 import { UTILITY_STYLES }                                   from '../../utilities/style_utility';
 import { setStateCallback }                                 from '../../utilities/function_utility';
 
@@ -26,8 +26,8 @@ class WelcomeScreen extends React.PureComponent {
     super(props);
 
     this.state = {
-      isLogoFading: true,
-      isChecked:    false,
+      isLogoIn:  false,
+      isChecked: false,
     };
   }
 
@@ -35,55 +35,80 @@ class WelcomeScreen extends React.PureComponent {
   // Animation Render Methods
   //--------------------------------------------------------------------//
 
-  _renderIconAnimation() {
-    if (this.state.isLogoFading) {
+  _renderAnimalAnimation() {
+    if (!this.state.isLogoIn) {
       return (
         <Animatable.Image
-          style={styles.icon}
-          source={require('../../assets/images/icon/icon.png')}
-          resizeMode='cover'
-          animation={fadeInIcon}
-          duration={2500}
-          delay={1000}
+          style={Styles.styles.logo}
+          source={require('../../assets/images/logo_animal/logo_animal.png')}
+          resizeMode={'contain'}
+          animation={Styles.bounceInLeft}
+          duration={2000}
+          delay={500}
           />
       )
     } else {
       return (
         <Animatable.Image
-          style={styles.icon}
-          source={require('../../assets/images/icon/icon.png')}
-          resizeMode='cover'
-          animation={translateIcon}
+          style={Styles.styles.logo}
+          source={require('../../assets/images/logo_animal/logo_animal.png')}
+          resizeMode={'contain'}
+          animation={Styles.translateAnimalLogo}
+          duration={2000}
+          delay={500}
+          />
+      )
+    }
+  }
+
+  _renderPartyAnimation() {
+    if (!this.state.isLogoIn) {
+      return (
+        <Animatable.Image
+          style={Styles.styles.logo}
+          source={require('../../assets/images/logo_party/logo_party.png')}
+          resizeMode={'contain'}
+          animation={Styles.bounceInDown}
+          duration={2000}
+          delay={1250}
+          />
+      )
+    } else {
+      return (
+        <Animatable.Image
+          style={Styles.styles.logo}
+          source={require('../../assets/images/logo_party/logo_party.png')}
+          resizeMode={'contain'}
+          animation={Styles.translatePartyLogo}
           duration={2000}
           />
       )
     }
   }
 
-  _renderLogoAnimation() {
-    if (this.state.isLogoFading) {
+  _renderIconAnimation() {
+    if (!this.state.isLogoIn) {
       return (
-        <Animatable.Text
-          style={styles.logo}
-          allowFontScaling={false}
-          animation={'fadeIn'}
-          duration={1800}
-          delay={3400}
-          onAnimationEnd={setStateCallback(this, { isLogoFading: false })}
-          >
-          Postcard
-        </Animatable.Text>
+        <Animatable.Image
+          style={Styles.styles.icon}
+          source={require('../../assets/images/icon/icon.png')}
+          resizeMode={'contain'}
+          animation={Styles.fadeIn}
+          easing={'ease-in'}
+          duration={1250}
+          delay={3000}
+          onAnimationEnd={setStateCallback(this, { isLogoIn: true })}
+          />
       )
     } else {
       return (
-        <Animatable.Text
-          style={styles.logo}
-          allowFontScaling={false}
-          animation={translateLogo}
+        <Animatable.Image
+          style={Styles.styles.icon}
+          source={require('../../assets/images/icon/icon.png')}
+          resizeMode={'contain'}
+          animation={Styles.translateIcon}
           duration={2000}
-          >
-          Postcard
-        </Animatable.Text>
+          />
       )
     }
   }
@@ -96,7 +121,7 @@ class WelcomeScreen extends React.PureComponent {
     if (this.state.isChecked) {
       return (
         <Animatable.View
-          style={styles.checkboxFilled}
+          style={Styles.styles.checkboxFilled}
           animation={'zoomIn'}
           duration={50}
           />
@@ -108,17 +133,17 @@ class WelcomeScreen extends React.PureComponent {
 
   _renderCheckbox() {
     return (
-      <RN.View style={styles.checkboxView}>
+      <RN.View style={Styles.styles.checkboxView}>
         <RN.TouchableWithoutFeedback
-          onPressIn={() => this.checkbox.setNativeProps({style: styles.checkboxHighlighted})}
-          onPressOut={() => this.checkbox.setNativeProps({style: styles.checkbox})}
+          onPressIn={() => this.checkbox.setNativeProps({style: Styles.styles.checkboxHighlighted})}
+          onPressOut={() => this.checkbox.setNativeProps({style: Styles.styles.checkbox})}
           onPress={setStateCallback(this, { isChecked: !this.state.isChecked })}
           >
-          <RN.View ref={(ref) => this.checkbox = ref} style={styles.checkbox}>
+          <RN.View ref={(ref) => this.checkbox = ref} style={Styles.styles.checkbox}>
             {this._renderFilledCheckbox()}
           </RN.View>
         </RN.TouchableWithoutFeedback>
-        <RN.Text allowFontScaling={false} style={styles.checkboxText}>
+        <RN.Text allowFontScaling={false} style={Styles.styles.checkboxText}>
           I agree to the
             <RN.Text allowFontScaling={false} style={UTILITY_STYLES.textHighlighted} onPress={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/terms-of-use-4b1c31695dfe')}> Terms of Use</RN.Text>
           ,
@@ -145,10 +170,10 @@ class WelcomeScreen extends React.PureComponent {
   }
 
   _renderWelcomeScreen() {
-    if (!this.state.isLogoFading) {
+    if (this.state.isLogoIn) {
       return (
         <Animatable.View
-          style={styles.animatableView}
+          style={Styles.styles.animatableView}
           animation={'fadeIn'}
           duration={2000}
           delay={600}
@@ -163,8 +188,9 @@ class WelcomeScreen extends React.PureComponent {
   render() {
     return (
       <RN.View style={UTILITY_STYLES.containerCenter}>
+        {this._renderAnimalAnimation()}
+        {this._renderPartyAnimation()}
         {this._renderIconAnimation()}
-        {this._renderLogoAnimation()}
         {this._renderWelcomeScreen()}
       </RN.View>
     )
