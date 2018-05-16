@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1019897075494-l12doduk0o5l22oo0geehs85aomb57ei.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.animalparty.android",
+            "certificate_hash": "87885f277c494781d63714f0856efe3b9c30997c"
+          }
+        },
+        {
           "client_id": "1019897075494-sjnl0m56ult37r8r8n25jn9vbngkcld8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
