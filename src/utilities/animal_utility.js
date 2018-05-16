@@ -286,7 +286,7 @@ export const getMessagePreview = (message, clientId) => {
       messagePreview = message.body;
     } else {
       if (message.author_id === clientId) {
-        messagePreview = 'You sent an image.';
+        messagePreview = 'Sent an image.';
       } else {
         messagePreview = 'They sent an image.';
       }
