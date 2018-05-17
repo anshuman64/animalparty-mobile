@@ -3,7 +3,7 @@ import Pusher    from 'pusher-js/react-native';
 import OneSignal from 'react-native-onesignal';
 
 // Local Imports
-import { ENV_TYPES, PUSHER_ENV_SETTING }       from '../app_config';
+import { ENV_TYPES, SERVER_ENV_SETTING }       from '../app_config';
 import { getBaseUrl }                          from './api_utility';
 import { receiveConnection, removeConnection } from '../actions/connection_actions';
 import { receiveMessage }                      from '../actions/message_actions';
@@ -24,9 +24,9 @@ let myChannel = null;
 let getPusherApiKey = () => {
   let apiKey;
 
-  if (PUSHER_ENV_SETTING === ENV_TYPES.PRODUCTION) {
+  if (SERVER_ENV_SETTING === ENV_TYPES.PRODUCTION) {
     apiKey = '81adc7d362a42675a58c'; // key for animalparty-production
-  } else if (PUSHER_ENV_SETTING === ENV_TYPES.TEST) {
+  } else if (SERVER_ENV_SETTING === ENV_TYPES.TEST) {
     apiKey = '40d65a2bc02d7c20f2ff'; // key for animalparty-production
   } else {
     apiKey = 'a6d1856c0f4314516333'; // key for animalparty-dev

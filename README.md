@@ -32,6 +32,9 @@ open ./node_modules/react-native-video-player/index.js
 ````
 Replace contents with this file: https://drive.google.com/file/d/1-99De6dgEY4WnHhBvfqVrp5ktRA5a6wg/view?usp=sharing
 
+### Setup - Android
+1. Add animalparty-android.keystore (ask Anshuman) to ````/android/app```` directory
+
 ### Setup - iOS
 1. Install Pods
 ````
@@ -74,29 +77,20 @@ appcenter codepush release-react -a AnimalParty/AnimalParty-iOS -d Production
 Note: Add option ````---mandatory```` if the update should cause the app to refresh on start
 
 ### Full Release - Android
-0. Add animalparty-android.keystore (ask Anshuman) to /android/app directory if you haven't already
+0. Make sure you follow the steps under "Release - General"!
 1. Increment versionCode and versionName in android > app > build.gradle and AndroidManifest.xml
-2. Change CodePush deployment key from Staging to Production
-````
-open ./android/app/src/res/values/strings.xml
-````
-Change "reactNativeCodePush_androidDeploymentKey" from ````0wdFZMRaBt_InRdAh5wxwr0fjqHhHkRQlzrRf```` to ````xvilSQ5yrpfsfgT8yFTBDnzC56NFSJJEezHCz````
-
-3. Generate signed release APK
+2. Generate signed release APK
 ````
 cd android && ./gradlew assembleRelease && cd ..
 ````
-4. Search for "app-release.apk" in ````animalparty-mobile/android/app/build/outputs/apk/release/app-release.apk```` and drag into Google Play Console
+3. Search for "app-release.apk" in ````animalparty-mobile/android/app/build/outputs/apk/release/app-release.apk```` and drag into Google Play Console
 
 Note: If you want to test the signed release APK, run ````react-native run-android --variant=release````
 
 ### Full Release - iOS
+0. Make sure you follow the steps under "Release - General"!
 1. Increment Version and Build in XCode
 2. Change CodePush deployment key from Staging to Production
-````
-open ./ios/AnimalParty/Info.plist
-````
-Change "CodePushDeploymentKey" from ````W5sHjCByju5UuUQ3Y1jY8EIhByDVrJOBlfH0z```` to ````vRilBQuM9jOuC4DGY_6xQ3HiqoDKB1dHxGB0G````
 
 3. Set build target to "Generic iOS Device"
 4. Run ````Product > Archive````
@@ -110,3 +104,16 @@ git tag vX.Y.Z
 git push origin vX.Y.Z
 git checkout master
 ````
+
+### Change CodePush Deployment Key
+1. Android
+````
+open ./android/app/src/res/values/strings.xml
+````
+Change "reactNativeCodePush_androidDeploymentKey" from Staging ````0wdFZMRaBt_InRdAh5wxwr0fjqHhHkRQlzrRf```` to Production ````xvilSQ5yrpfsfgT8yFTBDnzC56NFSJJEezHCz````
+
+2. iOS
+````
+open ./ios/AnimalParty/Info.plist
+````
+Change "CodePushDeploymentKey" from Staging ````W5sHjCByju5UuUQ3Y1jY8EIhByDVrJOBlfH0z```` to Production ````vRilBQuM9jOuC4DGY_6xQ3HiqoDKB1dHxGB0G````

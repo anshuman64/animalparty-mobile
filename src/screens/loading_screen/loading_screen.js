@@ -49,17 +49,14 @@ class LoadingScreen extends React.PureComponent {
   componentDidMount() {
     this.unsubscribe = Firebase.auth().onAuthStateChanged((firebaseUserObj) => {
       if (firebaseUserObj) {
-        // console.log('Firebase cookie found'); // Debug Test
         this.props.loginClient(firebaseUserObj)
           .then(() => {
             client = this.props.usersCache[this.props.client.id];
-            // console.log('Logged in'); // Debug Test
             if (client.is_banned) {
               RN.Alert.alert('', 'This account has been disabled. Email support@animalparty.app for more info.', [{text: 'OK', style: 'cancel'}]);
             } else {
               this.props.getConnections(this.props.client.authToken, this.props.client.firebaseUserObj)
                 .then(() => {
-                  // console.log('Data loaded'); // Debug Test
                   this._onLogin();
                 })
                 .catch((error) => {
@@ -71,7 +68,6 @@ class LoadingScreen extends React.PureComponent {
             defaultErrorAlert(error);
           });
       } else {
-        // console.log('No Firebase cookie found'); // Debug Test
         this._onAnimationEnd();
       }
     });
