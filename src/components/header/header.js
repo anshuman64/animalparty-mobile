@@ -1,14 +1,13 @@
 // Library Imports
 import React       from 'react';
 import RN          from 'react-native';
-import Icon        from 'react-native-vector-icons/Octicons';
+import Icon        from 'react-native-vector-icons/SimpleLineIcons';
 import Ionicon     from 'react-native-vector-icons/Ionicons';
 
 // Local Imports
 import LoadingModal           from '../loading_modal/loading_modal.js';
 import { styles }             from './header_styles';
 import * as StyleUtility      from '../../utilities/style_utility';
-import { getOppositeParty }   from '../../utilities/animal_utility';
 import { defaultErrorAlert }  from '../../utilities/error_utility';
 
 //--------------------------------------------------------------------//
@@ -22,7 +21,6 @@ Optional Passed Props:
   backTitle (string): title to go with backIcon
   settingsIcon (bool): if should render settingsIcon for MenuScreen
   logo (bool): if should render logo
-  homeScreenButton (bool): if should render New/Help button on HomeScreen
   messagesScreenButton (bool): if should render Leave button on MessagesScreen
 */
 class Header extends React.PureComponent {
@@ -38,7 +36,6 @@ class Header extends React.PureComponent {
       isLoading: false,
     }
 
-    this.isJoinQueuePressed = false;
     this.isLeavePressed = false;
     this.isGoBackPressed = false;
   }
@@ -59,30 +56,6 @@ class Header extends React.PureComponent {
 
   _onPressSettings = () => {
     this.props.navigateTo('MenuScreen');
-  }
-
-  _onPressHelp = () => {
-    let oppositeParty = getOppositeParty(this.props.usersCache[this.props.client.id]);
-    RN.Alert.alert('', "We will notify you when you are matched with the next available " + oppositeParty + ".", [{text: 'OK', style: 'cancel'}]);
-  }
-
-  _onPressJoinQueue = () => {
-    if (this.isJoinQueuePressed) {
-      return;
-    }
-
-    this.isJoinQueuePressed = true;
-
-    this.setState({ isLoading: true } , () => {
-      this.props.requestConnection(this.props.client.authToken, this.props.client.firebaseUserObj, this.props.client.id)
-        .catch((error) => {
-          defaultErrorAlert(error);
-        })
-        .finally(() => {
-          this.isJoinQueuePressed = false;
-          this.setState({ isLoading: false });
-        });
-    });
   }
 
   _onPressLeave = () => {
@@ -119,6 +92,14 @@ class Header extends React.PureComponent {
   // Render Methods
   //--------------------------------------------------------------------//
 
+  _renderBlank() {
+    if (this.props.blank) {
+      return (
+        <RN.View style={styles.blank} />
+      )
+    }
+  }
+
   _renderBackIcon() {
     if (this.props.backIcon) {
       return (
@@ -152,22 +133,6 @@ class Header extends React.PureComponent {
     }
   }
 
-  _renderSettingsIcon() {
-    if (this.props.settingsIcon) {
-      return (
-        <RN.TouchableWithoutFeedback
-          onPressIn={() => this.settingsIcon.setNativeProps({style: StyleUtility.getHighlightColor(client)})}
-          onPressOut={() => this.settingsIcon.setNativeProps({style: styles.settingsIcon})}
-          onPress={this._onPressSettings}
-          >
-          <RN.View style={styles.button}>
-            <Icon ref={(ref) => this.settingsIcon = ref} name='kebab-vertical' style={styles.settingsIcon} />
-          </RN.View>
-        </RN.TouchableWithoutFeedback>
-      )
-    }
-  }
-
   _renderLogo() {
     if (this.props.logo) {
       return (
@@ -180,24 +145,27 @@ class Header extends React.PureComponent {
     }
   }
 
-  _renderCustomButton() {
-    if (this.props.homeScreenButton || this.props.messagesScreenButton) {
-      let client = this.props.usersCache[this.props.client.id];
-      let text;
-      let callback;
+  _renderSettingsIcon() {
+    if (this.props.settingsIcon) {
+      return (
+        <RN.TouchableWithoutFeedback
+          onPressIn={() => this.settingsIcon.setNativeProps({style: StyleUtility.getHighlightColor(client)})}
+          onPressOut={() => this.settingsIcon.setNativeProps({style: styles.settingsIcon})}
+          onPress={this._onPressSettings}
+          >
+          <RN.View style={styles.button}>
+            <Icon ref={(ref) => this.settingsIcon = ref} name='options-vertical' style={styles.settingsIcon} />
+          </RN.View>
+        </RN.TouchableWithoutFeedback>
+      )
+    }
+  }
 
-      if (this.props.homeScreenButton) {
-        if (!client.queued_at) {
-          text = 'New';
-          callback = this._onPressJoinQueue;
-        } else {
-          text = 'Help';
-          callback = this._onPressHelp;
-        }
-      } else if (this.props.messagesScreenButton) {
-        text = 'Leave';
-        callback = this._onPressLeave;
-      }
+  _renderCustomButton() {
+    if (this.props.messagesScreenButton) {
+      let client = this.props.usersCache[this.props.client.id];
+      let text = 'Leave';
+      let callback = this._onPressLeave;
 
       return (
         <RN.TouchableOpacity onPress={callback}>
@@ -221,9 +189,10 @@ class Header extends React.PureComponent {
     return (
       <RN.View style={[styles.header, styles.border]}>
         {(this.props.backTitle && !this.props.backIcon) ? this._renderBackTitle() : this._renderBackIcon()}
-        {this._renderSettingsIcon()}
+        {this._renderBlank()}
         {this._renderLogo()}
         {this._renderCustomButton()}
+        {this._renderSettingsIcon()}
         {this._renderLoadingModal()}
       </RN.View>
     )

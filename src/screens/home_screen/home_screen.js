@@ -88,6 +88,11 @@ class HomeScreen extends React.PureComponent {
     });
   }
 
+  _onPressHelp = () => {
+    let oppositeParty = AnimalUtility.getOppositeParty(this.props.usersCache[this.props.client.id]);
+    RN.Alert.alert('', "We will notify you when you are matched with the next available " + oppositeParty + ".", [{text: 'OK', style: 'cancel'}]);
+  }
+
   //--------------------------------------------------------------------//
   // Render Methods
   //--------------------------------------------------------------------//
@@ -105,8 +110,14 @@ class HomeScreen extends React.PureComponent {
   }
 
   _renderHeader = () => {
+    let client = this.props.usersCache[this.props.client.id];
+    let text = !client.queued_at ? 'New Conversation' : 'In Queue';
+    let icon = !client.queued_at ? 'user-follow' : 'question';
+    let callback = !client.queued_at ? this._onPressJoinQueue : this._onPressHelp;
+
     return (
       <RN.View>
+        <ListHeaderContainer text={text} iconName={icon} callback={callback} />
         <ListHeaderContainer text={'Share App With Friends'} iconName={'share'} callback={this._onPressShare} />
       </RN.View>
     )

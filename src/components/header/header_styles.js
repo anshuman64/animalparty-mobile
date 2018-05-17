@@ -42,11 +42,16 @@ export const styles = StyleSheet.create({
     color: StyleUtility.COLORS.grey900
   },
   settingsIcon: {
-    fontSize: StyleUtility.scaleFont(20),
+    fontSize: StyleUtility.scaleFont(19),
     textAlign: 'center',
     color: StyleUtility.COLORS.grey900
   },
   logo: {
     height: StyleUtility.scaleFont(25),
+    alignSelf: 'center'
   },
+  blank: {
+    width: 60,
+    height: HEADER_HEIGHT
+  }
 })
