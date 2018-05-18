@@ -90,10 +90,8 @@ Note: If you want to test the signed release APK, run ````react-native run-andro
 ### Full Release - iOS
 0. Make sure you follow the steps under "Release - General"!
 1. Increment Version and Build in XCode
-2. Change CodePush deployment key from Staging to Production
-
-3. Set build target to "Generic iOS Device"
-4. Run ````Product > Archive````
+2. Set build target to "Generic iOS Device"
+3. Run ````Product > Archive````
 
 ### Post-Release
 1. Assuming you were on "master" branch:
@@ -101,6 +99,7 @@ Note: If you want to test the signed release APK, run ````react-native run-andro
 git checkout stable
 git merge master
 git tag vX.Y.Z
+git push
 git push origin vX.Y.Z
 git checkout master
 ````
