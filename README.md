@@ -78,7 +78,7 @@ Note: Add option ````---mandatory```` if the update should cause the app to refr
 
 ### Full Release - Android
 0. Make sure you follow the steps under "Release - General"!
-1. Increment versionCode and versionName in android > app > build.gradle and AndroidManifest.xml
+1. Increment versionCode and versionName in android > app > build.gradle
 2. Generate signed release APK
 ````
 cd android && ./gradlew assembleRelease && cd ..

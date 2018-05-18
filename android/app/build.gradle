@@ -102,8 +102,8 @@ android {
         applicationId "com.animalparty.android"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.1"
         vectorDrawables.useSupportLibrary = true
         manifestPlaceholders = [onesignal_app_id: "9675a494-214d-4e1d-9d29-cfc61a39fc64",
                                 onesignal_google_project_number: "REMOTE"]
