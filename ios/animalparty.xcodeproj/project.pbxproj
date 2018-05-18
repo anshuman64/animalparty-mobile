@@ -385,13 +385,6 @@
 			remoteGlobalIDString = F886647B1F4ADB500036D01B;
 			remoteInfo = "CodePush-tvOS";
 		};
-		5B6DC3A420ABBCB80087B1AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8A0FDE8D52134528A2794287 /* RCTRestart.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3245CDED1BFEE35C00EABF68;
-			remoteInfo = RCTRestart;
-		};
 		5B720BD020A5F913002F4D3B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F30A3135494D47938A9A9B87 /* RNFirebase.xcodeproj */;
@@ -853,14 +846,6 @@
 			children = (
 				5B302DE320A7C37E00738DEE /* libCodePush.a */,
 				5B302DE520A7C37E00738DEE /* libCodePush.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		5B6DC3A120ABBCB80087B1AA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5B6DC3A520ABBCB80087B1AA /* libRCTRestart.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1531,13 +1516,6 @@
 			fileType = archive.ar;
 			path = libCodePush.a;
 			remoteRef = 5B302DE420A7C37E00738DEE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5B6DC3A520ABBCB80087B1AA /* libRCTRestart.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRCTRestart.a;
-			remoteRef = 5B6DC3A420ABBCB80087B1AA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5B720BD120A5F913002F4D3B /* libRNFirebase.a */ = {
