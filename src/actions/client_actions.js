@@ -67,7 +67,7 @@ export const debugSignIn = (email, password) => (dispatch) => {
   return Firebase.auth().signInAndRetrieveDataWithEmailAndPassword(email, password)
     .catch((error) => {
       if (error.message === 'There is no user record corresponding to this identifier. The user may have been deleted.') {
-        Firebase.auth().createUserWithEmailAndPassword(email, password)
+        Firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(email, password)
           .catch((error) => {
             throw setErrorDescription(error, 'Firebase email sign-in failed');
           });
