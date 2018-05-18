@@ -68,7 +68,7 @@ let callApi = (url, requestConfig) => {
 // Chooses right API url based on environment setting
 export const getBaseUrl = () => {
   if (SERVER_ENV_SETTING === ENV_TYPES.PRODUCTION) {
-    return 'http://api.animalparty.app/api';
+    return 'https://api.animalparty.app/api';
   } else if (SERVER_ENV_SETTING === ENV_TYPES.TEST) {
     return 'http://animalparty-production-server.us-east-1.elasticbeanstalk.com/api';
   } else {
