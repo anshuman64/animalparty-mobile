@@ -47,7 +47,7 @@ class MenuScreen extends React.PureComponent {
   render() {
     return (
       <RN.View style={styles.container}>
-        <RN.View>
+        <RN.ScrollView>
           <MenuListItemContainer iconName={'refresh'}     text={'Change Party'}         callback={this._changeParty}/>
           <MenuListItemContainer iconName={'envelope'}    text={'Contact'}              callback={() => RN.Linking.openURL('mailto:contact@animalparty.app')}/>
           <MenuListItemContainer iconName={'paper-plane'} text={'Telegram Community'}   callback={() => RN.Linking.openURL('https://t.me/animalpartyapp')}/>
@@ -55,7 +55,7 @@ class MenuScreen extends React.PureComponent {
           <MenuListItemContainer iconName={'lock'}        text={'Privacy Policy'}       callback={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/privacy-policy-febc9c4cb192')}/>
           <MenuListItemContainer iconName={'people'}      text={'Community Guidelines'} callback={() => RN.Linking.openURL('https://medium.com/@InsiyaInc/community-guidelines-b9ee2fe3daf4')}/>
           <MenuListItemContainer iconName={'logout'}      text={'Log Out'}              callback={this._logOut}/>
-        </RN.View>
+        </RN.ScrollView>
         <RN.Text allowFontScaling={false} style={styles.attributionText}>
           {'Icons made by Freepik from www.flaticon.com'}
         </RN.Text>
