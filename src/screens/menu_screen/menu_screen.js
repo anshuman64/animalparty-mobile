@@ -47,7 +47,7 @@ class MenuScreen extends React.PureComponent {
   render() {
     return (
       <RN.View style={styles.container}>
-        <RN.ScrollView>
+        <RN.ScrollView showsVerticalScrollIndicator={false}>
           <MenuListItemContainer iconName={'refresh'}     text={'Change Party'}         callback={this._changeParty}/>
           <MenuListItemContainer iconName={'envelope'}    text={'Contact'}              callback={() => RN.Linking.openURL('mailto:contact@animalparty.app')}/>
           <MenuListItemContainer iconName={'paper-plane'} text={'Telegram Community'}   callback={() => RN.Linking.openURL('https://t.me/animalpartyapp')}/>
