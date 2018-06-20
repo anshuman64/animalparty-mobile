@@ -49,6 +49,10 @@
         {
           "client_id": "1019897075494-a48vr1n82vt9179j5g6gpdudqrn0ftkt.apps.googleusercontent.com",
           "client_type": 3
+        },
+        {
+          "client_id": "1019897075494-a48vr1n82vt9179j5g6gpdudqrn0ftkt.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
@@ -64,15 +68,16 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
+              "client_id": "1019897075494-a48vr1n82vt9179j5g6gpdudqrn0ftkt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
               "client_id": "1019897075494-jduott4lgi59q2jcv67mpk8cbj2dflhe.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.animalparty.apple"
+                "bundle_id": "com.animalparty.apple",
+                "app_store_id": "1384323078"
               }
-            },
-            {
-              "client_id": "1019897075494-a48vr1n82vt9179j5g6gpdudqrn0ftkt.apps.googleusercontent.com",
-              "client_type": 3
             }
           ]
         },
