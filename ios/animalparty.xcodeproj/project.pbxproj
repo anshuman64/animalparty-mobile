@@ -57,11 +57,11 @@
 		5B302DDC20A7BE6D00738DEE /* libRCTOneSignal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B302DBC20A7BE5B00738DEE /* libRCTOneSignal.a */; };
 		5B302DE620A7C38F00738DEE /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B302DE520A7C37E00738DEE /* libCodePush.a */; };
 		5B302DE820A7C39D00738DEE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B302DE720A7C39C00738DEE /* libz.tbd */; };
-		5B720B8620A5F812002F4D3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B720B8520A5F812002F4D3B /* GoogleService-Info.plist */; };
-		5B720B8720A5F823002F4D3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B720B8520A5F812002F4D3B /* GoogleService-Info.plist */; };
 		5B720B8820A5F823002F4D3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B720B8520A5F812002F4D3B /* GoogleService-Info.plist */; };
 		5B720B8920A5F823002F4D3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B720B8520A5F812002F4D3B /* GoogleService-Info.plist */; };
 		5B720DEF20A67CD7002F4D3B /* libimageCropPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B720DB320A67C15002F4D3B /* libimageCropPicker.a */; };
+		5B84908520DAC0930086B9F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B720B8520A5F812002F4D3B /* GoogleService-Info.plist */; };
+		5B84908620DAC0A20086B9F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B720B8520A5F812002F4D3B /* GoogleService-Info.plist */; };
 		5BEE354320A523C300EC6DA9 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BEE351320A523C300EC6DA9 /* Octicons.ttf */; };
 		5BEE354420A523C300EC6DA9 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BEE351420A523C300EC6DA9 /* Feather.ttf */; };
 		5BEE354520A523C300EC6DA9 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BEE351520A523C300EC6DA9 /* Entypo.ttf */; };
@@ -515,7 +515,7 @@
 		5B302DAA20A7BE5A00738DEE /* RCTOneSignal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTOneSignal.xcodeproj; path = "../node_modules/react-native-onesignal/ios/RCTOneSignal.xcodeproj"; sourceTree = "<group>"; };
 		5B302DDD20A7C37E00738DEE /* CodePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		5B302DE720A7C39C00738DEE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		5B720B8520A5F812002F4D3B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5B720B8520A5F812002F4D3B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "animalparty/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B720C3620A60B02002F4D3B /* animalparty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = animalparty.entitlements; path = animalparty/animalparty.entitlements; sourceTree = "<group>"; };
 		5B720DAC20A67C14002F4D3B /* imageCropPicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = imageCropPicker.xcodeproj; path = "../../../../Downloads/react-native-image-crop-picker-master 2/ios/imageCropPicker.xcodeproj"; sourceTree = "<group>"; };
 		5BEE351320A523C300EC6DA9 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
@@ -1595,7 +1595,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B720B8720A5F823002F4D3B /* GoogleService-Info.plist in Resources */,
+				5B84908620DAC0A20086B9F3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1603,9 +1603,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B84908520DAC0930086B9F3 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				5BEE354B20A523C300EC6DA9 /* EvilIcons.ttf in Resources */,
-				5B720B8620A5F812002F4D3B /* GoogleService-Info.plist in Resources */,
 				5BEE354720A523C300EC6DA9 /* Foundation.ttf in Resources */,
 				5BEE354A20A523C300EC6DA9 /* Zocial.ttf in Resources */,
 				5BEE354D20A523C300EC6DA9 /* MaterialIcons.ttf in Resources */,
