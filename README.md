@@ -6,7 +6,7 @@ Animal Party! is a chat app that connects members of opposite U.S. political par
 * Message each other in an anonymous, one-on-one chat room
 * Leave conversations or join other ones whenever you want
 
-Animal Party! was developed for Android & iOS in 2018 by Anshuman Dewangan and Vinit Parikh. The code is free for everyone to view, reuse, and evolve. If you do use the code in your own projects, attribution to Anshuman & Vinit would be appreciated. 
+Animal Party! was developed for Android & iOS in 2018 by Anshuman Dewangan and Vinit Parikh. The code is free for everyone to view, reuse, and evolve. If you do use the code in your own projects, attribution to Anshuman & Vinit would be appreciated.
 
 ![Alt](AnimalParty-Screenshots.png)
 
@@ -44,6 +44,11 @@ const extname = (path) => {
 open ./node_modules/react-native-video-player/index.js
 ````
 Replace contents with this file: https://drive.google.com/file/d/1-99De6dgEY4WnHhBvfqVrp5ktRA5a6wg/view?usp=sharing
+
+5. Replace files with secret keys (ask anshuman64):
+````
+ios/Insiya/GoogleService-Info.plist
+````
 
 ### Setup - Android
 1. Add animalparty-android.keystore (ask anshuman64) to ````/android/app```` directory

@@ -62,3 +62,6 @@ process-palette.json
 
 # Bundle artifact
 *.jsbundle
+
+# Secret keys
+ios/animalparty/GoogleService-Info.plist
