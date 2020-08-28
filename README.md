@@ -1,4 +1,17 @@
+# Animal Party!
+Animal Party! is a chat app that connects members of opposite U.S. political parties.
+
+* Choose your political leaning: Democrat or Republican
+* Get paired with someone from the opposite party
+* Message each other in an anonymous, one-on-one chat room
+* Leave conversations or join other ones whenever you want
+
+Animal Party! was developed for Android & iOS in 2018 by Anshuman Dewangan and Vinit Parikh. The code is free for everyone to view, reuse, and evolve. If you do use the code in your own projects, attribution to Anshuman & Vinit would be appreciated. 
+
+![Alt](AnimalParty-Screenshots.png)
+
 # animalparty-mobile
+Repository for Animal Party's Android & iOS front-end using React Native. **Also see [animalparty-api](https://github.com/anshuman64/animalparty-api).**
 
 ## Setup
 ### Setup - General
@@ -33,7 +46,7 @@ open ./node_modules/react-native-video-player/index.js
 Replace contents with this file: https://drive.google.com/file/d/1-99De6dgEY4WnHhBvfqVrp5ktRA5a6wg/view?usp=sharing
 
 ### Setup - Android
-1. Add animalparty-android.keystore (ask Anshuman) to ````/android/app```` directory
+1. Add animalparty-android.keystore (ask anshuman64) to ````/android/app```` directory
 
 ### Setup - iOS
 1. Install Pods
@@ -109,10 +122,10 @@ git checkout master
 ````
 open ./android/app/src/res/values/strings.xml
 ````
-Change "reactNativeCodePush_androidDeploymentKey" from Staging ````0wdFZMRaBt_InRdAh5wxwr0fjqHhHkRQlzrRf```` to Production ````xvilSQ5yrpfsfgT8yFTBDnzC56NFSJJEezHCz````
+Change "reactNativeCodePush_androidDeploymentKey" from Staging ````0wdFZMRaBt_InRdAh5wxwr0fjqHhHkRQlzrRf```` to Production ````####################````
 
 2. iOS
 ````
 open ./ios/AnimalParty/Info.plist
 ````
-Change "CodePushDeploymentKey" from Staging ````W5sHjCByju5UuUQ3Y1jY8EIhByDVrJOBlfH0z```` to Production ````vRilBQuM9jOuC4DGY_6xQ3HiqoDKB1dHxGB0G````
+Change "CodePushDeploymentKey" from Staging ````W5sHjCByju5UuUQ3Y1jY8EIhByDVrJOBlfH0z```` to Production ````####################````
