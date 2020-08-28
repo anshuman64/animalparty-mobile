@@ -1,4 +1,4 @@
-# Animal Party
+# Animal Party!
 Animal Party! is a chat app that connects members of opposite U.S. political parties.
 
 * Choose your political leaning: Democrat or Republican
@@ -6,7 +6,7 @@ Animal Party! is a chat app that connects members of opposite U.S. political par
 * Message each other in an anonymous, one-on-one chat room
 * Leave conversations or join other ones whenever you want
 
-Animal Party was developed for Android & iOS in 2018 by Anshuman Dewangan and Vinit Parikh. The code is free for everyone to view, reuse, and evolve. If you do use the code in your own projects, attribution to Anshuman & Vinit would be appreciated. 
+Animal Party! was developed for Android & iOS in 2018 by Anshuman Dewangan and Vinit Parikh. The code is free for everyone to view, reuse, and evolve. If you do use the code in your own projects, attribution to Anshuman & Vinit would be appreciated. 
 
 ![Alt](AnimalParty-Screenshots.png)
 
