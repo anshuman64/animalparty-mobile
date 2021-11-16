@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "aws-sdk": "^2.238.1",
+    "aws-sdk": "^2.814.0",
     "buffer": "^5.1.0",
     "google-libphonenumber": "^3.1.5",
     "lodash": "^4.17.10",
